@@ -2,41 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Karen Legacy Tours & Safaris Design System
+   Cinematic safari experience with editorial storytelling focus
+   All colors MUST be HSL for consistent theming
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Core Brand Colors - Safari Inspired */
+    --background: 30 15% 97%; /* Ivory #FAF8F4 */
+    --foreground: 0 0% 11%; /* Deep Charcoal #1B1B1B */
+    
+    /* Safari Landscape Palette */
+    --safari-charcoal: 0 0% 11%; /* Deep Charcoal #1B1B1B */
+    --safari-ochre: 43 48% 55%; /* Golden Ochre #CFA34B */
+    --safari-green: 122 25% 22%; /* Safari Green #2E4A29 */
+    --safari-sand: 33 33% 91%; /* Warm Sand #EFE8DD */
+    --safari-ivory: 30 15% 97%; /* Ivory #FAF8F4 */
+    
+    /* Semantic UI Colors */
+    --primary: var(--safari-ochre);
+    --primary-foreground: var(--safari-ivory);
+    
+    --secondary: var(--safari-sand);
+    --secondary-foreground: var(--safari-charcoal);
+    
+    --accent: var(--safari-green);
+    --accent-foreground: var(--safari-ivory);
+    
+    --muted: 33 20% 85%;
+    --muted-foreground: 0 0% 35%;
+    
+    --card: var(--safari-ivory);
+    --card-foreground: var(--safari-charcoal);
+    
+    --popover: var(--safari-ivory);
+    --popover-foreground: var(--safari-charcoal);
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--safari-ivory);
+    
+    --border: 33 20% 80%;
+    --input: 33 20% 85%;
+    --ring: var(--safari-ochre);
+    
+    /* Safari Gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--safari-ochre)), hsl(25 60% 50%));
+    --gradient-landscape: linear-gradient(180deg, hsl(var(--safari-ivory)), hsl(var(--safari-sand)));
+    --gradient-wildlife: linear-gradient(45deg, hsl(var(--safari-green)), hsl(var(--safari-charcoal)));
+    --gradient-hero-overlay: linear-gradient(180deg, rgba(27, 27, 27, 0.4), rgba(27, 27, 27, 0.7));
+    
+    /* Shadows & Effects */
+    --shadow-safari: 0 10px 40px -10px hsl(var(--safari-charcoal) / 0.15);
+    --shadow-card: 0 4px 20px -4px hsl(var(--safari-charcoal) / 0.1);
+    --shadow-floating: 0 20px 60px -10px hsl(var(--safari-charcoal) / 0.25);
+    
+    /* Interactive States */
+    --hover-lift: translateY(-2px);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Layout & Spacing */
+    --radius: 0.75rem;
+    --radius-card: 1rem;
+    --radius-hero: 1.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +85,50 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark Safari Theme - Night Safari Aesthetic */
+    --background: var(--safari-charcoal);
+    --foreground: var(--safari-ivory);
+    
+    --card: 0 0% 8%;
+    --card-foreground: var(--safari-ivory);
+    
+    --popover: 0 0% 8%;
+    --popover-foreground: var(--safari-ivory);
+    
+    --primary: var(--safari-ochre);
+    --primary-foreground: var(--safari-charcoal);
+    
+    --secondary: 0 0% 15%;
+    --secondary-foreground: var(--safari-ivory);
+    
+    --accent: var(--safari-green);
+    --accent-foreground: var(--safari-ivory);
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: var(--safari-ivory);
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: var(--safari-ochre);
+    
+    /* Dark mode gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--safari-ochre)), hsl(15 50% 35%));
+    --gradient-landscape: linear-gradient(180deg, hsl(var(--safari-charcoal)), hsl(0 0% 8%));
+    --gradient-wildlife: linear-gradient(45deg, hsl(var(--safari-green)), hsl(0 0% 5%));
+    --gradient-hero-overlay: linear-gradient(180deg, rgba(27, 27, 27, 0.6), rgba(27, 27, 27, 0.9));
+    
+    /* Sidebar for potential admin/dashboard */
+    --sidebar-background: var(--safari-charcoal);
+    --sidebar-foreground: var(--safari-ivory);
+    --sidebar-primary: var(--safari-ochre);
+    --sidebar-primary-foreground: var(--safari-charcoal);
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: var(--safari-ivory);
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: var(--safari-ochre);
   }
 }
 
@@ -100,6 +138,142 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Typography Scale */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold leading-tight;
+  }
+  
+  h1 { @apply text-4xl lg:text-6xl; }
+  h2 { @apply text-3xl lg:text-4xl; }
+  h3 { @apply text-2xl lg:text-3xl; }
+  h4 { @apply text-xl lg:text-2xl; }
+  h5 { @apply text-lg lg:text-xl; }
+  h6 { @apply text-base lg:text-lg; }
+  
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/60 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+/* Safari Experience Utilities */
+@layer utilities {
+  .safari-shadow { box-shadow: var(--shadow-safari); }
+  .card-shadow { box-shadow: var(--shadow-card); }
+  .floating-shadow { box-shadow: var(--shadow-floating); }
+  
+  .gradient-sunset { background: var(--gradient-sunset); }
+  .gradient-landscape { background: var(--gradient-landscape); }
+  .gradient-wildlife { background: var(--gradient-wildlife); }
+  .gradient-hero-overlay { background: var(--gradient-hero-overlay); }
+  
+  .transition-safari { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+  
+  .hover-lift:hover { transform: var(--hover-lift); }
+  
+  /* Safari-specific animations */
+  .animate-safari-fade-in {
+    animation: safari-fade-in 0.8s ease-out;
+  }
+  
+  .animate-safari-slide-up {
+    animation: safari-slide-up 0.6s ease-out;
+  }
+  
+  @keyframes safari-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes safari-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Image overlays for safari galleries */
+  .safari-image-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(27, 27, 27, 0.4) 100%);
+    border-radius: inherit;
+  }
+  
+  /* Interactive elements */
+  .safari-card {
+    @apply transition-safari hover-lift card-shadow rounded-card bg-card text-card-foreground p-6;
+  }
+  
+  .safari-card:hover {
+    @apply floating-shadow;
+  }
+  
+  /* Typography variants */
+  .text-display { @apply font-display; }
+  .text-body { @apply font-body; }
+  .text-nums { font-variant-numeric: tabular-nums; }
+}
+
+/* Component-specific styles */
+@layer components {
+  .hero-section {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero-overlay);
+  }
+  
+  .safari-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-card font-medium transition-safari;
+  }
+  
+  .safari-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 px-8 py-4 rounded-card font-medium transition-safari;
+  }
+  
+  .safari-button-ghost {
+    @apply bg-transparent text-foreground hover:bg-primary/10 px-8 py-4 rounded-card font-medium transition-safari border border-primary/20;
   }
 }
