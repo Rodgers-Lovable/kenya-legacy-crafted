@@ -7,6 +7,14 @@ import Navbar from "@/components/Navbar";
 import MobileCTABar from "@/components/MobileCTABar";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
+import About from "./pages/About";
+import Safaris from "./pages/Safaris";
+import SafariDetail from "./pages/SafariDetail";
+import Destinations from "./pages/Destinations";
+import DestinationDetail from "./pages/DestinationDetail";
+import Guides from "./pages/Guides";
+import GuideDetail from "./pages/GuideDetail";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +30,14 @@ const App = () => (
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/safaris" element={<Safaris />} />
+              <Route path="/safaris/:slug" element={<SafariDetail />} />
+              <Route path="/destinations" element={<Destinations />} />
+              <Route path="/destinations/:slug" element={<DestinationDetail />} />
+              <Route path="/guides" element={<Guides />} />
+              <Route path="/guides/:slug" element={<GuideDetail />} />
+              <Route path="/contact" element={<Contact />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
