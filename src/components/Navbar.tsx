@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,10 +21,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-sunset rounded-full"></div>
-              <span className="font-display font-bold text-xl text-foreground">
-                Karen Legacy
-              </span>
+              <div className="w-16 h-16 rounded-full">
+                <img src={Logo} alt="Karen Legacy Tours & Safaris" />
+              </div>
             </a>
           </div>
 
@@ -98,7 +98,12 @@ const Navbar = () => {
                   <MessageCircle className="w-4 h-4" />
                   <span className="font-medium">WhatsApp</span>
                 </a>
-                <Button variant="default" size="sm" className="mx-3 mt-2 w-full" asChild>
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="mx-3 mt-2 w-full"
+                  asChild
+                >
                   <a href="/contact">Plan My Safari</a>
                 </Button>
               </div>

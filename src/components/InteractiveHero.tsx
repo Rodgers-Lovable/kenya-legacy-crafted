@@ -20,26 +20,29 @@ const heroCards: HeroCard[] = [
     id: "wildlife",
     title: "Wildlife Adventures",
     subtitle: "Big Five & Beyond",
-    description: "Witness lions hunting at dawn, elephants at watering holes, and the Great Migration's thunderous spectacle.",
+    description:
+      "Witness lions hunting at dawn, elephants at watering holes, and the Great Migration's thunderous spectacle.",
     image: wildlifeAdventures,
-    action: "Explore Wildlife"
+    action: "Explore",
   },
   {
     id: "scenic",
     title: "Scenic Escapes",
     subtitle: "Breathtaking Landscapes",
-    description: "From Kilimanjaro's snow-capped peaks to Rift Valley's dramatic escarpments and pristine beaches.",
+    description:
+      "From Kilimanjaro's snow-capped peaks to Rift Valley's dramatic escarpments and pristine beaches.",
     image: scenicEscapes,
-    action: "Discover Landscapes"
+    action: "Discover",
   },
   {
     id: "cultural",
     title: "Cultural Journeys",
     subtitle: "Authentic Encounters",
-    description: "Connect with Maasai warriors, learn ancient traditions, and experience Kenya's rich cultural heritage.",
+    description:
+      "Connect with Maasai warriors, learn ancient traditions, and experience Kenya's rich cultural heritage.",
     image: culturalJourneys,
-    action: "Meet Communities"
-  }
+    action: "Meet",
+  },
 ];
 
 const InteractiveHero = () => {
@@ -55,12 +58,12 @@ const InteractiveHero = () => {
     }
   };
 
-  const selectedCardData = heroCards.find(card => card.id === selectedCard);
+  const selectedCardData = heroCards.find((card) => card.id === selectedCard);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroMain})` }}
       >
@@ -91,28 +94,29 @@ const InteractiveHero = () => {
             >
               {/* Card Image */}
               <div className="aspect-[4/5] relative">
-                <img 
-                  src={card.image} 
+                <img
+                  src={card.image}
                   alt={card.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-16 h-16 bg-primary/90 rounded-full flex items-center justify-center">
-                    <Play className="w-6 h-6 text-white ml-1" />
-                  </div>
-                </div>
               </div>
 
               {/* Card Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="font-display text-2xl mb-2">{card.title}</h3>
-                <p className="text-primary font-semibold mb-2">{card.subtitle}</p>
-                <p className="text-sm text-white/80 mb-4 line-clamp-2">{card.description}</p>
-                
-                <Button variant="ghost" size="sm" className="text-white border-white/30 hover:bg-white/10">
+                <p className="text-primary font-semibold mb-2">
+                  {card.subtitle}
+                </p>
+                <p className="text-sm text-white/80 mb-4 line-clamp-2">
+                  {card.description}
+                </p>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white border-white/30 hover:bg-white/10"
+                >
                   {card.action}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -132,23 +136,33 @@ const InteractiveHero = () => {
             <div className="bg-white/10 backdrop-blur-md rounded-hero p-8 border border-white/20">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="font-display text-3xl text-white mb-4">{selectedCardData.title}</h2>
-                  <p className="text-primary text-lg font-semibold mb-4">{selectedCardData.subtitle}</p>
-                  <p className="text-white/90 mb-6 leading-relaxed">{selectedCardData.description}</p>
-                  
+                  <h2 className="font-display text-3xl text-white mb-4">
+                    {selectedCardData.title}
+                  </h2>
+                  <p className="text-primary text-lg font-semibold mb-4">
+                    {selectedCardData.subtitle}
+                  </p>
+                  <p className="text-white/90 mb-6 leading-relaxed">
+                    {selectedCardData.description}
+                  </p>
+
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Button variant="default" size="lg">
                       {selectedCardData.action}
                       <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
-                    <Button variant="outline" size="lg" className="text-white border-white/30 hover:bg-white/10">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-white bg-white/30 border-white/30 hover:bg-white/10"
+                    >
                       Plan Custom Safari
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className="relative">
-                  <img 
+                  <img
                     src={selectedCardData.image}
                     alt={selectedCardData.title}
                     className="w-full h-64 object-cover rounded-card"
