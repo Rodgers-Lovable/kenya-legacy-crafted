@@ -1,6 +1,16 @@
-import { MessageCircle, Mail, Phone, MapPin, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import {
+  MessageCircle,
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,14 +21,16 @@ const Footer = () => {
       <div className="border-b border-white/10">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-3xl mb-4">Stay Connected with Africa</h2>
+            <h2 className="font-display text-3xl mb-4">
+              Stay Connected with Africa
+            </h2>
             <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-              Get exclusive safari guides, travel tips, and early access to our best deals. 
-              Plus, download our free Kenya Safari Planning Guide!
+              Get exclusive safari guides, travel tips, and early access to our
+              best deals. Plus, download our free Kenya Safari Planning Guide!
             </p>
             <div className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-              <Input 
-                type="email" 
+              <Input
+                type="email"
                 placeholder="Enter your email address"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
               />
@@ -27,7 +39,8 @@ const Footer = () => {
               </Button>
             </div>
             <div className="text-sm text-white/60 mt-4">
-              ✓ Free Kenya Safari Planning Guide • ✓ No spam, unsubscribe anytime
+              ✓ Free Kenya Safari Planning Guide • ✓ No spam, unsubscribe
+              anytime
             </div>
           </div>
         </div>
@@ -39,14 +52,19 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-sunset rounded-full"></div>
-              <span className="font-display font-bold text-xl">Karen Legacy</span>
+              <div className="w-16 h-16 rounded-full">
+                <img src={Logo} alt="Karen Legacy Tours & Safaris" />
+              </div>
+              <span className="font-display font-bold text-xl">
+                Karen Legacy Tours & Safaris
+              </span>
             </div>
             <p className="text-white/80 mb-6 leading-relaxed">
-              Local Kenyan safari experts crafting unforgettable wildlife experiences 
-              since 2015. Licensed, insured, and committed to sustainable tourism.
+              Local Kenyan safari experts crafting unforgettable wildlife
+              experiences since 2015. Licensed, insured, and committed to
+              sustainable tourism.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -55,17 +73,26 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span className="text-sm">info@karenlegacysafaris.com</span>
+                <span className="text-sm">info@karenlegacytoursandsafaris.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-primary" />
                 <span className="text-sm">Nairobi, Kenya</span>
               </div>
             </div>
-            
+
             {/* Quick Contact */}
-            <Button variant="outline" size="sm" className="mt-6 text-white border-white/30 hover:bg-white/10" asChild>
-              <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="outline"
+              size="sm"
+              className="mt-6 text-white bg-white/30 border-white/30 hover:bg-white/10"
+              asChild
+            >
+              <a
+                href="https://wa.me/254700000000"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp Us
               </a>
@@ -74,7 +101,9 @@ const Footer = () => {
 
           {/* Safari Packages */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">Safari Packages</h3>
+            <h3 className="font-display text-lg font-semibold mb-6">
+              Safari Packages
+            </h3>
             <ul className="space-y-3">
               {[
                 "Masai Mara Safaris",
@@ -84,10 +113,13 @@ const Footer = () => {
                 "Samburu Safaris",
                 "Cultural Journeys",
                 "Photography Tours",
-                "Family Safaris"
+                "Family Safaris",
               ].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-white/80 hover:text-primary transition-safari text-sm">
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary transition-safari text-sm"
+                  >
                     {item}
                   </a>
                 </li>
@@ -97,7 +129,9 @@ const Footer = () => {
 
           {/* Destinations */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">Destinations</h3>
+            <h3 className="font-display text-lg font-semibold mb-6">
+              Destinations
+            </h3>
             <ul className="space-y-3">
               {[
                 "Masai Mara National Reserve",
@@ -107,10 +141,13 @@ const Footer = () => {
                 "Samburu National Reserve",
                 "Meru National Park",
                 "Aberdare National Park",
-                "Mount Kenya"
+                "Mount Kenya",
               ].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-white/80 hover:text-primary transition-safari text-sm">
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary transition-safari text-sm"
+                  >
                     {item}
                   </a>
                 </li>
@@ -120,7 +157,9 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">Resources</h3>
+            <h3 className="font-display text-lg font-semibold mb-6">
+              Resources
+            </h3>
             <ul className="space-y-3">
               {[
                 "Safari Planning Guide",
@@ -130,10 +169,13 @@ const Footer = () => {
                 "Visa Information",
                 "Health & Safety",
                 "Photography Tips",
-                "Conservation Efforts"
+                "Conservation Efforts",
               ].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-white/80 hover:text-primary transition-safari text-sm">
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary transition-safari text-sm"
+                  >
                     {item}
                   </a>
                 </li>
@@ -147,13 +189,15 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Social Media */}
             <div className="flex items-center space-x-6 mb-6 md:mb-0">
-              <span className="text-sm text-white/60">Follow our adventures:</span>
+              <span className="text-sm text-white/60">
+                Follow our adventures:
+              </span>
               <div className="flex space-x-4">
                 {[
                   { icon: Facebook, href: "#" },
                   { icon: Instagram, href: "#" },
                   { icon: Twitter, href: "#" },
-                  { icon: Youtube, href: "#" }
+                  { icon: Youtube, href: "#" },
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -192,6 +236,20 @@ const Footer = () => {
             <div className="mb-4 md:mb-0">
               © {currentYear} Karen Legacy Tours & Safaris. All rights reserved.
             </div>
+
+            <div className="developer-details text-xs text-center">
+              <p>
+                Developed & maintained by{" "}
+                <a
+                  target="_blank"
+                  href="https://mawirab.com"
+                  className="text-primary"
+                >
+                  Brian Mawira
+                </a>
+              </p>
+            </div>
+
             <div className="flex items-center space-x-6">
               <a href="/privacy" className="hover:text-white transition-safari">
                 Privacy Policy
@@ -199,10 +257,16 @@ const Footer = () => {
               <a href="/terms" className="hover:text-white transition-safari">
                 Terms of Service
               </a>
-              <a href="/booking-terms" className="hover:text-white transition-safari">
+              <a
+                href="/booking-terms"
+                className="hover:text-white transition-safari"
+              >
                 Booking Terms
               </a>
-              <a href="/sitemap.xml" className="hover:text-white transition-safari">
+              <a
+                href="/sitemap.xml"
+                className="hover:text-white transition-safari"
+              >
                 Sitemap
               </a>
             </div>
