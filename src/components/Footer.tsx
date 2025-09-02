@@ -114,21 +114,21 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                "Masai Mara Safaris",
-                "Amboseli Adventures",
-                "Tsavo Wildlife Tours",
-                "Lake Nakuru Experiences",
-                "Samburu Safaris",
-                "Cultural Journeys",
-                "Photography Tours",
-                "Family Safaris",
+                { name: "Masai Mara Safaris", href: "/safaris" },
+                { name: "Amboseli Adventures", href: "/safaris" },
+                { name: "Tsavo Wildlife Tours", href: "/safaris" },
+                { name: "Lake Nakuru Experiences", href: "/safaris" },
+                { name: "Samburu Safaris", href: "/safaris" },
+                { name: "Cultural Journeys", href: "/safaris" },
+                { name: "Photography Tours", href: "/safaris" },
+                { name: "Family Safaris", href: "/safaris" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <a
-                    href="#"
+                    href={item.href}
                     className="text-white/80 hover:text-primary transition-safari text-sm"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
@@ -142,21 +142,21 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                "Masai Mara National Reserve",
-                "Amboseli National Park",
-                "Tsavo East & West",
-                "Lake Nakuru National Park",
-                "Samburu National Reserve",
-                "Meru National Park",
-                "Aberdare National Park",
-                "Mount Kenya",
+                { name: "Masai Mara National Reserve", href: "/destinations" },
+                { name: "Amboseli National Park", href: "/destinations" },
+                { name: "Tsavo East & West", href: "/destinations" },
+                { name: "Lake Nakuru National Park", href: "/destinations" },
+                { name: "Samburu National Reserve", href: "/destinations" },
+                { name: "Meru National Park", href: "/destinations" },
+                { name: "Aberdare National Park", href: "/destinations" },
+                { name: "Mount Kenya", href: "/destinations" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <a
-                    href="#"
+                    href={item.href}
                     className="text-white/80 hover:text-primary transition-safari text-sm"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
@@ -170,21 +170,21 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                "Safari Planning Guide",
-                "Best Time to Visit",
-                "Packing Checklist",
-                "Travel Insurance",
-                "Visa Information",
-                "Health & Safety",
-                "Photography Tips",
-                "Conservation Efforts",
+                { name: "Safari Planning Guide", href: "/guides" },
+                { name: "Best Time to Visit", href: "/guides" },
+                { name: "Packing Checklist", href: "/packing-list" },
+                { name: "Travel Insurance", href: "/guides" },
+                { name: "Visa Information", href: "/safari-preparation" },
+                { name: "Health & Safety", href: "/safari-preparation" },
+                { name: "Photography Tips", href: "/guides" },
+                { name: "Conservation Efforts", href: "/about" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <a
-                    href="#"
+                    href={item.href}
                     className="text-white/80 hover:text-primary transition-safari text-sm"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
