@@ -20,6 +20,7 @@ import DawnDrive from "@/assets/images/dawn-drive.jpg";
 import Sundowner from "@/assets/images/sundowner.jpg";
 import BushBreakfast from "@/assets/images/bush-breakfast.jpg";
 import BalloonFlight from "@/assets/images/balloon-flight.jpg";
+import { destinations } from "@/core/data/destinations";
 
 const Index = () => {
   const journeyStory = [
@@ -50,45 +51,6 @@ const Index = () => {
       description:
         "Toast to the day's discoveries as the African sunset transforms the sky into living art.",
       image: Sundowner,
-    },
-  ];
-
-  const destinations = [
-    {
-      name: "Masai Mara",
-      subtitle: "The Great Migration",
-      bestMonths: "Jul-Oct",
-      highlights: ["Big Five", "Migration", "Maasai Culture"],
-      description:
-        "Kenya's most famous reserve, home to the dramatic river crossings.",
-      image: "linear-gradient(135deg, #CFA34B, #2E4A29)",
-    },
-    {
-      name: "Amboseli",
-      subtitle: "Elephant Paradise",
-      bestMonths: "Jun-Oct, Jan-Mar",
-      highlights: ["Elephants", "Mt. Kilimanjaro Views", "Birdlife"],
-      description:
-        "Iconic elephants against Kilimanjaro's snow-capped backdrop.",
-      image: "linear-gradient(135deg, #EFE8DD, #1B1B1B)",
-    },
-    {
-      name: "Samburu",
-      subtitle: "Unique Wildlife",
-      bestMonths: "Jun-Oct",
-      highlights: ["Special Five", "Cultural Tours", "Rare Species"],
-      description:
-        "Home to species found nowhere else: Grevy's zebra, reticulated giraffe.",
-      image: "linear-gradient(135deg, #2E4A29, #CFA34B)",
-    },
-    {
-      name: "Tsavo",
-      subtitle: "Wilderness Adventure",
-      bestMonths: "May-Oct",
-      highlights: ["Red Elephants", "Mzima Springs", "Vast Landscapes"],
-      description:
-        "Kenya's largest park, famous for red dust elephants and endless horizons.",
-      image: "linear-gradient(135deg, #CFA34B, #EFE8DD)",
     },
   ];
 
@@ -141,7 +103,10 @@ const Index = () => {
                 <div key={index} className="relative group">
                   <div
                     className="aspect-[3/4] rounded-hero mb-6 relative overflow-hidden"
-                    style={{ backgroundImage: `url(${moment.image})`, backgroundSize: 'cover' }}
+                    style={{
+                      backgroundImage: `url(${moment.image})`,
+                      backgroundSize: "cover",
+                    }}
                   >
                     <div className="absolute inset-0 bg-black/20"></div>
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-safari-charcoal">
@@ -179,7 +144,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {destinations.map((destination, index) => (
+            {destinations.slice(0, 4).map((destination, index) => (
               <div key={index} className="group safari-card overflow-hidden">
                 <div className="grid md:grid-cols-2 gap-6 items-center">
                   <div
@@ -189,7 +154,7 @@ const Index = () => {
                   >
                     <div
                       className="w-full h-full rounded-card relative overflow-hidden"
-                      style={{ background: destination.image }}
+                      style={{ backgroundImage: `url(${destination.image})`, backgroundSize: 'contain' }}
                     >
                       <div className="absolute inset-0 bg-black/10"></div>
                       <div className="absolute bottom-4 left-4 right-4">
@@ -368,7 +333,11 @@ const Index = () => {
 
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
               <SafariBuilderModal>
-                <Button size="lg" variant="default" className="text-lg px-8 py-4">
+                <Button
+                  size="lg"
+                  variant="default"
+                  className="text-lg px-8 py-4"
+                >
                   <Calendar className="w-5 h-5 mr-2" />
                   Plan My Safari
                 </Button>

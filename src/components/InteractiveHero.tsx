@@ -5,6 +5,7 @@ import heroHomepage from "@/assets/hero-homepage.jpg";
 import wildlifeAdventures from "@/assets/wildlife-adventures.jpg";
 import scenicEscapes from "@/assets/scenic-escapes.jpg";
 import culturalJourneys from "@/assets/cultural-journeys.jpg";
+import SafariBuilderModal from "./SafariBuilderModal";
 
 interface HeroCard {
   id: string;
@@ -61,13 +62,13 @@ const InteractiveHero = () => {
   const selectedCardData = heroCards.find((card) => card.id === selectedCard);
 
   return (
-    <section 
+    <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ 
+      style={{
         backgroundImage: `url(${heroHomepage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
       {/* Enhanced gradient overlay */}
@@ -79,7 +80,9 @@ const InteractiveHero = () => {
           <h1 className="font-display text-hero text-white mb-6 animate-safari-fade-in leading-tight">
             Experience Kenya's
             <br />
-            <span className="text-safari-golden font-highlight italic">Untamed Wilderness</span>
+            <span className="text-safari-golden font-highlight italic">
+              Untamed Wilderness
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto animate-safari-fade-in font-body">
             Tailor-made safari experiences crafted by local Kenyan experts
@@ -150,17 +153,20 @@ const InteractiveHero = () => {
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button variant="default" size="lg" className="hover-glow">
+                    {/* <Button variant="default" size="lg" className="hover-glow">
                       {selectedCardData.action}
                       <ArrowRight className="w-5 h-5 ml-2" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="text-white bg-white/30 border-white/30 hover:bg-white/10 hover-glow"
-                    >
-                      Plan Custom Safari
-                    </Button>
+                    </Button> */}
+                    <SafariBuilderModal>
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="text-white bg-white/30 border-white/30 hover:bg-white/10 hover-glow"
+                      >
+                        Plan Custom Safari
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </SafariBuilderModal>
                   </div>
                 </div>
 

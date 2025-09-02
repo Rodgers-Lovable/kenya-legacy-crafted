@@ -7,7 +7,7 @@ const FeaturedExperiences = () => {
   const experiences = [
     {
       id: 1,
-      title: "7-Day Masai Mara & Amboseli Luxury Safari",
+      title: "7-Day Maasai Mara & Amboseli Luxury Safari",
       image: "/api/placeholder/600/400",
       duration: "7 Days",
       groupSize: "2-6 People",
@@ -16,7 +16,7 @@ const FeaturedExperiences = () => {
       description: "Witness the Great Migration and elephants against Kilimanjaro's backdrop in Kenya's most iconic parks.",
       priceFrom: "KES 675,000",
       tags: ["Migration", "Luxury", "Photography"],
-      slug: "7-day-masai-mara-amboseli-luxury"
+      slug: "7-day-maasai-mara-amboseli-luxury"
     },
     {
       id: 2,
@@ -53,7 +53,7 @@ const FeaturedExperiences = () => {
           <h2 className="font-display text-display mb-4">Featured Safari Experiences</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Carefully crafted journeys showcasing Kenya's incredible diversity, 
-            from the legendary Masai Mara to the majestic Mount Kilimanjaro views.
+            from the legendary Maasai Mara to the majestic Mount Kilimanjaro views.
           </p>
         </div>
 

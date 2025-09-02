@@ -4,90 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import heroDestinations from "@/assets/hero-destinations.jpg";
+import { destinations } from "@/core/data/destinations";
 
 const Destinations = () => {
   const [selectedRegion, setSelectedRegion] = useState("all");
-
-  const destinations = [
-    {
-      id: "masai-mara",
-      name: "Masai Mara National Reserve",
-      slug: "masai-mara",
-      region: "Rift Valley",
-      description: "Home to the Great Migration and incredible wildlife diversity, the Masai Mara is Kenya's most famous safari destination.",
-      image: "/api/placeholder/600/400",
-      highlights: ["Great Migration", "Big Five", "Maasai Culture", "Hot Air Balloons"],
-      bestMonths: ["Jul", "Aug", "Sep", "Oct"],
-      wildlife: ["Lions", "Elephants", "Wildebeest", "Zebras", "Cheetahs"],
-      rating: 4.9,
-      safariCount: 12
-    },
-    {
-      id: "amboseli",
-      name: "Amboseli National Park", 
-      slug: "amboseli",
-      region: "Southern Kenya",
-      description: "Famous for its large elephant herds and stunning views of Mount Kilimanjaro, Amboseli offers incredible photography opportunities.",
-      image: "/api/placeholder/600/400",
-      highlights: ["Mount Kilimanjaro Views", "Elephant Herds", "Photography", "Swamplands"],
-      bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Jan", "Feb"],
-      wildlife: ["Elephants", "Lions", "Cheetahs", "Hippos", "Buffalos"],
-      rating: 4.8,
-      safariCount: 8
-    },
-    {
-      id: "samburu",
-      name: "Samburu National Reserve",
-      slug: "samburu",
-      region: "Northern Kenya", 
-      description: "A unique ecosystem in Kenya's northern frontier, home to rare species not found elsewhere in the country.",
-      image: "/api/placeholder/600/400",
-      highlights: ["Unique Wildlife", "Samburu Culture", "Ewaso Nyiro River", "Desert Landscapes"],
-      bestMonths: ["Jun", "Jul", "Aug", "Sep", "Dec", "Jan", "Feb"],
-      wildlife: ["Grevy's Zebra", "Reticulated Giraffe", "Somali Ostrich", "Gerenuk", "Beisa Oryx"],
-      rating: 4.7,
-      safariCount: 6
-    },
-    {
-      id: "tsavo-east",
-      name: "Tsavo East National Park",
-      slug: "tsavo-east",
-      region: "Coast Province",
-      description: "One of Kenya's largest parks, famous for its red elephants and vast wilderness areas perfect for adventure seekers.",
-      image: "/api/placeholder/600/400",
-      highlights: ["Red Elephants", "Galana River", "Mudanda Rock", "Vast Wilderness"],
-      bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Jan", "Feb"],
-      wildlife: ["Red Elephants", "Lions", "Leopards", "Rhinos", "Hippos"],
-      rating: 4.6,
-      safariCount: 5
-    },
-    {
-      id: "lake-nakuru",
-      name: "Lake Nakuru National Park",
-      slug: "lake-nakuru", 
-      region: "Rift Valley",
-      description: "A bird lover's paradise famous for its flamingos, rhinos, and diverse wildlife in a compact park setting.",
-      image: "/api/placeholder/600/400",
-      highlights: ["Pink Flamingos", "White Rhinos", "Baboon Cliff", "Compact Size"],
-      bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      wildlife: ["Flamingos", "White Rhinos", "Lions", "Leopards", "Buffalos"],
-      rating: 4.5,
-      safariCount: 7
-    },
-    {
-      id: "meru",
-      name: "Meru National Park",
-      slug: "meru",
-      region: "Eastern Kenya",
-      description: "A hidden gem offering pristine wilderness and the famous Elsa the Lioness connection from 'Born Free'.",
-      image: "/api/placeholder/600/400", 
-      highlights: ["Born Free Story", "Pristine Wilderness", "Tana River", "Diverse Ecosystems"],
-      bestMonths: ["Jun", "Jul", "Aug", "Sep", "Oct", "Feb"],
-      wildlife: ["Lions", "Elephants", "Rhinos", "Leopards", "Cheetahs"],
-      rating: 4.4,
-      safariCount: 4
-    }
-  ];
 
   const regions = ["all", "Rift Valley", "Southern Kenya", "Northern Kenya", "Coast Province", "Eastern Kenya"];
 
