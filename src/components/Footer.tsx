@@ -15,6 +15,8 @@ import {
   WHATSAPP_NUMBER,
   COMPANY_PRIMARY_EMAIL,
   COMPANY_LOCATION,
+  DEVELOPER_WEBSITE,
+  DEVELOPER_NAME,
 } from "@/core/constants/appConstants";
 
 const Footer = () => {
@@ -247,10 +249,10 @@ const Footer = () => {
                 Developed & maintained by{" "}
                 <a
                   target="_blank"
-                  href="https://mawirab.com"
+                  href={DEVELOPER_WEBSITE}
                   className="text-primary"
                 >
-                  Brian Mawira
+                  {DEVELOPER_NAME}
                 </a>
               </p>
             </div>
