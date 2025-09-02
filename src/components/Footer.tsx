@@ -119,9 +119,7 @@ const Footer = () => {
                 { name: "Tsavo Wildlife Tours", href: "/safaris" },
                 { name: "Lake Nakuru Experiences", href: "/safaris" },
                 { name: "Samburu Safaris", href: "/safaris" },
-                { name: "Cultural Journeys", href: "/safaris" },
                 { name: "Photography Tours", href: "/safaris" },
-                { name: "Family Safaris", href: "/safaris" },
               ].map((item) => (
                 <li key={item.name}>
                   <a
@@ -145,10 +143,7 @@ const Footer = () => {
                 { name: "Masai Mara National Reserve", href: "/destinations" },
                 { name: "Amboseli National Park", href: "/destinations" },
                 { name: "Tsavo East & West", href: "/destinations" },
-                { name: "Lake Nakuru National Park", href: "/destinations" },
-                { name: "Samburu National Reserve", href: "/destinations" },
                 { name: "Meru National Park", href: "/destinations" },
-                { name: "Aberdare National Park", href: "/destinations" },
                 { name: "Mount Kenya", href: "/destinations" },
               ].map((item) => (
                 <li key={item.name}>
@@ -171,13 +166,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { name: "Safari Planning Guide", href: "/guides" },
-                { name: "Best Time to Visit", href: "/guides" },
                 { name: "Packing Checklist", href: "/packing-list" },
-                { name: "Travel Insurance", href: "/guides" },
-                { name: "Visa Information", href: "/safari-preparation" },
                 { name: "Health & Safety", href: "/safari-preparation" },
-                { name: "Photography Tips", href: "/guides" },
-                { name: "Conservation Efforts", href: "/about" },
+                { name: "FAQ", href: "/faq" },
               ].map((item) => (
                 <li key={item.name}>
                   <a
