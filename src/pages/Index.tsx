@@ -21,6 +21,7 @@ import Sundowner from "@/assets/images/sundowner.jpg";
 import BushBreakfast from "@/assets/images/bush-breakfast.jpg";
 import BalloonFlight from "@/assets/images/balloon-flight.jpg";
 import { destinations } from "@/core/data/destinations";
+import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 
 const Index = () => {
   const journeyStory = [
@@ -154,7 +155,10 @@ const Index = () => {
                   >
                     <div
                       className="w-full h-full rounded-card relative overflow-hidden"
-                      style={{ backgroundImage: `url(${destination.image})`, backgroundSize: 'contain' }}
+                      style={{
+                        backgroundImage: `url(${destination.image})`,
+                        backgroundSize: "contain",
+                      }}
                     >
                       <div className="absolute inset-0 bg-black/10"></div>
                       <div className="absolute bottom-4 left-4 right-4">
@@ -349,7 +353,13 @@ const Index = () => {
                 className="text-lg px-8 py-4 text-white bg-white/30 border-white/30 hover:bg-white/10"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                Chat on WhatsApp
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Chat on Whatsapp
+                </a>
               </Button>
             </div>
 
