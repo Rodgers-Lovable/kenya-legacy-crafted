@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/assets/logo.png";
+import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ const Navbar = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="https://wa.me/254700000000"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-safari-green hover:text-primary transition-safari"
@@ -91,7 +92,7 @@ const Navbar = () => {
               ))}
               <div className="border-t border-border pt-4 mt-4">
                 <a
-                  href="https://wa.me/254700000000"
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-3 py-2 text-safari-green hover:text-primary hover:bg-muted transition-safari rounded-md"

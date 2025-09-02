@@ -11,6 +11,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Logo from "@/assets/logo.png";
+import {
+  WHATSAPP_NUMBER,
+  COMPANY_PRIMARY_EMAIL,
+  COMPANY_LOCATION,
+} from "@/core/constants/appConstants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -69,15 +74,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-sm">+254 700 000 000</span>
+                <span className="text-sm">+{WHATSAPP_NUMBER}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span className="text-sm">info@karenlegacytoursandsafaris.com</span>
+                <span className="text-sm">{COMPANY_PRIMARY_EMAIL}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-sm">Nairobi, Kenya</span>
+                <span className="text-sm">{COMPANY_LOCATION}</span>
               </div>
             </div>
 
@@ -89,7 +94,7 @@ const Footer = () => {
               asChild
             >
               <a
-                href="https://wa.me/254700000000"
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
