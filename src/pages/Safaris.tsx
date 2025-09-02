@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import heroSafaris from "@/assets/hero-safaris.jpg";
 
 const Safaris = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -167,15 +168,20 @@ const Safaris = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative h-[40vh] bg-gradient-sunset flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="font-display text-5xl md:text-6xl font-bold mb-4">
-            Safari Packages
+      <section 
+        className="relative py-32 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${heroSafaris})`,
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-packages opacity-85"></div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="font-display text-hero text-white mb-6 animate-safari-fade-in">
+            Luxury <span className="text-safari-golden font-highlight italic">Safari Packages</span>
           </h1>
-          <p className="text-xl max-w-2xl mx-auto px-4">
-            Discover our carefully crafted safari experiences, from luxury
-            adventures to family-friendly journeys
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-body animate-safari-fade-in">
+            Discover our carefully crafted safari experiences, from luxury adventures to family-friendly journeys
           </p>
         </div>
       </section>
@@ -237,19 +243,20 @@ const Safaris = () => {
           {filteredSafaris.map((safari) => (
             <Card
               key={safari.id}
-              className="overflow-hidden border-border bg-card hover:shadow-lg transition-safari"
+              className="safari-card group hover-scale overflow-hidden"
             >
-              <div className="aspect-video bg-muted overflow-hidden">
+              <div className="safari-image-card aspect-video bg-muted overflow-hidden">
                 <img
                   src={safari.image}
                   alt={safari.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-safari"
+                  className="w-full h-full object-cover transition-spring group-hover:scale-105"
                 />
+                <div className="overlay absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-safari"></div>
               </div>
 
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary">{safari.style}</Badge>
+                  <Badge variant="secondary" className="hover-scale">{safari.style}</Badge>
                   <div className="flex items-center gap-1 text-sm text-muted-foreground">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span>{safari.rating}</span>
@@ -259,12 +266,12 @@ const Safaris = () => {
                 <CardTitle className="font-display text-2xl">
                   {safari.title}
                 </CardTitle>
-                <CardDescription>{safari.description}</CardDescription>
+                <CardDescription className="font-body">{safari.description}</CardDescription>
               </CardHeader>
 
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground font-body">
                     <div className="flex items-center gap-1">
                       <Clock className="w-4 h-4" />
                       <span>{safari.duration} Days</span>
@@ -277,7 +284,7 @@ const Safaris = () => {
 
                   <div className="flex flex-wrap gap-2">
                     {safari.highlights.map((highlight, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
+                      <Badge key={index} variant="outline" className="text-xs hover-scale font-body">
                         {highlight}
                       </Badge>
                     ))}
@@ -288,15 +295,15 @@ const Safaris = () => {
                       <p className="font-display text-2xl font-bold text-primary">
                         {safari.price}
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground font-body">
                         per person
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm" asChild>
+                      <Button variant="outline" size="sm" asChild className="hover-glow">
                         <a href={`/safaris/${safari.slug}`}>View Details</a>
                       </Button>
-                      <Button size="sm" asChild>
+                      <Button size="sm" asChild className="hover-glow">
                         <a href="/contact">Book Now</a>
                       </Button>
                     </div>

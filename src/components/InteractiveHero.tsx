@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroMain from "@/assets/hero-main.jpg";
+import heroHomepage from "@/assets/hero-homepage.jpg";
 import wildlifeAdventures from "@/assets/wildlife-adventures.jpg";
 import scenicEscapes from "@/assets/scenic-escapes.jpg";
 import culturalJourneys from "@/assets/cultural-journeys.jpg";
@@ -61,22 +61,25 @@ const InteractiveHero = () => {
   const selectedCardData = heroCards.find((card) => card.id === selectedCard);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroMain})` }}
-      >
-        <div className="absolute inset-0 gradient-hero-overlay"></div>
-      </div>
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ 
+        backgroundImage: `url(${heroHomepage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Enhanced gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-hero-overlay"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h1 className="font-display text-hero text-white mb-6 animate-safari-fade-in">
+          <h1 className="font-display text-hero text-white mb-6 animate-safari-fade-in leading-tight">
             Experience Kenya's
             <br />
-            <span className="text-primary">Untamed Wilderness</span>
+            <span className="text-safari-golden font-highlight italic">Untamed Wilderness</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto animate-safari-fade-in font-body">
             Tailor-made safari experiences crafted by local Kenyan experts
@@ -88,7 +91,7 @@ const InteractiveHero = () => {
           {heroCards.map((card, index) => (
             <div
               key={card.id}
-              className={`group relative overflow-hidden rounded-hero cursor-pointer transition-safari transform hover:scale-105 animate-safari-slide-up`}
+              className={`safari-image-card group relative overflow-hidden rounded-hero cursor-pointer transition-spring transform hover-scale animate-safari-slide-up`}
               style={{ animationDelay: `${index * 0.2}s` }}
               onClick={() => handleCardClick(card.id)}
             >
@@ -97,25 +100,25 @@ const InteractiveHero = () => {
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-spring group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90"></div>
               </div>
 
               {/* Card Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="font-display text-2xl mb-2">{card.title}</h3>
-                <p className="text-primary font-semibold mb-2">
+                <p className="text-safari-golden font-semibold mb-2 font-body">
                   {card.subtitle}
                 </p>
-                <p className="text-sm text-white/80 mb-4 line-clamp-2">
+                <p className="text-sm text-white/80 mb-4 line-clamp-2 font-body">
                   {card.description}
                 </p>
 
                 <Button
-                  variant="ghost"
+                  variant="safari"
                   size="sm"
-                  className="text-white border-white/30 hover:bg-white/10"
+                  className="opacity-0 group-hover:opacity-100 transition-safari"
                 >
                   {card.action}
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -124,7 +127,7 @@ const InteractiveHero = () => {
 
               {/* Selection Indicator */}
               {selectedCard === card.id && (
-                <div className="absolute top-4 right-4 w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                <div className="absolute top-4 right-4 w-3 h-3 bg-safari-golden rounded-full animate-pulse shadow-lg"></div>
               )}
             </div>
           ))}
@@ -139,22 +142,22 @@ const InteractiveHero = () => {
                   <h2 className="font-display text-3xl text-white mb-4">
                     {selectedCardData.title}
                   </h2>
-                  <p className="text-primary text-lg font-semibold mb-4">
+                  <p className="text-safari-golden text-lg font-semibold mb-4 font-body">
                     {selectedCardData.subtitle}
                   </p>
-                  <p className="text-white/90 mb-6 leading-relaxed">
+                  <p className="text-white/90 mb-6 leading-relaxed font-body">
                     {selectedCardData.description}
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button variant="default" size="lg">
+                    <Button variant="default" size="lg" className="hover-glow">
                       {selectedCardData.action}
                       <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
                     <Button
                       variant="outline"
                       size="lg"
-                      className="text-white bg-white/30 border-white/30 hover:bg-white/10"
+                      className="text-white bg-white/30 border-white/30 hover:bg-white/10 hover-glow"
                     >
                       Plan Custom Safari
                     </Button>
@@ -174,9 +177,9 @@ const InteractiveHero = () => {
         )}
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-1 h-16 bg-gradient-to-b from-primary to-transparent rounded-full"></div>
+        <div className="w-1 h-16 bg-gradient-to-b from-safari-golden to-transparent rounded-full shadow-lg"></div>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { MapPin, Camera, Calendar, Star, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import heroDestinations from "@/assets/hero-destinations.jpg";
 
 const Destinations = () => {
   const [selectedRegion, setSelectedRegion] = useState("all");
@@ -95,14 +96,22 @@ const Destinations = () => {
   );
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="relative h-[50vh] bg-gradient-sunset flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="font-display text-5xl md:text-6xl font-bold mb-4">Destinations</h1>
-          <p className="text-xl max-w-2xl mx-auto px-4">
-            Explore Kenya's diverse ecosystems, from savannah plains to mountain highlands
+    <div className="min-h-screen">
+      {/* Enhanced Hero Section */}
+      <section 
+        className="relative py-32 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url(${heroDestinations})`,
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-destinations opacity-90"></div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h1 className="font-display text-hero text-white mb-6 animate-safari-fade-in">
+            Kenya's Premier <span className="text-safari-golden font-highlight italic">Safari Destinations</span>
+          </h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-body animate-safari-fade-in">
+            From the legendary Masai Mara to hidden wilderness gems, explore diverse ecosystems that make Kenya the ultimate safari destination.
           </p>
         </div>
       </section>

@@ -5,6 +5,7 @@ import {
   COMPANY_PRIMARY_TEL,
   WHATSAPP_NUMBER,
 } from "@/core/constants/appConstants";
+import hero404 from "@/assets/hero-404.jpg";
 
 const NotFound = () => {
   const quickLinks = [
@@ -32,38 +33,47 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-landscape text-primary relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto relative z-10">
+      {/* Enhanced 404 Hero Section */}
+      <section 
+        className="py-20 relative overflow-hidden text-white"
+        style={{ 
+          backgroundImage: `url(${hero404})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-safari-golden/80 to-safari-sunset/80"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
             {/* Safari-themed illustration */}
             <div className="relative mb-8">
-              <div className="w-32 h-32 mx-auto bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
-                <MapPin className="w-16 h-16 text-primary" />
+              <div className="w-32 h-32 mx-auto bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 hover-scale transition-spring">
+                <MapPin className="w-16 h-16 text-white" />
               </div>
 
               {/* Scattered footprint icons */}
               <div className="absolute inset-0 pointer-events-none">
-                <Footprints className="w-8 h-8 text-white/30 absolute top-4 left-1/4 rotate-12" />
-                <Footprints className="w-6 h-6 text-white/20 absolute top-12 right-1/3 -rotate-12" />
-                <Footprints className="w-10 h-10 text-white/25 absolute bottom-8 left-1/3 rotate-45" />
-                <Footprints className="w-7 h-7 text-white/30 absolute bottom-4 right-1/4 -rotate-6" />
+                <Footprints className="w-8 h-8 text-white/40 absolute top-4 left-1/4 rotate-12 animate-pulse" />
+                <Footprints className="w-6 h-6 text-white/30 absolute top-12 right-1/3 -rotate-12 animate-pulse" style={{ animationDelay: "0.5s" }} />
+                <Footprints className="w-10 h-10 text-white/35 absolute bottom-8 left-1/3 rotate-45 animate-pulse" style={{ animationDelay: "1s" }} />
+                <Footprints className="w-7 h-7 text-white/40 absolute bottom-4 right-1/4 -rotate-6 animate-pulse" style={{ animationDelay: "1.5s" }} />
               </div>
             </div>
 
-            <h1 className="font-display text-6xl md:text-8xl mb-4">404</h1>
-            <h2 className="font-display text-3xl md:text-4xl mb-6">
-              Oops! This Path Leads Nowhere in the Wild
+            <h1 className="font-display text-6xl md:text-8xl mb-4 animate-safari-fade-in">404</h1>
+            <h2 className="font-display text-3xl md:text-4xl mb-6 font-highlight animate-safari-fade-in">
+              Lost in the <span className="italic text-safari-golden">Wild?</span>
             </h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto font-body animate-safari-slide-up">
               It seems you've wandered off the beaten track. Even our expert
               guides can't find this page! Let's get you back on safari to
               explore Kenya's magnificent wilderness.
             </p>
 
             {/* Quick navigation */}
-            <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" variant="secondary" asChild>
+            <div className="flex flex-col md:flex-row gap-4 justify-center mb-8 animate-safari-slide-up">
+              <Button size="lg" variant="secondary" asChild className="hover-glow">
                 <a href="/">
                   <ArrowRight className="w-5 h-5 mr-2 rotate-180" />
                   Return to Base Camp
@@ -71,8 +81,8 @@ const NotFound = () => {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="text-white  bg-primary/90 border-primary/90 hover:bg-primary/30 hover:text-primary"
+                variant="safari"
+                className="hover-glow"
                 asChild
               >
                 <a href="/safaris">Explore Safari Packages</a>

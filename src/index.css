@@ -4,6 +4,7 @@
 
 /* Karen Legacy Tours & Safaris Design System
    Cinematic safari experience with editorial storytelling focus
+   Enhanced color palette for vibrant, engaging user experience
    All colors MUST be HSL for consistent theming
 */
 
@@ -13,16 +14,24 @@
     --background: 30 15% 97%; /* Ivory #FAF8F4 */
     --foreground: 0 0% 11%; /* Deep Charcoal #1B1B1B */
     
-    /* Safari Landscape Palette */
+    /* Primary Safari Palette */
     --safari-charcoal: 0 0% 11%; /* Deep Charcoal #1B1B1B */
-    --safari-ochre: 43 48% 55%; /* Golden Ochre #CFA34B */
-    --safari-green: 122 25% 22%; /* Safari Green #2E4A29 */
-    --safari-sand: 33 33% 91%; /* Warm Sand #EFE8DD */
-    --safari-ivory: 30 15% 97%; /* Ivory #FAF8F4 */
+    --safari-green: 145 45% 19%; /* Safari Green #1B4332 */
+    --safari-golden: 43 96% 51%; /* Golden Sunrise #FFB703 */
+    --safari-sand: 38 45% 88%; /* Beige Sand #F4E1C1 */
+    --safari-sunset: 15 89% 57%; /* Sunset Orange #F3722C */
+    --safari-ivory: 50 20% 98%; /* Off-White #FAF9F6 */
+    
+    /* Secondary Accent Colors */
+    --acacia-brown: 24 45% 28%; /* Acacia Brown #6B4226 */
+    --sky-blue: 197 67% 72%; /* Sky Blue #8ECae6 */
+    --savannah-grass: 142 48% 71%; /* Savannah Grass #95D5B2 */
+    --kilimanjaro-grey: 0 0% 69%; /* Kilimanjaro Grey #B0B0B0 */
+    --flamingo-pink: 337 100% 71%; /* Flamingo Pink #FF6F91 */
     
     /* Semantic UI Colors */
-    --primary: var(--safari-ochre);
-    --primary-foreground: var(--safari-ivory);
+    --primary: var(--safari-golden);
+    --primary-foreground: var(--safari-charcoal);
     
     --secondary: var(--safari-sand);
     --secondary-foreground: var(--safari-charcoal);
@@ -44,23 +53,30 @@
     
     --border: 33 20% 80%;
     --input: 33 20% 85%;
-    --ring: var(--safari-ochre);
+    --ring: var(--safari-golden);
     
-    /* Safari Gradients */
-    --gradient-sunset: linear-gradient(135deg, hsl(var(--safari-ochre)), hsl(25 60% 50%));
+    /* Enhanced Safari Gradients */
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--safari-golden)), hsl(var(--safari-sunset)));
     --gradient-landscape: linear-gradient(180deg, hsl(var(--safari-ivory)), hsl(var(--safari-sand)));
     --gradient-wildlife: linear-gradient(45deg, hsl(var(--safari-green)), hsl(var(--safari-charcoal)));
-    --gradient-hero-overlay: linear-gradient(180deg, rgba(27, 27, 27, 0.4), rgba(27, 27, 27, 0.7));
+    --gradient-hero-overlay: linear-gradient(180deg, rgba(27, 27, 27, 0.3), rgba(27, 27, 27, 0.6));
+    --gradient-destinations: linear-gradient(135deg, hsl(var(--sky-blue)), hsl(var(--safari-ivory)));
+    --gradient-packages: linear-gradient(135deg, hsl(var(--safari-sand)), hsl(var(--safari-green)));
+    --gradient-golden: linear-gradient(135deg, hsl(var(--safari-golden)), hsl(15 89% 50%));
+    --gradient-pink: linear-gradient(135deg, hsl(var(--flamingo-pink)), hsl(var(--safari-sand)));
     
     /* Shadows & Effects */
     --shadow-safari: 0 10px 40px -10px hsl(var(--safari-charcoal) / 0.15);
     --shadow-card: 0 4px 20px -4px hsl(var(--safari-charcoal) / 0.1);
     --shadow-floating: 0 20px 60px -10px hsl(var(--safari-charcoal) / 0.25);
     
-    /* Interactive States */
+    /* Enhanced Interactive States */
     --hover-lift: translateY(-2px);
+    --hover-scale: scale(1.02);
+    --hover-glow: 0 0 20px hsl(var(--safari-golden) / 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     
     /* Layout & Spacing */
     --radius: 0.75rem;
@@ -190,8 +206,26 @@
   
   .transition-safari { transition: var(--transition-smooth); }
   .transition-bounce { transition: var(--transition-bounce); }
+  .transition-spring { transition: var(--transition-spring); }
   
-  .hover-lift:hover { transform: var(--hover-lift); }
+  .hover-lift:hover { 
+    transform: var(--hover-lift); 
+    box-shadow: var(--hover-glow);
+  }
+  
+  .hover-scale:hover { 
+    transform: var(--hover-scale); 
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--hover-glow);
+  }
+  
+  /* Enhanced gradient utilities */
+  .gradient-destinations { background: var(--gradient-destinations); }
+  .gradient-packages { background: var(--gradient-packages); }
+  .gradient-golden { background: var(--gradient-golden); }
+  .gradient-pink { background: var(--gradient-pink); }
   
   /* Safari-specific animations */
   .animate-safari-fade-in {
@@ -235,11 +269,45 @@
   
   /* Interactive elements */
   .safari-card {
-    @apply transition-safari hover-lift card-shadow rounded-card bg-card text-card-foreground p-6;
+    @apply transition-spring hover-scale card-shadow rounded-card bg-card text-card-foreground p-6 cursor-pointer;
   }
   
   .safari-card:hover {
     @apply floating-shadow;
+  }
+  
+  /* Interactive image cards */
+  .safari-image-card {
+    @apply relative overflow-hidden rounded-card transition-spring cursor-pointer;
+  }
+  
+  .safari-image-card:hover img {
+    @apply scale-105;
+  }
+  
+  .safari-image-card:hover .overlay {
+    @apply bg-black/60;
+  }
+  
+  /* Navigation hover effects */
+  .nav-link {
+    @apply relative transition-safari;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: hsl(var(--safari-golden));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
   }
   
   /* Typography variants */
@@ -266,14 +334,23 @@
   }
   
   .safari-button-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-card font-medium transition-safari;
+    @apply bg-primary text-primary-foreground hover:bg-gradient-golden px-8 py-4 rounded-card font-medium transition-spring hover-scale hover-glow;
   }
   
   .safari-button-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 px-8 py-4 rounded-card font-medium transition-safari;
+    @apply bg-secondary text-secondary-foreground hover:bg-safari-sunset hover:text-white px-8 py-4 rounded-card font-medium transition-spring hover-scale;
   }
   
   .safari-button-ghost {
-    @apply bg-transparent text-foreground hover:bg-primary/10 px-8 py-4 rounded-card font-medium transition-safari border border-primary/20;
+    @apply bg-transparent text-foreground hover:bg-primary/10 px-8 py-4 rounded-card font-medium transition-spring border border-primary/20 hover-glow;
+  }
+  
+  /* Form input enhancements */
+  .safari-input {
+    @apply transition-safari focus:ring-2 focus:ring-primary/30 focus:border-primary;
+  }
+  
+  .safari-input:focus {
+    box-shadow: 0 0 0 3px hsl(var(--safari-golden) / 0.1);
   }
 }

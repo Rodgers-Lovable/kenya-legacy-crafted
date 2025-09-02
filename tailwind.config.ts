@@ -62,19 +62,30 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Safari Brand Colors
+				// Enhanced Safari Brand Colors
 				safari: {
 					charcoal: 'hsl(var(--safari-charcoal))',
-					ochre: 'hsl(var(--safari-ochre))',
 					green: 'hsl(var(--safari-green))',
+					golden: 'hsl(var(--safari-golden))',
 					sand: 'hsl(var(--safari-sand))',
+					sunset: 'hsl(var(--safari-sunset))',
 					ivory: 'hsl(var(--safari-ivory))'
+				},
+				// Secondary Accent Colors
+				accent: {
+					brown: 'hsl(var(--acacia-brown))',
+					blue: 'hsl(var(--sky-blue))',
+					grass: 'hsl(var(--savannah-grass))',
+					grey: 'hsl(var(--kilimanjaro-grey))',
+					pink: 'hsl(var(--flamingo-pink))'
 				}
 			},
 			fontFamily: {
-				display: ['Playfair Display', 'Georgia', 'serif'],
-				body: ['Inter', 'system-ui', 'Arial', 'sans-serif'],
-				sans: ['Inter', 'system-ui', 'Arial', 'sans-serif'], // default
+				display: ['Playfair Display', 'Georgia', 'serif'], // Elegant headings
+				heading: ['Playfair Display', 'Georgia', 'serif'], // Alternative heading option
+				body: ['Lato', 'system-ui', 'Arial', 'sans-serif'], // Clean body text
+				sans: ['Lato', 'system-ui', 'Arial', 'sans-serif'], // Default sans
+				highlight: ['Playfair Display', 'Georgia', 'serif'], // For quotes/highlights
 			},
 			fontSize: {
 				'hero': ['clamp(2.5rem, 8vw, 6rem)', { lineHeight: '0.9', letterSpacing: '-0.02em' }],
@@ -97,6 +108,10 @@ export default {
 				'gradient-landscape': 'var(--gradient-landscape)',
 				'gradient-wildlife': 'var(--gradient-wildlife)',
 				'gradient-hero-overlay': 'var(--gradient-hero-overlay)',
+				'gradient-destinations': 'var(--gradient-destinations)',
+				'gradient-packages': 'var(--gradient-packages)',
+				'gradient-golden': 'var(--gradient-golden)',
+				'gradient-pink': 'var(--gradient-pink)',
 			},
 			animation: {
 				'safari-fade-in': 'safari-fade-in 0.8s ease-out',
