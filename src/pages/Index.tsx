@@ -199,12 +199,16 @@ const Index = () => {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                      <Button variant="outline" size="sm">
-                        Learn More
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={`/destinations/${destination.slug}`}>
+                          Learn More
+                        </a>
                       </Button>
-                      <Button size="sm">
-                        View Safaris
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                      <Button size="sm" asChild>
+                        <a href="/safaris">
+                          View Safaris
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </a>
                       </Button>
                     </div>
                   </div>
@@ -261,9 +265,12 @@ const Index = () => {
                     variant="ghost"
                     size="sm"
                     className="group-hover:text-primary"
+                    asChild
                   >
-                    Read Article
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <a href="/guides">
+                      Read Article
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
@@ -271,8 +278,10 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              Browse All Guides
+            <Button variant="outline" size="lg" asChild>
+              <a href="/guides">
+                Browse All Guides
+              </a>
             </Button>
           </div>
         </div>
