@@ -1,30 +1,47 @@
-import { 
-  Accordion, 
-  AccordionContent, 
-  AccordionItem, 
-  AccordionTrigger 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  HelpCircle, 
-  Plane, 
-  Shield, 
-  Camera, 
-  MapPin, 
+import {
+  HelpCircle,
+  Plane,
+  Shield,
+  Camera,
+  MapPin,
   Calendar,
-  DollarSign,
   Users,
-  MessageCircle
+  MessageCircle,
 } from "lucide-react";
-import { faqCategories, quickStats as statsData } from "@/core/data/faqs";
+import { faqCategories } from "@/core/data/faqs";
+import SafariBuilderModal from "@/components/SafariBuilderModal";
+import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 
 const FAQ = () => {
   const quickStats = [
-    { icon: <Users className="w-6 h-6" />, label: "Happy Guests", value: "2,500+" },
-    { icon: <MapPin className="w-6 h-6" />, label: "Destinations", value: "12+" },
-    { icon: <Shield className="w-6 h-6" />, label: "Safety Record", value: "100%" },
-    { icon: <Camera className="w-6 h-6" />, label: "Wildlife Species", value: "500+" }
+    {
+      icon: <Users className="w-6 h-6" />,
+      label: "Happy Guests",
+      value: "2,500+",
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      label: "Destinations",
+      value: "12+",
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      label: "Safety Record",
+      value: "100%",
+    },
+    {
+      icon: <Camera className="w-6 h-6" />,
+      label: "Wildlife Species",
+      value: "500+",
+    },
   ];
 
   return (
@@ -38,13 +55,17 @@ const FAQ = () => {
               Frequently Asked Questions
             </h1>
             <p className="text-xl mb-8 opacity-90">
-              Everything you need to know about planning your Kenya safari adventure
+              Everything you need to know about planning your Kenya safari
+              adventure
             </p>
-            
+
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {quickStats.map((stat, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-card p-4 text-center">
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-card p-4 text-center"
+                >
                   <div className="flex justify-center mb-2 text-primary">
                     {stat.icon}
                   </div>
@@ -62,25 +83,32 @@ const FAQ = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {faqCategories.map((category, index) => (
-              <Card key={category.id} className="mb-8 hover:shadow-safari-floating transition-all duration-300">
+              <Card
+                key={category.id}
+                className="mb-8 hover:shadow-safari-floating transition-all duration-300"
+              >
                 <CardContent className="p-0">
                   {/* Category Header */}
                   <div className="flex items-center space-x-3 p-6 border-b border-border bg-muted/20">
                     <div className="text-primary">{category.icon}</div>
-                    <h2 className="font-display text-xl font-semibold">{category.title}</h2>
+                    <h2 className="font-display text-xl font-semibold">
+                      {category.title}
+                    </h2>
                   </div>
 
                   {/* FAQs */}
                   <div className="p-6">
                     <Accordion type="single" collapsible className="space-y-4">
                       {category.faqs.map((faq, faqIndex) => (
-                        <AccordionItem 
-                          key={faqIndex} 
+                        <AccordionItem
+                          key={faqIndex}
                           value={`${category.id}-${faqIndex}`}
                           className="border border-border rounded-card px-4"
                         >
                           <AccordionTrigger className="text-left hover:no-underline py-4">
-                            <span className="font-semibold">{faq.question}</span>
+                            <span className="font-semibold">
+                              {faq.question}
+                            </span>
                           </AccordionTrigger>
                           <AccordionContent className="pb-4">
                             <p className="text-muted-foreground leading-relaxed">
@@ -102,10 +130,12 @@ const FAQ = () => {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-3xl mb-4">Still Have Questions?</h2>
+            <h2 className="font-display text-3xl mb-4">
+              Still Have Questions?
+            </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Our safari experts are here to help you plan the perfect Kenya adventure. 
-              Get in touch and we'll respond within 24 hours.
+              Our safari experts are here to help you plan the perfect Kenya
+              adventure. Get in touch and we'll respond within 24 hours.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -117,7 +147,11 @@ const FAQ = () => {
                     Instant responses from our team
                   </p>
                   <Button size="sm" variant="outline" asChild>
-                    <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Chat Now
                     </a>
                   </Button>
@@ -131,9 +165,11 @@ const FAQ = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     Personalized consultation
                   </p>
-                  <Button size="sm" variant="outline">
-                    Get Started
-                  </Button>
+                  <SafariBuilderModal>
+                    <Button size="sm" variant="outline">
+                      Get Started
+                    </Button>
+                  </SafariBuilderModal>
                 </CardContent>
               </Card>
 
@@ -145,20 +181,19 @@ const FAQ = () => {
                     Detailed inquiries welcome
                   </p>
                   <Button size="sm" variant="outline" asChild>
-                    <a href="/contact">
-                      Contact Us
-                    </a>
+                    <a href="/contact">Contact Us</a>
                   </Button>
                 </CardContent>
               </Card>
             </div>
 
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Button size="lg">
-                Plan My Safari
-              </Button>
+              <SafariBuilderModal>
+                <Button size="lg">Plan My Safari</Button>
+              </SafariBuilderModal>
+
               <Button size="lg" variant="outline">
-                View Safari Packages
+                <a href="/safaris">View Safari Packages</a>
               </Button>
             </div>
           </div>
