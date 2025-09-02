@@ -1,9 +1,17 @@
 import { useState } from "react";
-import { Camera, Play, Download, X, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Camera,
+  Play,
+  Download,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import heroGallery from "@/assets/hero-gallery.jpg";
+import SafariBuilderModal from "@/components/SafariBuilderModal";
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -15,7 +23,7 @@ const Gallery = () => {
     { id: "wildlife", name: "Wildlife", count: 89 },
     { id: "landscapes", name: "Landscapes", count: 34 },
     { id: "cultural", name: "Cultural", count: 21 },
-    { id: "guests", name: "Happy Guests", count: 12 }
+    { id: "guests", name: "Happy Guests", count: 12 },
   ];
 
   const galleryItems = [
@@ -26,9 +34,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Lion Pride in Masai Mara",
       category: "wildlife",
-      description: "A magnificent pride of lions resting under the African sun during the golden hour.",
+      description:
+        "A magnificent pride of lions resting under the African sun during the golden hour.",
       location: "Masai Mara National Reserve",
-      photographer: "Joseph Kimani, Senior Guide"
+      photographer: "Joseph Kimani, Senior Guide",
     },
     {
       id: 2,
@@ -37,9 +46,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Great Migration River Crossing",
       category: "wildlife",
-      description: "Thousands of wildebeest brave the crocodile-filled Mara River during the annual migration.",
+      description:
+        "Thousands of wildebeest brave the crocodile-filled Mara River during the annual migration.",
       location: "Mara River",
-      photographer: "Safari Guest"
+      photographer: "Safari Guest",
     },
     {
       id: 3,
@@ -48,9 +58,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Mount Kilimanjaro at Dawn",
       category: "landscapes",
-      description: "The majestic snow-capped peak of Kilimanjaro rising above the clouds at sunrise.",
+      description:
+        "The majestic snow-capped peak of Kilimanjaro rising above the clouds at sunrise.",
       location: "Amboseli National Park",
-      photographer: "Michael Wanjiku, Photography Guide"
+      photographer: "Michael Wanjiku, Photography Guide",
     },
     {
       id: 4,
@@ -59,9 +70,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Elephant Herd at Watering Hole",
       category: "wildlife",
-      description: "A peaceful moment as elephants gather at the watering hole during the dry season.",
+      description:
+        "A peaceful moment as elephants gather at the watering hole during the dry season.",
       location: "Amboseli National Park",
-      duration: "2:34"
+      duration: "2:34",
     },
     {
       id: 5,
@@ -70,9 +82,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Maasai Traditional Dance",
       category: "cultural",
-      description: "Maasai warriors perform their traditional jumping dance in colorful traditional attire.",
+      description:
+        "Maasai warriors perform their traditional jumping dance in colorful traditional attire.",
       location: "Maasai Village",
-      photographer: "Cultural Experience Guide"
+      photographer: "Cultural Experience Guide",
     },
     {
       id: 6,
@@ -81,9 +94,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Leopard in Acacia Tree",
       category: "wildlife",
-      description: "A stunning leopard resting on the branches of an acacia tree with its kill.",
+      description:
+        "A stunning leopard resting on the branches of an acacia tree with its kill.",
       location: "Samburu National Reserve",
-      photographer: "David Kimeu, Expert Tracker"
+      photographer: "David Kimeu, Expert Tracker",
     },
     {
       id: 7,
@@ -92,9 +106,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Rift Valley Escarpment",
       category: "landscapes",
-      description: "The dramatic cliffs and valleys of the Great Rift Valley stretch to the horizon.",
+      description:
+        "The dramatic cliffs and valleys of the Great Rift Valley stretch to the horizon.",
       location: "Great Rift Valley",
-      photographer: "Scenic Flight Captain"
+      photographer: "Scenic Flight Captain",
     },
     {
       id: 8,
@@ -103,9 +118,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Happy Honeymooners",
       category: "guests",
-      description: "A romantic couple enjoying sundowners with the African sunset in the background.",
+      description:
+        "A romantic couple enjoying sundowners with the African sunset in the background.",
       location: "Private Camp",
-      photographer: "Camp Manager"
+      photographer: "Camp Manager",
     },
     {
       id: 9,
@@ -114,9 +130,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Cheetah on the Hunt",
       category: "wildlife",
-      description: "The world's fastest land animal in its natural hunting pose in the grasslands.",
+      description:
+        "The world's fastest land animal in its natural hunting pose in the grasslands.",
       location: "Masai Mara",
-      photographer: "Wildlife Specialist Guide"
+      photographer: "Wildlife Specialist Guide",
     },
     {
       id: 10,
@@ -125,9 +142,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Balloon Safari at Sunrise",
       category: "landscapes",
-      description: "Hot air balloons drifting over the endless Mara plains at first light.",
+      description:
+        "Hot air balloons drifting over the endless Mara plains at first light.",
       location: "Masai Mara",
-      photographer: "Balloon Pilot"
+      photographer: "Balloon Pilot",
     },
     {
       id: 11,
@@ -136,9 +154,10 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Family Adventure",
       category: "guests",
-      description: "A family of four discovering the wonders of African wildlife together.",
+      description:
+        "A family of four discovering the wonders of African wildlife together.",
       location: "Amboseli National Park",
-      photographer: "Family Safari Guide"
+      photographer: "Family Safari Guide",
     },
     {
       id: 12,
@@ -147,15 +166,17 @@ const Gallery = () => {
       thumbnail: "/api/placeholder/400/300",
       title: "Samburu Traditional Homes",
       category: "cultural",
-      description: "Traditional Samburu manyattas (homes) nestled in the arid landscape.",
+      description:
+        "Traditional Samburu manyattas (homes) nestled in the arid landscape.",
       location: "Samburu County",
-      photographer: "Cultural Guide"
-    }
+      photographer: "Cultural Guide",
+    },
   ];
 
-  const filteredItems = selectedCategory === "all" 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === selectedCategory);
+  const filteredItems =
+    selectedCategory === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === selectedCategory);
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -167,7 +188,9 @@ const Gallery = () => {
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + filteredItems.length) % filteredItems.length
+    );
   };
 
   const currentItem = filteredItems[currentImageIndex];
@@ -175,7 +198,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section 
+      <section
         className="py-20 bg-cover bg-center bg-no-repeat text-white relative"
         style={{ backgroundImage: `url(${heroGallery})` }}
       >
@@ -187,7 +210,8 @@ const Gallery = () => {
                 Photo & Video Gallery
               </h1>
               <p className="text-xl mb-8 opacity-90">
-                Experience Kenya's breathtaking beauty through the lens of our expert guides and happy guests
+                Experience Kenya's breathtaking beauty through the lens of our
+                expert guides and happy guests
               </p>
               <div className="flex items-center justify-center gap-8 text-center">
                 <div>
@@ -215,7 +239,9 @@ const Gallery = () => {
             {categories.map((category) => (
               <Button
                 key={category.id}
-                variant={selectedCategory === category.id ? "default" : "outline"}
+                variant={
+                  selectedCategory === category.id ? "default" : "outline"
+                }
                 size="sm"
                 onClick={() => setSelectedCategory(category.id)}
                 className="flex items-center space-x-2"
@@ -250,7 +276,9 @@ const Gallery = () => {
                   {item.type === "video" ? (
                     <div className="flex flex-col items-center">
                       <Play className="w-12 h-12 text-white mb-2" />
-                      <span className="text-white text-sm">{item.duration}</span>
+                      <span className="text-white text-sm">
+                        {item.duration}
+                      </span>
                     </div>
                   ) : (
                     <Camera className="w-12 h-12 text-white" />
@@ -259,8 +287,11 @@ const Gallery = () => {
 
                 {/* Category Badge */}
                 <div className="absolute top-3 left-3">
-                  <Badge variant="secondary" className="text-xs bg-white/90 text-safari-charcoal">
-                    {categories.find(c => c.id === item.category)?.name}
+                  <Badge
+                    variant="secondary"
+                    className="text-xs bg-white/90 text-safari-charcoal"
+                  >
+                    {categories.find((c) => c.id === item.category)?.name}
                   </Badge>
                 </div>
 
@@ -340,8 +371,12 @@ const Gallery = () => {
               {/* Image Info */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent text-white p-6">
                 <div className="max-w-4xl mx-auto">
-                  <h3 className="text-xl font-semibold mb-2">{currentItem.title}</h3>
-                  <p className="text-white/90 mb-3">{currentItem.description}</p>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {currentItem.title}
+                  </h3>
+                  <p className="text-white/90 mb-3">
+                    {currentItem.description}
+                  </p>
                   <div className="flex justify-between items-center text-sm">
                     <div>
                       <span className="text-white/70">Location: </span>
@@ -358,7 +393,11 @@ const Gallery = () => {
                     <div className="text-sm text-white/70">
                       {currentImageIndex + 1} of {filteredItems.length}
                     </div>
-                    <Button variant="outline" size="sm" className="text-white border-white/30 hover:bg-white/10">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-white border-white/30 hover:bg-white/10"
+                    >
                       <Download className="w-4 h-4 mr-2" />
                       Download
                     </Button>
@@ -373,16 +412,26 @@ const Gallery = () => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-sunset text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-display text-3xl mb-4">Ready to Create Your Own Memories?</h2>
+          <h2 className="font-display text-3xl mb-4">
+            Ready to Create Your Own Memories?
+          </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Every photo tells a story. Let us help you create yours in the wilds of Kenya.
+            Every photo tells a story. Let us help you create yours in the wilds
+            of Kenya.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Plan My Safari
-            </Button>
-            <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10">
-              View Safari Packages
+            <SafariBuilderModal>
+              <Button size="lg" variant="secondary">
+                Plan My Safari
+              </Button>
+            </SafariBuilderModal>
+            
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-white bg-white/30 border-white/30 hover:bg-white/10"
+            >
+              <a href="/safaris">View Safari Packages</a>
             </Button>
           </div>
         </div>
