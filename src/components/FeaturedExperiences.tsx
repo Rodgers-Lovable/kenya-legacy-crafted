@@ -1,6 +1,7 @@
 import { ArrowRight, Clock, Users, Camera, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import SafariBuilderModal from "@/components/SafariBuilderModal";
 
 const FeaturedExperiences = () => {
   const experiences = [
@@ -13,8 +14,9 @@ const FeaturedExperiences = () => {
       style: "Luxury",
       highlights: ["Big Five Encounters", "Hot Air Balloon", "Maasai Village Visit"],
       description: "Witness the Great Migration and elephants against Kilimanjaro's backdrop in Kenya's most iconic parks.",
-      priceFrom: "$4,500",
-      tags: ["Migration", "Luxury", "Photography"]
+      priceFrom: "KES 675,000",
+      tags: ["Migration", "Luxury", "Photography"],
+      slug: "7-day-masai-mara-amboseli-luxury"
     },
     {
       id: 2,
@@ -25,8 +27,9 @@ const FeaturedExperiences = () => {
       style: "Family",
       highlights: ["Kid-Friendly Activities", "Educational Talks", "Safe Game Drives"],
       description: "Perfect introduction to safari life with activities designed to inspire young adventurers.",
-      priceFrom: "$2,800",
-      tags: ["Family", "Adventure", "Educational"]
+      priceFrom: "KES 420,000",
+      tags: ["Family", "Adventure", "Educational"],
+      slug: "5-day-family-adventure-safari"
     },
     {
       id: 3,
@@ -37,8 +40,9 @@ const FeaturedExperiences = () => {
       style: "Photography",
       highlights: ["Golden Hour Positioning", "Hide Photography", "Expert Guidance"],
       description: "Designed for serious photographers with expert guides who understand light, timing, and animal behavior.",
-      priceFrom: "$6,200",
-      tags: ["Photography", "Expert", "Specialized"]
+      priceFrom: "KES 930,000",
+      tags: ["Photography", "Expert", "Specialized"],
+      slug: "10-day-photography-master-safari"
     }
   ];
 
@@ -128,13 +132,21 @@ const FeaturedExperiences = () => {
 
                 {/* CTA */}
                 <div className="flex items-center justify-between pt-4">
-                  <Button variant="outline" size="sm">
-                    Learn More
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={`/safaris/${experience.slug}`}>
+                      Learn More
+                    </a>
                   </Button>
-                  <Button size="sm">
-                    Book Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <SafariBuilderModal preselectedPackage={{
+                    title: experience.title,
+                    duration: experience.duration,
+                    style: experience.style
+                  }}>
+                    <Button size="sm">
+                      Book Now
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </SafariBuilderModal>
                 </div>
               </div>
             </div>
@@ -143,13 +155,17 @@ const FeaturedExperiences = () => {
 
         {/* View All CTA */}
         <div className="text-center">
-          <Button variant="outline" size="lg" className="mr-4">
-            View All Safaris
+          <Button variant="outline" size="lg" className="mr-4" asChild>
+            <a href="/safaris">
+              View All Safaris
+            </a>
           </Button>
-          <Button size="lg">
-            Create Custom Safari
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
+          <SafariBuilderModal>
+            <Button size="lg">
+              Create Custom Safari
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </SafariBuilderModal>
         </div>
       </div>
     </section>
