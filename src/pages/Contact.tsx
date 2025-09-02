@@ -32,10 +32,55 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission
+    
+    try {
+      // EmailJS Integration - Add your service configuration
+      const serviceId = process.env.EMAILJS_SERVICE_ID || 'your_service_id';
+      const templateId = process.env.EMAILJS_CONTACT_TEMPLATE_ID || 'your_contact_template_id';
+      const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'your_public_key';
+
+      const emailData = {
+        to_email: 'info@yoursafaricompany.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        safari_style: formData.interests,
+        travel_dates: formData.dates,
+        group_size: formData.groupSize,
+        budget: formData.budget,
+        message: formData.message,
+        submission_date: new Date().toLocaleDateString(),
+        submission_type: 'Contact Form'
+      };
+
+      // Uncomment below when EmailJS is configured
+      // const emailjs = (await import('@emailjs/browser')).default;
+      // await emailjs.send(serviceId, templateId, emailData, publicKey);
+      
+      console.log("Form submitted:", formData);
+      console.log('EmailJS Data:', emailData);
+      
+      // Show success message
+      alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        interests: "",
+        dates: "",
+        groupSize: "",
+        budget: "",
+        message: "",
+      });
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('There was an error sending your message. Please try again or contact us directly.');
+    }
   };
 
   return (
@@ -186,12 +231,12 @@ const Contact = () => {
                           <SelectValue placeholder="Per person" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="budget">Under $2,000</SelectItem>
-                          <SelectItem value="mid">$2,000 - $4,000</SelectItem>
+                          <SelectItem value="budget">Under KES 300,000</SelectItem>
+                          <SelectItem value="mid">KES 300,000 - 600,000</SelectItem>
                           <SelectItem value="luxury">
-                            $4,000 - $8,000
+                            KES 600,000 - 1,200,000
                           </SelectItem>
-                          <SelectItem value="ultra">$8,000+</SelectItem>
+                          <SelectItem value="ultra">KES 1,200,000+</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

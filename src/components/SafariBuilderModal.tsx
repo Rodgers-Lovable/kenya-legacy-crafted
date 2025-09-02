@@ -82,9 +82,35 @@ const SafariBuilderModal = ({ children, preselectedPackage }: SafariBuilderModal
 
   const handleSubmit = async () => {
     try {
-      // Here you would typically send to your backend/CRM
+      // EmailJS Integration - Add your service configuration
+      const serviceId = process.env.EMAILJS_SERVICE_ID || 'your_service_id';
+      const templateId = process.env.EMAILJS_TEMPLATE_ID || 'your_template_id';
+      const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'your_public_key';
+
+      const emailData = {
+        to_email: 'info@yoursafaricompany.com',
+        from_name: leadForm.name,
+        from_email: leadForm.email,
+        phone: leadForm.phone,
+        whatsapp: leadForm.whatsapp,
+        message: leadForm.message,
+        safari_duration: preferences.duration,
+        safari_style: preferences.style,
+        budget: preferences.budget,
+        travel_month: preferences.month,
+        travelers: preferences.travelers,
+        interests: preferences.interests.join(', '),
+        submission_date: new Date().toLocaleDateString(),
+        submission_type: 'Safari Builder Form'
+      };
+
+      // Uncomment below when EmailJS is configured
+      // const emailjs = (await import('@emailjs/browser')).default;
+      // await emailjs.send(serviceId, templateId, emailData, publicKey);
+      
       console.log('Safari Preferences:', preferences);
       console.log('Lead Form:', leadForm);
+      console.log('EmailJS Data:', emailData);
       
       setIsComplete(true);
       toast({
@@ -92,6 +118,7 @@ const SafariBuilderModal = ({ children, preselectedPackage }: SafariBuilderModal
         description: "We'll send you personalized recommendations within 24 hours.",
       });
     } catch (error) {
+      console.error('EmailJS Error:', error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
