@@ -3,6 +3,7 @@ import { Camera, Play, Download, X, ChevronLeft, ChevronRight } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import heroGallery from "@/assets/hero-gallery.jpg";
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -174,27 +175,33 @@ const Gallery = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-landscape text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-display text-hero mb-6">
-              Photo & Video Gallery
-            </h1>
-            <p className="text-xl mb-8 opacity-90">
-              Experience Kenya's breathtaking beauty through the lens of our expert guides and happy guests
-            </p>
-            <div className="flex items-center justify-center gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold">156</div>
-                <div className="text-sm opacity-80">Photos & Videos</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">12</div>
-                <div className="text-sm opacity-80">Destinations</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold">50+</div>
-                <div className="text-sm opacity-80">Wildlife Species</div>
+      <section 
+        className="py-20 bg-cover bg-center bg-no-repeat text-white relative"
+        style={{ backgroundImage: `url(${heroGallery})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+        <div className="relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="font-display text-hero mb-6">
+                Photo & Video Gallery
+              </h1>
+              <p className="text-xl mb-8 opacity-90">
+                Experience Kenya's breathtaking beauty through the lens of our expert guides and happy guests
+              </p>
+              <div className="flex items-center justify-center gap-8 text-center">
+                <div>
+                  <div className="text-3xl font-bold">156</div>
+                  <div className="text-sm opacity-80">Photos & Videos</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold">12</div>
+                  <div className="text-sm opacity-80">Destinations</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold">50+</div>
+                  <div className="text-sm opacity-80">Wildlife Species</div>
+                </div>
               </div>
             </div>
           </div>

@@ -18,6 +18,7 @@ import {
 import { faqCategories } from "@/core/data/faqs";
 import SafariBuilderModal from "@/components/SafariBuilderModal";
 import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import heroFaq from "@/assets/hero-faq.jpg";
 
 const FAQ = () => {
   const quickStats = [
@@ -46,7 +47,12 @@ const FAQ = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-landscape text-white">
+      <section 
+        className="py-20 bg-cover bg-center bg-no-repeat text-white relative"
+        style={{ backgroundImage: `url(${heroFaq})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+        <div className="relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <HelpCircle className="w-16 h-16 mx-auto mb-6 opacity-80" />
@@ -74,6 +80,7 @@ const FAQ = () => {
               ))}
             </div>
           </div>
+        </div>
         </div>
       </section>
 
