@@ -3,113 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import SafariBuilderModal from "@/components/SafariBuilderModal";
+import { testimonials, platformRatings, trustStats } from "@/core/data/testimonials";
 
 const Reviews = () => {
-  const reviews = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      location: "New York, USA",
-      date: "November 2023",
-      rating: 5,
-      title: "Absolutely Magical Experience",
-      content:
-        "Our 7-day Masai Mara and Amboseli safari exceeded every expectation. Joseph, our guide, was incredible - his knowledge of wildlife behavior helped us witness a leopard hunt and the famous river crossing. The accommodations were luxurious yet authentic. This trip changed our lives!",
-      safari: "7-Day Masai Mara & Amboseli Luxury Safari",
-      verified: true,
-      photos: 12,
-    },
-    {
-      id: 2,
-      name: "David & Emma Chen",
-      location: "London, UK",
-      date: "August 2023",
-      rating: 5,
-      title: "Perfect Family Safari",
-      content:
-        "Traveled with our two teenagers and couldn't have asked for a better experience. The itinerary was perfectly paced, guides were patient with endless questions, and seeing our kids' faces during their first elephant encounter was priceless. Already planning our return trip!",
-      safari: "5-Day Family Adventure Safari",
-      verified: true,
-      photos: 28,
-    },
-    {
-      id: 3,
-      name: "Michael Torres",
-      location: "Barcelona, Spain",
-      date: "February 2024",
-      rating: 5,
-      title: "Photography Paradise",
-      content:
-        "As a professional photographer, I had high expectations. The specialized photography hides and perfectly timed game drives resulted in shots I never imagined possible. The golden hour positioning was masterful. Worth every euro!",
-      safari: "10-Day Photography Master Safari",
-      verified: true,
-      photos: 156,
-    },
-    {
-      id: 4,
-      name: "Jennifer & Mark Wilson",
-      location: "Sydney, Australia",
-      date: "October 2023",
-      rating: 5,
-      title: "Honeymoon Dreams Come True",
-      content:
-        "Our honeymoon safari was pure magic. Private vehicle, romantic bush dinners, and incredible wildlife sightings. The hot air balloon ride over the Mara at sunrise was the highlight. Karen Legacy Tours made our dreams come true.",
-      safari: "Romantic Couples Safari",
-      verified: true,
-      photos: 34,
-    },
-    {
-      id: 5,
-      name: "Thomas Mueller",
-      location: "Munich, Germany",
-      date: "July 2023",
-      rating: 5,
-      title: "Migration Spectacular",
-      content:
-        "Witnessed the Great Migration at its peak! Thousands of wildebeest crossing the Mara River while crocodiles waited below. Our guide positioned us perfectly for the action. Unbelievable experience that I'll never forget.",
-      safari: "Migration Special Safari",
-      verified: true,
-      photos: 89,
-    },
-    {
-      id: 6,
-      name: "Lisa & Robert Kim",
-      location: "Seoul, South Korea",
-      date: "December 2023",
-      rating: 5,
-      title: "Cultural Immersion at Its Best",
-      content:
-        "Beyond amazing wildlife, the cultural experiences with the Maasai community were deeply moving. We learned traditional dances, participated in ceremonies, and gained profound insights into their way of life. Truly transformative.",
-      safari: "Cultural & Wildlife Safari",
-      verified: true,
-      photos: 67,
-    },
-  ];
-
-  const stats = {
-    totalReviews: 847,
-    averageRating: 4.9,
-    fiveStars: 94,
-    fourStars: 5,
-    threeStars: 1,
-  };
-
-  const platforms = [
-    {
-      name: "TripAdvisor",
-      rating: 4.9,
-      reviews: 312,
-      badge: "Certificate of Excellence",
-    },
-    { name: "Google Reviews", rating: 4.8, reviews: 267, badge: "Top Rated" },
-    {
-      name: "SafariBookings",
-      rating: 4.9,
-      reviews: 189,
-      badge: "Preferred Partner",
-    },
-    { name: "Trustpilot", rating: 4.7, reviews: 79, badge: "Excellent Rating" },
-  ];
+  const reviews = testimonials;
+  const stats = trustStats;
+  const platforms = platformRatings;
 
   return (
     <div className="min-h-screen pt-16">
