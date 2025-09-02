@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import heroSafaris from "@/assets/hero-safaris.jpg";
+import SafariBuilderModal from "@/components/SafariBuilderModal";
 
 const Safaris = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -168,20 +169,24 @@ const Safaris = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative py-32 bg-cover bg-center"
-        style={{ 
+        style={{
           backgroundImage: `url(${heroSafaris})`,
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: "fixed",
         }}
       >
         <div className="absolute inset-0 bg-gradient-packages opacity-85"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h1 className="font-display text-hero text-white mb-6 animate-safari-fade-in">
-            Luxury <span className="text-safari-golden font-highlight italic">Safari Packages</span>
+            Luxury{" "}
+            <span className="text-safari-golden font-highlight italic">
+              Safari Packages
+            </span>
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto font-body animate-safari-fade-in">
-            Discover our carefully crafted safari experiences, from luxury adventures to family-friendly journeys
+            Discover our carefully crafted safari experiences, from luxury
+            adventures to family-friendly journeys
           </p>
         </div>
       </section>
@@ -256,7 +261,9 @@ const Safaris = () => {
 
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary" className="hover-scale">{safari.style}</Badge>
+                  <Badge variant="secondary" className="hover-scale">
+                    {safari.style}
+                  </Badge>
                   <div className="flex items-center gap-1 text-sm text-muted-foreground">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span>{safari.rating}</span>
@@ -266,7 +273,9 @@ const Safaris = () => {
                 <CardTitle className="font-display text-2xl">
                   {safari.title}
                 </CardTitle>
-                <CardDescription className="font-body">{safari.description}</CardDescription>
+                <CardDescription className="font-body">
+                  {safari.description}
+                </CardDescription>
               </CardHeader>
 
               <CardContent>
@@ -284,7 +293,11 @@ const Safaris = () => {
 
                   <div className="flex flex-wrap gap-2">
                     {safari.highlights.map((highlight, index) => (
-                      <Badge key={index} variant="outline" className="text-xs hover-scale font-body">
+                      <Badge
+                        key={index}
+                        variant="outline"
+                        className="text-xs hover-scale font-body"
+                      >
                         {highlight}
                       </Badge>
                     ))}
@@ -293,19 +306,23 @@ const Safaris = () => {
                   <div className="flex items-center justify-between pt-4">
                     <div>
                       <p className="font-display text-2xl font-bold text-primary">
-                        {safari.price}
-                      </p>
-                      <p className="text-sm text-muted-foreground font-body">
-                        per person
+                        {safari.price} <span className="text-sm text-muted-foreground font-body">/per person</span>
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm" asChild className="hover-glow">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="hover-glow"
+                      >
                         <a href={`/safaris/${safari.slug}`}>View Details</a>
                       </Button>
-                      <Button size="sm" asChild className="hover-glow">
-                        <a href="/contact">Book Now</a>
-                      </Button>
+                      <SafariBuilderModal>
+                        <Button size="sm" className="hover-glow">
+                          Book Now
+                        </Button>
+                      </SafariBuilderModal>
                     </div>
                   </div>
                 </div>
