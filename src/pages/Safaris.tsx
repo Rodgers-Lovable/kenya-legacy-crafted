@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Filter, Clock, MapPin, Users, Star } from "lucide-react";
+import { Search, Clock, MapPin, Star } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -306,7 +306,10 @@ const Safaris = () => {
                   <div className="flex items-center justify-between pt-4">
                     <div>
                       <p className="font-display text-2xl font-bold text-primary">
-                        {safari.price} <span className="text-sm text-muted-foreground font-body">/per person</span>
+                        {safari.price}{" "}
+                        <span className="text-sm text-muted-foreground font-body">
+                          /per person
+                        </span>
                       </p>
                     </div>
                     <div className="flex gap-2">

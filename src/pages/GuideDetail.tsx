@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Clock, Calendar, User, Tag, Share2, ArrowRight } from "lucide-react";
+import { Clock, Calendar, User, Share2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,8 +29,8 @@ const GuideDetail = () => {
     `,
     relatedGuides: [
       { title: "Great Migration Guide", slug: "great-migration-guide" },
-      { title: "Safari Packing List", slug: "safari-packing-list" }
-    ]
+      { title: "Safari Packing List", slug: "safari-packing-list" },
+    ],
   };
 
   return (
@@ -39,8 +39,10 @@ const GuideDetail = () => {
         <article>
           <header className="mb-8">
             <Badge className="mb-4">{guide.category}</Badge>
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">{guide.title}</h1>
-            
+            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              {guide.title}
+            </h1>
+
             <div className="flex items-center gap-6 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
@@ -55,19 +57,28 @@ const GuideDetail = () => {
                 <span>{guide.readTime}</span>
               </div>
             </div>
-            
+
             <div className="flex flex-wrap gap-2 mb-8">
               {guide.tags.map((tag, index) => (
-                <Badge key={index} variant="outline">{tag}</Badge>
+                <Badge key={index} variant="outline">
+                  {tag}
+                </Badge>
               ))}
             </div>
           </header>
 
           <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-8">
-            <img src={guide.image} alt={guide.title} className="w-full h-full object-cover" />
+            <img
+              src={guide.image}
+              alt={guide.title}
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <div className="prose prose-lg max-w-none mb-12" dangerouslySetInnerHTML={{ __html: guide.content }} />
+          <div
+            className="prose prose-lg max-w-none mb-12"
+            dangerouslySetInnerHTML={{ __html: guide.content }}
+          />
 
           <div className="flex items-center justify-between py-8 border-t border-border">
             <Button variant="outline" asChild>
@@ -81,7 +92,9 @@ const GuideDetail = () => {
         </article>
 
         <section className="mt-12">
-          <h2 className="font-display text-2xl font-bold mb-6">Related Guides</h2>
+          <h2 className="font-display text-2xl font-bold mb-6">
+            Related Guides
+          </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {guide.relatedGuides.map((related, index) => (
               <Card key={index} className="border-border">
@@ -90,7 +103,9 @@ const GuideDetail = () => {
                 </CardHeader>
                 <CardContent>
                   <Button size="sm" asChild>
-                    <a href={`/guides/${related.slug}`}>Read Guide <ArrowRight className="w-4 h-4 ml-2" /></a>
+                    <a href={`/guides/${related.slug}`}>
+                      Read Guide <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

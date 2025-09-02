@@ -4,7 +4,6 @@ import FeaturedExperiences from "@/components/FeaturedExperiences";
 import SafariBuilderModal from "@/components/SafariBuilderModal";
 import {
   ArrowRight,
-  Play,
   Download,
   Calendar,
   Clock,

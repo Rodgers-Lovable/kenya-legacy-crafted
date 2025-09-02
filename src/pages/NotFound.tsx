@@ -62,7 +62,7 @@ const NotFound = () => {
             </div>
 
             <h1 className="font-display text-6xl md:text-8xl mb-4 animate-safari-fade-in">404</h1>
-            <h2 className="font-display text-3xl md:text-4xl mb-6 font-highlight animate-safari-fade-in">
+            <h2 className="font-display text-3xl md:text-4xl mb-6 animate-safari-fade-in">
               Lost in the <span className="italic text-safari-golden">Wild?</span>
             </h2>
             <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto font-body animate-safari-slide-up">

@@ -22,8 +22,6 @@ import SafariBuilderModal from "@/components/SafariBuilderModal";
 import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 
 const DestinationDetail = () => {
-  const { slug } = useParams();
-
   // Mock data - in a real app, this would come from CMS/API
   const destination = {
     name: "Masai Mara National Reserve",
