@@ -1,6 +1,6 @@
 export const WHATSAPP_NUMBER = "254712413243";
 
-export const COMPANY_NAME = "Karen Legacy Tours and Safaris";
+export const COMPANY_NAME = "Karen Legacy Tours & Safaris";
 export const COMPANY_WEBSITE = "https://karenlegacytoursandsafaris.com";
 
 export const COMPANY_PRIMARY_TEL = "+254 (0) 712 413 243";

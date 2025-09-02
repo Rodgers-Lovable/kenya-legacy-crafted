@@ -256,7 +256,7 @@ const Contact = () => {
                   <div>
                     <p className="font-medium">Office</p>
                     <p className="text-sm text-muted-foreground">
-                      {COMPANY_ADDRESS}, {COMPANY_LOCATION}
+                      {COMPANY_ADDRESS}
                     </p>
                   </div>
                 </div>

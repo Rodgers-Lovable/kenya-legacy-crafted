@@ -17,6 +17,7 @@ import {
   COMPANY_LOCATION,
   DEVELOPER_WEBSITE,
   DEVELOPER_NAME,
+  COMPANY_NAME,
 } from "@/core/constants/appConstants";
 
 const Footer = () => {
@@ -63,7 +64,7 @@ const Footer = () => {
                 <img src={Logo} alt="Karen Legacy Tours & Safaris" />
               </div>
               <span className="font-display font-bold text-xl">
-                Karen Legacy Tours & Safaris
+                {COMPANY_NAME}
               </span>
             </div>
             <p className="text-white/80 mb-6 leading-relaxed">
@@ -241,7 +242,7 @@ const Footer = () => {
         <div className="border-t border-white/10 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-white/60">
             <div className="mb-4 md:mb-0">
-              © {currentYear} Karen Legacy Tours & Safaris. All rights reserved.
+              © {currentYear} {COMPANY_NAME}. All rights reserved.
             </div>
 
             <div className="developer-details text-xs text-center">
