@@ -18,6 +18,11 @@ import Contact from "./pages/Contact";
 import Reviews from "./pages/Reviews";
 import Gallery from "./pages/Gallery";
 import FAQ from "./pages/FAQ";
+import PackingList from "./pages/PackingList";
+import SafariPreparation from "./pages/SafariPreparation";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import BookingTerms from "./pages/BookingTerms";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +49,11 @@ const App = () => (
               <Route path="/reviews" element={<Reviews />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/packing-list" element={<PackingList />} />
+              <Route path="/safari-preparation" element={<SafariPreparation />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/booking-terms" element={<BookingTerms />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

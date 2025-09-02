@@ -3,9 +3,11 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/assets/logo.png";
 import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navigation = [
     { name: "Safaris", href: "/safaris" },
@@ -37,7 +39,11 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-primary transition-safari font-medium"
+                  className={`transition-safari font-medium ${
+                    location.pathname === item.href
+                      ? "text-primary border-b-2 border-primary pb-1"
+                      : "text-foreground hover:text-primary"
+                  }`}
                 >
                   {item.name}
                 </a>
@@ -84,7 +90,11 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary hover:bg-muted transition-safari rounded-md font-medium"
+                  className={`block px-3 py-2 transition-safari rounded-md font-medium ${
+                    location.pathname === item.href
+                      ? "text-primary bg-primary/10"
+                      : "text-foreground hover:text-primary hover:bg-muted"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
