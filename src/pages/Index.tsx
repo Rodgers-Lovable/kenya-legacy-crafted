@@ -1,7 +1,7 @@
 import InteractiveHero from "@/components/InteractiveHero";
-import SafariBuilder from "@/components/SafariBuilder";
 import TrustSection from "@/components/TrustSection";
 import FeaturedExperiences from "@/components/FeaturedExperiences";
+import SafariBuilderModal from "@/components/SafariBuilderModal";
 import {
   ArrowRight,
   Play,
@@ -121,9 +121,6 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Interactive Hero */}
       <InteractiveHero />
-
-      {/* Safari Builder */}
-      <SafariBuilder />
 
       {/* Journey Story Section */}
       <section className="py-20 bg-background">
@@ -370,10 +367,12 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
-              <Button size="lg" variant="default" className="text-lg px-8 py-4">
-                <Calendar className="w-5 h-5 mr-2" />
-                Plan My Safari
-              </Button>
+              <SafariBuilderModal>
+                <Button size="lg" variant="default" className="text-lg px-8 py-4">
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Plan My Safari
+                </Button>
+              </SafariBuilderModal>
 
               <Button
                 size="lg"
