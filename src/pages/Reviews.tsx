@@ -69,6 +69,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* Reviews Grid */}

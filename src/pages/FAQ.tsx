@@ -61,6 +61,7 @@ const FAQ = () => {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* FAQ Sections */}
