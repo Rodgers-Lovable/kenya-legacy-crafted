@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Phone, Mail, MapPin, MessageCircle, Send, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +14,6 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   COMPANY_ADDRESS,
-  COMPANY_LOCATION,
   COMPANY_PRIMARY_EMAIL,
   COMPANY_PRIMARY_TEL,
   COMPANY_SECONDARY_EMAIL,
@@ -34,15 +34,16 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       // EmailJS Integration - Add your service configuration
-      const serviceId = process.env.EMAILJS_SERVICE_ID || 'your_service_id';
-      const templateId = process.env.EMAILJS_CONTACT_TEMPLATE_ID || 'your_contact_template_id';
-      const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'your_public_key';
+      const serviceId = process.env.EMAILJS_SERVICE_ID || "your_service_id";
+      const templateId =
+        process.env.EMAILJS_CONTACT_TEMPLATE_ID || "your_contact_template_id";
+      const publicKey = process.env.EMAILJS_PUBLIC_KEY || "your_public_key";
 
       const emailData = {
-        to_email: 'info@yoursafaricompany.com',
+        to_email: "info@yoursafaricompany.com",
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
@@ -52,19 +53,20 @@ const Contact = () => {
         budget: formData.budget,
         message: formData.message,
         submission_date: new Date().toLocaleDateString(),
-        submission_type: 'Contact Form'
+        submission_type: "Contact Form",
       };
 
       // Uncomment below when EmailJS is configured
-      // const emailjs = (await import('@emailjs/browser')).default;
       // await emailjs.send(serviceId, templateId, emailData, publicKey);
-      
+
       console.log("Form submitted:", formData);
-      console.log('EmailJS Data:', emailData);
-      
+      console.log("EmailJS Data:", emailData);
+
       // Show success message
-      alert('Thank you for your inquiry! We will get back to you within 24 hours.');
-      
+      alert(
+        "Thank you for your inquiry! We will get back to you within 24 hours."
+      );
+
       // Reset form
       setFormData({
         name: "",
@@ -76,10 +78,11 @@ const Contact = () => {
         budget: "",
         message: "",
       });
-      
     } catch (error) {
-      console.error('EmailJS Error:', error);
-      alert('There was an error sending your message. Please try again or contact us directly.');
+      console.error("EmailJS Error:", error);
+      alert(
+        "There was an error sending your message. Please try again or contact us directly."
+      );
     }
   };
 
@@ -231,8 +234,12 @@ const Contact = () => {
                           <SelectValue placeholder="Per person" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="budget">Under KES 300,000</SelectItem>
-                          <SelectItem value="mid">KES 300,000 - 600,000</SelectItem>
+                          <SelectItem value="budget">
+                            Under KES 300,000
+                          </SelectItem>
+                          <SelectItem value="mid">
+                            KES 300,000 - 600,000
+                          </SelectItem>
                           <SelectItem value="luxury">
                             KES 600,000 - 1,200,000
                           </SelectItem>

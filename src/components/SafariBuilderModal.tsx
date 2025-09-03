@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -88,7 +89,7 @@ const SafariBuilderModal = ({ children, preselectedPackage }: SafariBuilderModal
       const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'your_public_key';
 
       const emailData = {
-        to_email: 'info@yoursafaricompany.com',
+        to_email: 'info@karenlegacytoursandsafaris.com',
         from_name: leadForm.name,
         from_email: leadForm.email,
         phone: leadForm.phone,
@@ -105,12 +106,7 @@ const SafariBuilderModal = ({ children, preselectedPackage }: SafariBuilderModal
       };
 
       // Uncomment below when EmailJS is configured
-      // const emailjs = (await import('@emailjs/browser')).default;
       // await emailjs.send(serviceId, templateId, emailData, publicKey);
-      
-      console.log('Safari Preferences:', preferences);
-      console.log('Lead Form:', leadForm);
-      console.log('EmailJS Data:', emailData);
       
       setIsComplete(true);
       toast({
