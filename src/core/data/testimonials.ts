@@ -208,31 +208,3 @@ export const trustStats = {
   safetyRecord: 100,
   industryAwards: 15
 };
-
-export const quickTestimonials = [
-  {
-    text: "The most incredible safari experience! Our guide Joseph was phenomenal, and the wildlife encounters exceeded all expectations.",
-    author: "Sarah & Mike Johnson", 
-    location: "California, USA"
-  },
-  {
-    text: "Perfect family safari! Our kids (8 & 12) were absolutely mesmerized. Every detail was handled beautifully.",
-    author: "The Williams Family",
-    location: "London, UK"
-  },
-  {
-    text: "As a photographer, I needed expert timing and positioning. Karen Legacy delivered beyond my wildest dreams.",
-    author: "David Chen",
-    location: "Singapore"
-  },
-  {
-    text: "Our honeymoon safari was pure magic. The romantic bush dinners and balloon ride made it unforgettable.",
-    author: "Mark & Jennifer Wilson",
-    location: "Sydney, Australia"  
-  },
-  {
-    text: "Witnessing the Great Migration was life-changing. Our guide positioned us perfectly for the river crossing.",
-    author: "Thomas Mueller",
-    location: "Munich, Germany"
-  }
-];
