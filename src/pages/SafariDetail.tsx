@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useState } from "react";
 import {
   Calendar,
@@ -27,171 +27,26 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { safaris } from "@/core/data/safaris";
 
 const SafariDetail = () => {
   const { slug } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
 
-  // Mock data - in a real app, this would come from CMS/API
-  const safari = {
-    title: "7-Day Masai Mara Luxury Safari",
-    description:
-      "Experience the Great Migration in ultimate luxury with premium camps, exclusive game drives, and unparalleled service in Kenya's most famous reserve.",
-    style: "Luxury",
-    duration: 7,
-    price: "From $3,500",
-    priceDetails: "per person sharing, based on 2 people",
-    rating: 4.9,
-    reviews: 124,
-    destinations: ["Masai Mara National Reserve", "Nairobi"],
-    bestMonths: ["July", "August", "September", "October"],
-    minAge: 6,
-    maxGroupSize: 8,
+  // Find safari based on slug
+  const safari = safaris.find(s => s.slug === slug);
 
-    gallery: [
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-      "/api/placeholder/800/600",
-    ],
-
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival in Nairobi",
-        description:
-          "Meet and greet at Jomo Kenyatta International Airport. Transfer to luxury city hotel for relaxation and safari briefing.",
-        meals: ["Dinner"],
-        accommodation: "Villa Rosa Kempinski",
-        activities: ["Airport transfer", "Safari briefing", "Welcome dinner"],
-      },
-      {
-        day: 2,
-        title: "Fly to Masai Mara",
-        description:
-          "Morning flight to Masai Mara. Afternoon game drive in the reserve with chances to spot the Big Five.",
-        meals: ["Breakfast", "Lunch", "Dinner"],
-        accommodation: "Mahali Mzuri Luxury Camp",
-        activities: ["Scheduled flight", "Game drive", "Sundowner drinks"],
-      },
-      {
-        day: 3,
-        title: "Full Day Masai Mara",
-        description:
-          "Early morning and afternoon game drives. Optional hot air balloon safari at sunrise (additional cost).",
-        meals: ["Breakfast", "Lunch", "Dinner"],
-        accommodation: "Mahali Mzuri Luxury Camp",
-        activities: [
-          "Morning game drive",
-          "Optional balloon safari",
-          "Evening game drive",
-        ],
-      },
-      {
-        day: 4,
-        title: "Masai Mara - Cultural Experience",
-        description:
-          "Game drive followed by visit to authentic Maasai village. Learn about traditional culture and customs.",
-        meals: ["Breakfast", "Lunch", "Dinner"],
-        accommodation: "Mahali Mzuri Luxury Camp",
-        activities: [
-          "Game drive",
-          "Maasai village visit",
-          "Cultural performance",
-        ],
-      },
-      {
-        day: 5,
-        title: "Migration Crossing",
-        description:
-          "Position vehicles at the Mara River for potential wildebeest crossing. Full day dedicated to migration viewing.",
-        meals: ["Breakfast", "Lunch", "Dinner"],
-        accommodation: "Mahali Mzuri Luxury Camp",
-        activities: [
-          "River crossing viewing",
-          "Photography session",
-          "Bush lunch",
-        ],
-      },
-      {
-        day: 6,
-        title: "Final Game Drive",
-        description:
-          "Last morning in the Mara with final game drive. Afternoon flight back to Nairobi.",
-        meals: ["Breakfast", "Lunch"],
-        accommodation: "Villa Rosa Kempinski",
-        activities: [
-          "Final game drive",
-          "Flight to Nairobi",
-          "Farewell dinner",
-        ],
-      },
-      {
-        day: 7,
-        title: "Departure",
-        description:
-          "Transfer to airport for international departure or extend your stay in Kenya.",
-        meals: ["Breakfast"],
-        accommodation: "Day room if required",
-        activities: ["Airport transfer"],
-      },
-    ],
-
-    inclusions: [
-      "All accommodation as specified",
-      "All meals as per itinerary",
-      "All game drives and activities",
-      "Professional English-speaking guide",
-      "All park fees and conservancy fees",
-      "Scheduled flights Nairobi-Mara-Nairobi",
-      "Airport transfers",
-      "Bottled water during game drives",
-      "Game drive vehicle with pop-up roof",
-      "Binoculars for game viewing",
-    ],
-
-    exclusions: [
-      "International flights",
-      "Kenya visa fees",
-      "Travel insurance",
-      "Hot air balloon safari ($450 pp)",
-      "Alcoholic beverages",
-      "Personal items and souvenirs",
-      "Tips and gratuities",
-      "Medical expenses",
-      "Items of personal nature",
-    ],
-
-    accommodations: [
-      {
-        name: "Villa Rosa Kempinski",
-        location: "Nairobi",
-        description:
-          "Luxury city hotel with elegant rooms and excellent service.",
-        amenities: ["Spa", "Restaurant", "Pool", "Gym"],
-      },
-      {
-        name: "Mahali Mzuri Luxury Camp",
-        location: "Masai Mara",
-        description:
-          "Sir Richard Branson's exclusive safari camp with breathtaking views.",
-        amenities: [
-          "Infinity pool",
-          "Spa treatments",
-          "Butler service",
-          "Private deck",
-        ],
-      },
-    ],
-  };
+  // Redirect to 404 if safari not found
+  if (!safari) {
+    return <Navigate to="/404" replace />;
+  }
 
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="relative h-[60vh] overflow-hidden">
         <img
-          src={safari.gallery[selectedImage]}
+          src={safari.images ? safari.images[selectedImage] : safari.image}
           alt={safari.title}
           className="w-full h-full object-cover"
         />
@@ -208,7 +63,7 @@ const SafariDetail = () => {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5" />
-              <span>Masai Mara</span>
+              <span>{safari.destinations[0]}</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
@@ -224,7 +79,7 @@ const SafariDetail = () => {
       <div className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <div className="flex gap-4 overflow-x-auto">
-            {safari.gallery.map((image, index) => (
+            {safari.images ? safari.images.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
@@ -238,7 +93,15 @@ const SafariDetail = () => {
                   className="w-full h-full object-cover"
                 />
               </button>
-            ))}
+            )) : (
+              <div className="flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden ring-2 ring-primary">
+                <img
+                  src={safari.image}
+                  alt="Safari"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -262,7 +125,7 @@ const SafariDetail = () => {
                   <div>
                     <p className="font-medium">Best Time</p>
                     <p className="text-muted-foreground">
-                      {safari.bestMonths.join(", ")}
+                      {safari.bestMonths ? safari.bestMonths.join(", ") : "Year round"}
                     </p>
                   </div>
                 </div>
@@ -271,7 +134,7 @@ const SafariDetail = () => {
                   <div>
                     <p className="font-medium">Group Size</p>
                     <p className="text-muted-foreground">
-                      Max {safari.maxGroupSize} people
+                      Max {safari.maxGroupSize || safari.groupSize} people
                     </p>
                   </div>
                 </div>
@@ -289,7 +152,7 @@ const SafariDetail = () => {
                   <div>
                     <p className="font-medium">Min Age</p>
                     <p className="text-muted-foreground">
-                      {safari.minAge}+ years
+                      {safari.minAge || 6}+ years
                     </p>
                   </div>
                 </div>
@@ -297,149 +160,159 @@ const SafariDetail = () => {
             </section>
 
             {/* Itinerary */}
-            <section>
-              <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
-                Day by Day Itinerary
-              </h2>
-              <Accordion type="single" collapsible className="space-y-2">
-                {safari.itinerary.map((day, index) => (
-                  <AccordionItem
-                    key={index}
-                    value={`day-${day.day}`}
-                    className="border border-border rounded-lg"
-                  >
-                    <AccordionTrigger className="px-6 hover:no-underline">
-                      <div className="flex items-center gap-4 text-left">
-                        <div className="bg-primary text-primary-foreground w-10 h-10 rounded-full flex items-center justify-center font-bold">
-                          {day.day}
+            {safari.itinerary && (
+              <section>
+                <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
+                  Day by Day Itinerary
+                </h2>
+                <Accordion type="single" collapsible className="space-y-2">
+                  {safari.itinerary.map((day, index) => (
+                    <AccordionItem
+                      key={index}
+                      value={`day-${day.day}`}
+                      className="border border-border rounded-lg"
+                    >
+                      <AccordionTrigger className="px-6 hover:no-underline">
+                        <div className="flex items-center gap-4 text-left">
+                          <div className="bg-primary text-primary-foreground w-10 h-10 rounded-full flex items-center justify-center font-bold">
+                            {day.day}
+                          </div>
+                          <div>
+                            <h3 className="font-display text-lg font-bold">
+                              {day.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {day.accommodation}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="font-display text-lg font-bold">
-                            {day.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {day.accommodation}
-                          </p>
-                        </div>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-6">
-                      <p className="text-muted-foreground mb-4">
-                        {day.description}
-                      </p>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-6 pb-6">
+                        <p className="text-muted-foreground mb-4">
+                          {day.description}
+                        </p>
 
-                      <div className="grid md:grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <h4 className="font-medium flex items-center gap-1 mb-2">
-                            <Utensils className="w-4 h-4" /> Meals
-                          </h4>
-                          <ul className="text-muted-foreground space-y-1">
-                            {day.meals.map((meal, i) => (
-                              <li key={i}>{meal}</li>
-                            ))}
-                          </ul>
-                        </div>
+                        <div className="grid md:grid-cols-3 gap-4 text-sm">
+                          <div>
+                            <h4 className="font-medium flex items-center gap-1 mb-2">
+                              <Utensils className="w-4 h-4" /> Meals
+                            </h4>
+                            <ul className="text-muted-foreground space-y-1">
+                              {day.meals?.map((meal, i) => (
+                                <li key={i}>{meal}</li>
+                              )) || <li>As specified</li>}
+                            </ul>
+                          </div>
 
-                        <div>
-                          <h4 className="font-medium flex items-center gap-1 mb-2">
-                            <Bed className="w-4 h-4" /> Accommodation
-                          </h4>
-                          <p className="text-muted-foreground">
-                            {day.accommodation}
-                          </p>
-                        </div>
+                          <div>
+                            <h4 className="font-medium flex items-center gap-1 mb-2">
+                              <Bed className="w-4 h-4" /> Accommodation
+                            </h4>
+                            <p className="text-muted-foreground">
+                              {day.accommodation}
+                            </p>
+                          </div>
 
-                        <div>
-                          <h4 className="font-medium flex items-center gap-1 mb-2">
-                            <Camera className="w-4 h-4" /> Activities
-                          </h4>
-                          <ul className="text-muted-foreground space-y-1">
-                            {day.activities.map((activity, i) => (
-                              <li key={i}>{activity}</li>
-                            ))}
-                          </ul>
+                          <div>
+                            <h4 className="font-medium flex items-center gap-1 mb-2">
+                              <Camera className="w-4 h-4" /> Activities
+                            </h4>
+                            <ul className="text-muted-foreground space-y-1">
+                              {day.activities?.map((activity, i) => (
+                                <li key={i}>{activity}</li>
+                              )) || <li>Game drives</li>}
+                            </ul>
+                          </div>
                         </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </section>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
 
             {/* Accommodations */}
-            <section>
-              <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
-                Accommodations
-              </h2>
-              <div className="space-y-6">
-                {safari.accommodations.map((acc, index) => (
-                  <Card key={index} className="border-border">
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-between">
-                        <span>{acc.name}</span>
-                        <Badge variant="outline">{acc.location}</Badge>
-                      </CardTitle>
-                      <CardDescription>{acc.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex flex-wrap gap-2">
-                        {acc.amenities.map((amenity, i) => (
-                          <Badge
-                            key={i}
-                            variant="secondary"
-                            className="text-xs"
-                          >
-                            {amenity}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
+            {safari.accommodations && (
+              <section>
+                <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
+                  Accommodations
+                </h2>
+                <div className="space-y-6">
+                  {safari.accommodations.map((acc, index) => (
+                    <Card key={index} className="border-border">
+                      <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                          <span>{acc.name}</span>
+                          <Badge variant="outline">{acc.location}</Badge>
+                        </CardTitle>
+                        <CardDescription>{acc.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2">
+                          {acc.amenities?.map((amenity, i) => (
+                            <Badge
+                              key={i}
+                              variant="secondary"
+                              className="text-xs"
+                            >
+                              {amenity}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Inclusions & Exclusions */}
-            <section>
-              <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
-                What's Included
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="font-bold text-lg mb-4 text-green-600 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5" /> Included
-                  </h3>
-                  <ul className="space-y-2">
-                    {safari.inclusions.map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-2 text-muted-foreground"
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            {(safari.inclusions || safari.exclusions) && (
+              <section>
+                <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
+                  What's Included
+                </h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {safari.inclusions && (
+                    <div>
+                      <h3 className="font-bold text-lg mb-4 text-green-600 flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5" /> Included
+                      </h3>
+                      <ul className="space-y-2">
+                        {safari.inclusions.map((item, index) => (
+                          <li
+                            key={index}
+                            className="flex items-start gap-2 text-muted-foreground"
+                          >
+                            <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
-                <div>
-                  <h3 className="font-bold text-lg mb-4 text-red-600 flex items-center gap-2">
-                    <XCircle className="w-5 h-5" /> Not Included
-                  </h3>
-                  <ul className="space-y-2">
-                    {safari.exclusions.map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-2 text-muted-foreground"
-                      >
-                        <XCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {safari.exclusions && (
+                    <div>
+                      <h3 className="font-bold text-lg mb-4 text-red-600 flex items-center gap-2">
+                        <XCircle className="w-5 h-5" /> Not Included
+                      </h3>
+                      <ul className="space-y-2">
+                        {safari.exclusions.map((item, index) => (
+                          <li
+                            key={index}
+                            className="flex items-start gap-2 text-muted-foreground"
+                          >
+                            <XCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </section>
+              </section>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -452,7 +325,7 @@ const SafariDetail = () => {
                     {safari.price}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {safari.priceDetails}
+                    {safari.priceDetails || "per person sharing"}
                   </p>
                 </div>
               </CardHeader>
@@ -471,7 +344,7 @@ const SafariDetail = () => {
 
                 <Button variant="outline" className="w-full" asChild>
                   <a
-                    href="https://wa.me/254700000000?text=Hi! I'm interested in the 7-Day Masai Mara Luxury Safari"
+                    href={`https://wa.me/254700000000?text=Hi! I'm interested in the ${safari.title}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -501,18 +374,20 @@ const SafariDetail = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Group size:</span>
-                  <span className="font-medium">Max {safari.maxGroupSize}</span>
+                  <span className="font-medium">Max {safari.maxGroupSize || safari.groupSize}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Min age:</span>
-                  <span className="font-medium">{safari.minAge}+ years</span>
+                  <span className="font-medium">{safari.minAge || 6}+ years</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Best months:</span>
-                  <span className="font-medium">
-                    {safari.bestMonths.join(", ")}
-                  </span>
-                </div>
+                {safari.bestMonths && (
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Best months:</span>
+                    <span className="font-medium">
+                      {safari.bestMonths.join(", ")}
+                    </span>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
