@@ -1,6 +1,16 @@
 import MaasaiMara from "@/assets/images/maasai-mara.jpg";
 import SafariPhotography from "@/assets/images/safari-photography.jpg";
 import FamilyAdventure from "@/assets/images/family-safari.jpg";
+import AmboseliiElephants from "@/assets/images/amboseli-elephants.jpg";
+import LakeNakuru from "@/assets/images/lake-nakuru.jpg";
+import SamburuWildlife from "@/assets/images/samburu-wildlife.jpg";
+import MountKenya from "@/assets/images/mount-kenya.jpg";
+import NairobiNationalPark from "@/assets/images/nairobi-national-park.jpg";
+import MigrationCrossing from "@/assets/images/migration-crossing.jpg";
+import Elephants from "@/assets/images/elephants.jpg";
+import Lions from "@/assets/images/lions.jpg";
+import Migration from "@/assets/images/migration.jpg";
+import Rhinos from "@/assets/images/rhinos.jpg";
 
 export const safaris = [
   {
