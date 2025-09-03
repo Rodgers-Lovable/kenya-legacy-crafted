@@ -12,29 +12,232 @@ import Lions from "@/assets/images/lions.jpg";
 import Migration from "@/assets/images/migration.jpg";
 import Rhinos from "@/assets/images/rhinos.jpg";
 
-export const safaris = [
+interface Itinerary {
+  day: number;
+  title: string;
+  description: string;
+  meals: string[];
+  accommodation: string;
+  activities: string[];
+}
+
+interface Accomodation {
+  name: string;
+  location: string;
+  description: string;
+  amenities: string[];
+}
+
+export interface Safari {
+  id: string;
+  title: string;
+  slug: string;
+  style: string;
+  duration: number;
+  groupSize: string;
+  price: string;
+  priceDetails: string;
+  image: string;
+  description: string;
+  overview: string;
+  highlights: string[];
+  tags: string[];
+  destinations: string[];
+  destinationIds: string[];
+  rating: number;
+  reviews: number;
+  bestMonths: string[];
+  minAge: number;
+  maxGroupSize: number;
+  images: string[];
+  itinerary: Itinerary[];
+  inclusions: string[];
+  exclusions: string[];
+  accommodations: Accomodation[];
+}
+
+export const safaris: Safari[] = [
   {
-    id: "maasai-mara-luxury",
+    id: "7-day-maasai-mara-luxury-safari",
     title: "7-Day Maasai Mara Luxury Safari",
-    slug: "maasai-mara-luxury-safari",
+    slug: "7-day-maasai-mara-luxury-safari",
     style: "Luxury",
     duration: 7,
-    groupSize: "2-6 People",
-    price: "From KES30,500",
-    image: MaasaiMara,
+    groupSize: "2–12",
+    price: "KES 420,000",
+    priceDetails: "Per person sharing, excluding international flights",
+    image: "/images/safaris/maasai-mara-luxury/main.jpg",
     description:
-      "Experience the Great Migration in ultimate luxury with premium camps and exclusive game drives.",
+      "Experience the ultimate African adventure on this 7-day luxury safari through the iconic Maasai Mara. Enjoy game drives across the vast savannah, witness the Big Five up close, and unwind in world-class lodges that blend comfort, culture, and nature.",
+    overview:
+      "A luxury safari offering exclusive wildlife encounters, luxury accommodations, and immersive cultural experiences in the Maasai Mara, Kenya’s most famous safari destination.",
     highlights: [
-      "Great Migration",
-      "Luxury Tented Camps",
-      "Hot Air Balloon",
-      "Expert Guide",
+      "Game-Drives",
+      "the Big Five",
+      "Great Migration (seasonal)",
+      "Sundowner experiences",
+      "Cultural interactions",
+      "Balloon Flights",
     ],
-    tags: ["Migration", "Luxury", "Photography"],
-    destinations: ["Maasai Mara", "Nairobi"],
+    tags: [
+      "Luxury Safari",
+      "Big Five",
+      "Kenya",
+      "Maasai Mara",
+      "Wildlife",
+      "Cultural Experience",
+    ],
+    destinations: ["Maasai Mara National Reserve"],
+    destinationIds: ["dest-maasai-mara"],
     rating: 4.9,
-    reviews: 124,
+    reviews: 187,
+    bestMonths: ["July", "August", "September", "October", "December"],
+    minAge: 8,
+    maxGroupSize: 12,
+    images: [
+      "/images/safaris/maasai-mara-luxury/jeep-drive.jpg",
+      "/images/safaris/maasai-mara-luxury/lions.jpg",
+      "/images/safaris/maasai-mara-luxury/sundowner.jpg",
+      "/images/safaris/maasai-mara-luxury/camp.jpg",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Nairobi & Transfer to Maasai Mara",
+        description:
+          "Meet your safari guide in Nairobi and enjoy a scenic flight or private transfer to the Maasai Mara. Upon arrival, settle into your luxury tented camp and enjoy a welcome sundowner.",
+        meals: ["Lunch", "Dinner"],
+        accommodation: "Angama Mara Luxury Lodge",
+        activities: [
+          "Scenic flight or transfer",
+          "Sundowner experience",
+          "Relax at the lodge",
+        ],
+      },
+      {
+        day: 2,
+        title: "First Game Drive – Big Five Encounters",
+        description:
+          "Wake up to the sounds of nature and head out for your first morning game drive. Spot lions, elephants, buffaloes, and giraffes roaming freely across the savannah.",
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Angama Mara Luxury Lodge",
+        activities: [
+          "Morning game drive",
+          "Wildlife photography",
+          "Evening relaxation",
+        ],
+      },
+      {
+        day: 3,
+        title: "Full-Day Game Drive & Picnic Lunch",
+        description:
+          "Spend the full day exploring different corners of the Maasai Mara. Enjoy a gourmet picnic lunch in the bush surrounded by nature.",
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Mara Explorer Tented Camp",
+        activities: ["Extended game drive", "Bush picnic", "Evening campfire"],
+      },
+      {
+        day: 4,
+        title: "Optional Hot Air Balloon Safari",
+        description:
+          "Rise early for a breathtaking hot air balloon ride over the Maasai Mara at sunrise (optional). The day continues with another exciting game drive.",
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Mara Explorer Tented Camp",
+        activities: [
+          "Hot air balloon safari",
+          "Game drive",
+          "Sundowner cocktails",
+        ],
+      },
+      {
+        day: 5,
+        title: "Cultural Visit to Maasai Village",
+        description:
+          "Engage with the Maasai community, learning about their traditions, crafts, and way of life. Afternoon leisure at your lodge or optional guided nature walk.",
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Mahali Mzuri Luxury Camp",
+        activities: [
+          "Cultural village visit",
+          "Storytelling with Maasai elders",
+          "Nature walk",
+        ],
+      },
+      {
+        day: 6,
+        title: "Final Game Drive & Leisure Day",
+        description:
+          "Enjoy one last game drive in search of animals you may have missed. Spend the afternoon at leisure with spa treatments or poolside relaxation.",
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Mahali Mzuri Luxury Camp",
+        activities: ["Morning game drive", "Spa session", "Pool relaxation"],
+      },
+      {
+        day: 7,
+        title: "Departure",
+        description:
+          "After a relaxed breakfast, take a final look at the Mara before transferring back to Nairobi for your onward journey.",
+        meals: ["Breakfast"],
+        accommodation: "N/A",
+        activities: ["Farewell breakfast", "Transfer to Nairobi"],
+      },
+    ],
+    inclusions: [
+      "Luxury accommodations as per itinerary",
+      "All meals and selected beverages",
+      "Daily game drives with professional safari guides",
+      "Park entry fees",
+      "Airport transfers",
+      "Cultural village visit",
+      "Sundowner experiences",
+    ],
+    exclusions: [
+      "International flights",
+      "Visa fees",
+      "Travel insurance",
+      "Personal expenses (souvenirs, laundry, tips)",
+      "Optional hot air balloon safari",
+    ],
+    accommodations: [
+      {
+        name: "Angama Mara Luxury Lodge",
+        location: "Maasai Mara National Reserve",
+        description:
+          "Perched high above the Great Rift Valley, Angama Mara offers breathtaking views, spacious luxury tents, and unmatched hospitality.",
+        amenities: [
+          "Infinity pool",
+          "Private deck",
+          "Spa",
+          "Fine dining",
+          "Wi-Fi",
+        ],
+      },
+      {
+        name: "Mara Explorer Tented Camp",
+        location: "Central Maasai Mara",
+        description:
+          "An intimate luxury tented camp situated along the Talek River, perfect for immersive wildlife viewing.",
+        amenities: [
+          "Riverfront tents",
+          "Private butler service",
+          "Outdoor dining",
+          "Nature walks",
+        ],
+      },
+      {
+        name: "Mahali Mzuri Luxury Camp",
+        location: "Olare Motorogi Conservancy",
+        description:
+          "Owned by Sir Richard Branson, Mahali Mzuri combines luxury with conservation, featuring 12 stylish tented suites in an exclusive private conservancy.",
+        amenities: [
+          "Infinity pool",
+          "Spa treatments",
+          "All-inclusive dining",
+          "Private game drives",
+        ],
+      },
+    ],
   },
+
   {
     id: "amboseli-family",
     title: "5-Day Family Safari Adventure",
@@ -42,22 +245,32 @@ export const safaris = [
     style: "Family",
     duration: 5,
     price: "From KES165,000",
-    priceDetails: "per person sharing, based on 2 people", 
+    priceDetails: "per person sharing, based on 2 people",
     groupSize: "Families",
     image: FamilyAdventure,
-    overview: "Perfect family adventure with kid-friendly accommodations and educational wildlife experiences.",
+    overview:
+      "Perfect family adventure with kid-friendly accommodations and educational wildlife experiences.",
     description:
       "Perfect family adventure with kid-friendly accommodations and educational wildlife experiences. Discover the elephants of Amboseli with Mount Kilimanjaro as your backdrop.",
     highlights: [
       "Family-Friendly",
-      "Educational Tours", 
+      "Educational Tours",
       "Cultural Visit",
       "Mount Kilimanjaro Views",
     ],
     tags: ["Family", "Adventure", "Educational"],
     destinationIds: ["amboseli", "nairobi"],
     destinations: ["Amboseli", "Nairobi"],
-    bestMonths: ["January", "February", "June", "July", "August", "September", "October", "December"],
+    bestMonths: [
+      "January",
+      "February",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "December",
+    ],
     minAge: 3,
     maxGroupSize: 8,
     rating: 4.8,
@@ -68,7 +281,8 @@ export const safaris = [
       {
         day: 1,
         title: "Nairobi to Amboseli",
-        description: "Morning departure from Nairobi to Amboseli National Park. Afternoon game drive with Mount Kilimanjaro views.",
+        description:
+          "Morning departure from Nairobi to Amboseli National Park. Afternoon game drive with Mount Kilimanjaro views.",
         meals: ["Lunch", "Dinner"],
         accommodation: "Amboseli Serena Safari Lodge",
         activities: ["Road transfer", "Game drive", "Sunset viewing"],
@@ -76,23 +290,34 @@ export const safaris = [
       {
         day: 2,
         title: "Full Day Amboseli",
-        description: "Full day game drives in Amboseli famous for its large elephant herds and stunning views of Kilimanjaro.",
+        description:
+          "Full day game drives in Amboseli famous for its large elephant herds and stunning views of Kilimanjaro.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Amboseli Serena Safari Lodge",
-        activities: ["Morning game drive", "Cultural visit", "Evening game drive"],
+        activities: [
+          "Morning game drive",
+          "Cultural visit",
+          "Evening game drive",
+        ],
       },
       {
         day: 3,
-        title: "Amboseli Exploration", 
-        description: "Extended game drives and visit to Maasai village for cultural experience and traditional performances.",
+        title: "Amboseli Exploration",
+        description:
+          "Extended game drives and visit to Maasai village for cultural experience and traditional performances.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Amboseli Serena Safari Lodge",
-        activities: ["Game drives", "Maasai village visit", "Cultural performances"],
+        activities: [
+          "Game drives",
+          "Maasai village visit",
+          "Cultural performances",
+        ],
       },
       {
         day: 4,
         title: "Amboseli to Tsavo East",
-        description: "Morning game drive then transfer to Tsavo East National Park for different landscapes and red elephants.",
+        description:
+          "Morning game drive then transfer to Tsavo East National Park for different landscapes and red elephants.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Voi Safari Lodge",
         activities: ["Morning game drive", "Transfer", "Afternoon game drive"],
@@ -100,7 +325,8 @@ export const safaris = [
       {
         day: 5,
         title: "Return to Nairobi",
-        description: "Final morning game drive then return journey to Nairobi with lunch en route.",
+        description:
+          "Final morning game drive then return journey to Nairobi with lunch en route.",
         meals: ["Breakfast", "Lunch"],
         accommodation: "End of safari",
         activities: ["Final game drive", "Return to Nairobi"],
@@ -110,7 +336,7 @@ export const safaris = [
     inclusions: [
       "All accommodation as specified",
       "All meals as per itinerary",
-      "All game drives in safari vehicles", 
+      "All game drives in safari vehicles",
       "Professional driver-guide",
       "All park fees",
       "Bottled water during game drives",
@@ -131,14 +357,21 @@ export const safaris = [
       {
         name: "Amboseli Serena Safari Lodge",
         location: "Amboseli National Park",
-        description: "Family-friendly lodge with stunning views of Mount Kilimanjaro and spacious rooms.",
+        description:
+          "Family-friendly lodge with stunning views of Mount Kilimanjaro and spacious rooms.",
         amenities: ["Swimming pool", "Restaurant", "Bar", "Gift shop", "Spa"],
       },
       {
-        name: "Voi Safari Lodge", 
+        name: "Voi Safari Lodge",
         location: "Tsavo East National Park",
-        description: "Elevated lodge overlooking watering holes with excellent wildlife viewing.",
-        amenities: ["Restaurant", "Bar", "Swimming pool", "Wildlife viewing deck"],
+        description:
+          "Elevated lodge overlooking watering holes with excellent wildlife viewing.",
+        amenities: [
+          "Restaurant",
+          "Bar",
+          "Swimming pool",
+          "Wildlife viewing deck",
+        ],
       },
     ],
   },
@@ -152,7 +385,8 @@ export const safaris = [
     priceDetails: "per person sharing, based on 2 people",
     groupSize: "4-8 People",
     image: SafariPhotography,
-    overview: "Capture Kenya's wildlife with professional guides and optimal positioning for stunning shots.",
+    overview:
+      "Capture Kenya's wildlife with professional guides and optimal positioning for stunning shots.",
     description:
       "Capture Kenya's wildlife with professional guides and optimal positioning for stunning shots. This specialized photography safari covers multiple parks for diverse shooting opportunities.",
     highlights: [
@@ -164,26 +398,45 @@ export const safaris = [
     tags: ["Photography", "Expert", "Specialized"],
     destinationIds: ["maasai-mara", "amboseli", "lake-nakuru"],
     destinations: ["Maasai Mara", "Amboseli", "Lake Nakuru"],
-    bestMonths: ["July", "August", "September", "October", "January", "February"],
+    bestMonths: [
+      "July",
+      "August",
+      "September",
+      "October",
+      "January",
+      "February",
+    ],
     minAge: 12,
     maxGroupSize: 8,
     rating: 4.9,
     reviews: 67,
-    images: [SafariPhotography, MaasaiMara, LakeNakuru, AmboseliiElephants, Migration],
+    images: [
+      SafariPhotography,
+      MaasaiMara,
+      LakeNakuru,
+      AmboseliiElephants,
+      Migration,
+    ],
 
     itinerary: [
       {
         day: 1,
         title: "Arrival & Equipment Check",
-        description: "Airport pickup, hotel check-in, equipment briefing and photography technique session.",
+        description:
+          "Airport pickup, hotel check-in, equipment briefing and photography technique session.",
         meals: ["Dinner"],
         accommodation: "Sarova Stanley Hotel",
-        activities: ["Airport transfer", "Equipment check", "Photography briefing"],
+        activities: [
+          "Airport transfer",
+          "Equipment check",
+          "Photography briefing",
+        ],
       },
       {
         day: 2,
         title: "Nairobi to Lake Nakuru",
-        description: "Depart for Lake Nakuru. Afternoon photography session focusing on flamingos and rhinos.",
+        description:
+          "Depart for Lake Nakuru. Afternoon photography session focusing on flamingos and rhinos.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Lake Nakuru Lodge",
         activities: ["Scenic drive", "Flamingo photography", "Rhino tracking"],
@@ -191,7 +444,8 @@ export const safaris = [
       {
         day: 3,
         title: "Lake Nakuru to Maasai Mara",
-        description: "Morning photography then drive to Maasai Mara. Afternoon positioning for golden hour shots.",
+        description:
+          "Morning photography then drive to Maasai Mara. Afternoon positioning for golden hour shots.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
         activities: ["Dawn photography", "Transfer", "Golden hour session"],
@@ -199,39 +453,60 @@ export const safaris = [
       {
         day: 4,
         title: "Maasai Mara Photography",
-        description: "Full day dedicated to wildlife photography with extended game drives and optimal positioning.",
+        description:
+          "Full day dedicated to wildlife photography with extended game drives and optimal positioning.",
         meals: ["Breakfast", "Lunch", "Dinner"],
-        accommodation: "Mara Serena Safari Lodge", 
-        activities: ["Extended game drives", "Photography hides", "Action shots"],
+        accommodation: "Mara Serena Safari Lodge",
+        activities: [
+          "Extended game drives",
+          "Photography hides",
+          "Action shots",
+        ],
       },
       {
         day: 5,
         title: "Migration Photography",
-        description: "Focus on capturing the Great Migration with river crossing attempts and herd dynamics.",
+        description:
+          "Focus on capturing the Great Migration with river crossing attempts and herd dynamics.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
-        activities: ["Migration tracking", "River crossing photography", "Herd dynamics"],
+        activities: [
+          "Migration tracking",
+          "River crossing photography",
+          "Herd dynamics",
+        ],
       },
       {
         day: 6,
         title: "Predator Photography",
-        description: "Specialized day focusing on big cats with professional tracking and positioning techniques.",
+        description:
+          "Specialized day focusing on big cats with professional tracking and positioning techniques.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
-        activities: ["Big cat tracking", "Behavioral photography", "Action sequences"],
+        activities: [
+          "Big cat tracking",
+          "Behavioral photography",
+          "Action sequences",
+        ],
       },
       {
         day: 7,
         title: "Cultural & Portrait Photography",
-        description: "Maasai village visit for cultural and portrait photography with consent-based sessions.",
+        description:
+          "Maasai village visit for cultural and portrait photography with consent-based sessions.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
-        activities: ["Cultural photography", "Portrait sessions", "Lifestyle shots"],
+        activities: [
+          "Cultural photography",
+          "Portrait sessions",
+          "Lifestyle shots",
+        ],
       },
       {
         day: 8,
         title: "Mara to Amboseli",
-        description: "Transfer to Amboseli for elephant photography against Mount Kilimanjaro backdrop.",
+        description:
+          "Transfer to Amboseli for elephant photography against Mount Kilimanjaro backdrop.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Amboseli Serena Safari Lodge",
         activities: ["Transfer", "Sunset photography", "Kilimanjaro shots"],
@@ -239,18 +514,28 @@ export const safaris = [
       {
         day: 9,
         title: "Amboseli Elephant Photography",
-        description: "Full day focusing on elephant behavior and compositions with Mount Kilimanjaro.",
+        description:
+          "Full day focusing on elephant behavior and compositions with Mount Kilimanjaro.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Amboseli Serena Safari Lodge",
-        activities: ["Elephant photography", "Landscape compositions", "Behavioral studies"],
+        activities: [
+          "Elephant photography",
+          "Landscape compositions",
+          "Behavioral studies",
+        ],
       },
       {
         day: 10,
         title: "Portfolio Review & Departure",
-        description: "Morning photography session, portfolio review with guide, and return to Nairobi.",
+        description:
+          "Morning photography session, portfolio review with guide, and return to Nairobi.",
         meals: ["Breakfast", "Lunch"],
         accommodation: "End of safari",
-        activities: ["Final photography", "Portfolio review", "Return to Nairobi"],
+        activities: [
+          "Final photography",
+          "Portfolio review",
+          "Return to Nairobi",
+        ],
       },
     ],
 
@@ -267,7 +552,7 @@ export const safaris = [
 
     exclusions: [
       "Photography equipment rental",
-      "International flights", 
+      "International flights",
       "Kenya visa fees",
       "Travel insurance",
       "Personal expenses",
@@ -279,26 +564,43 @@ export const safaris = [
       {
         name: "Sarova Stanley Hotel",
         location: "Nairobi",
-        description: "Historic luxury hotel perfect for equipment preparation and storage.",
-        amenities: ["Business center", "Restaurant", "Equipment storage", "WiFi"],
+        description:
+          "Historic luxury hotel perfect for equipment preparation and storage.",
+        amenities: [
+          "Business center",
+          "Restaurant",
+          "Equipment storage",
+          "WiFi",
+        ],
       },
       {
         name: "Lake Nakuru Lodge",
         location: "Lake Nakuru National Park",
-        description: "Strategic location for lake and wildlife photography with excellent views.",
+        description:
+          "Strategic location for lake and wildlife photography with excellent views.",
         amenities: ["Photography deck", "Restaurant", "Bar", "Equipment room"],
       },
       {
         name: "Mara Serena Safari Lodge",
         location: "Maasai Mara",
-        description: "Prime location for wildlife photography with early departure arrangements.",
-        amenities: ["Early departure service", "Equipment cleaning", "Photography guides"],
+        description:
+          "Prime location for wildlife photography with early departure arrangements.",
+        amenities: [
+          "Early departure service",
+          "Equipment cleaning",
+          "Photography guides",
+        ],
       },
       {
-        name: "Amboseli Serena Safari Lodge", 
+        name: "Amboseli Serena Safari Lodge",
         location: "Amboseli National Park",
-        description: "Perfect base for Kilimanjaro and elephant photography with spacious rooms.",
-        amenities: ["Mountain views", "Photography services", "Equipment storage"],
+        description:
+          "Perfect base for Kilimanjaro and elephant photography with spacious rooms.",
+        amenities: [
+          "Mountain views",
+          "Photography services",
+          "Equipment storage",
+        ],
       },
     ],
   },
@@ -312,7 +614,8 @@ export const safaris = [
     priceDetails: "per person sharing, based on 2 people",
     groupSize: "4-8 People",
     image: LakeNakuru,
-    overview: "Affordable safari adventure without compromising on wildlife experiences and comfort.",
+    overview:
+      "Affordable safari adventure without compromising on wildlife experiences and comfort.",
     description:
       "Affordable safari adventure without compromising on wildlife experiences and comfort. Perfect for budget-conscious travelers wanting authentic Kenya safari experience.",
     highlights: [
@@ -335,15 +638,17 @@ export const safaris = [
       {
         day: 1,
         title: "Nairobi to Lake Nakuru",
-        description: "Early morning departure to Lake Nakuru National Park for flamingo viewing and rhino tracking.",
+        description:
+          "Early morning departure to Lake Nakuru National Park for flamingo viewing and rhino tracking.",
         meals: ["Lunch", "Dinner"],
         accommodation: "Lake Nakuru Lodge",
         activities: ["Scenic drive", "Game drive", "Flamingo viewing"],
       },
       {
-        day: 2, 
+        day: 2,
         title: "Lake Nakuru to Maasai Mara",
-        description: "Morning game drive then transfer to world-famous Maasai Mara National Reserve.",
+        description:
+          "Morning game drive then transfer to world-famous Maasai Mara National Reserve.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Sopa Lodge",
         activities: ["Morning game drive", "Transfer", "Afternoon game drive"],
@@ -351,7 +656,8 @@ export const safaris = [
       {
         day: 3,
         title: "Full Day Maasai Mara",
-        description: "Full day exploring Maasai Mara with morning and afternoon game drives searching for Big Five.",
+        description:
+          "Full day exploring Maasai Mara with morning and afternoon game drives searching for Big Five.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Sopa Lodge",
         activities: ["Extended game drives", "Big Five search", "Picnic lunch"],
@@ -359,7 +665,8 @@ export const safaris = [
       {
         day: 4,
         title: "Mara Cultural Visit & Return",
-        description: "Morning cultural visit to Maasai village then return to Nairobi with game drive en route.",
+        description:
+          "Morning cultural visit to Maasai village then return to Nairobi with game drive en route.",
         meals: ["Breakfast", "Lunch"],
         accommodation: "End of safari",
         activities: ["Cultural visit", "Final game drive", "Return to Nairobi"],
@@ -389,14 +696,16 @@ export const safaris = [
     accommodations: [
       {
         name: "Lake Nakuru Lodge",
-        location: "Lake Nakuru National Park", 
-        description: "Comfortable budget-friendly lodge with good facilities and lake views.",
+        location: "Lake Nakuru National Park",
+        description:
+          "Comfortable budget-friendly lodge with good facilities and lake views.",
         amenities: ["Restaurant", "Bar", "Gift shop", "Gardens"],
       },
       {
         name: "Mara Sopa Lodge",
         location: "Maasai Mara",
-        description: "Well-located budget lodge offering good value and comfort in the Mara.",
+        description:
+          "Well-located budget lodge offering good value and comfort in the Mara.",
         amenities: ["Restaurant", "Bar", "Swimming pool", "Cultural center"],
       },
     ],
@@ -411,13 +720,14 @@ export const safaris = [
     priceDetails: "per person sharing, based on 2 people",
     groupSize: "4-8 People",
     image: MigrationCrossing,
-    overview: "Witness the world's greatest wildlife spectacle during peak migration season.",
+    overview:
+      "Witness the world's greatest wildlife spectacle during peak migration season.",
     description:
       "Witness the world's greatest wildlife spectacle during peak migration season. Specially timed to maximize your chances of seeing the dramatic river crossings.",
     highlights: [
       "River Crossings",
       "Migration Camps",
-      "Extended Stays", 
+      "Extended Stays",
       "Prime Positioning",
     ],
     tags: ["Migration", "Spectacle", "Seasonal"],
@@ -434,66 +744,106 @@ export const safaris = [
       {
         day: 1,
         title: "Arrival Nairobi",
-        description: "Airport pickup and transfer to hotel. Evening migration briefing and preparation.",
+        description:
+          "Airport pickup and transfer to hotel. Evening migration briefing and preparation.",
         meals: ["Dinner"],
         accommodation: "Sarova Stanley Hotel",
-        activities: ["Airport transfer", "Migration briefing", "Equipment check"],
+        activities: [
+          "Airport transfer",
+          "Migration briefing",
+          "Equipment check",
+        ],
       },
       {
         day: 2,
-        title: "Fly to Maasai Mara", 
-        description: "Morning flight to Mara and immediate positioning near river crossing points.",
+        title: "Fly to Maasai Mara",
+        description:
+          "Morning flight to Mara and immediate positioning near river crossing points.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Migration Camp",
-        activities: ["Flight to Mara", "River positioning", "Migration tracking"],
+        activities: [
+          "Flight to Mara",
+          "River positioning",
+          "Migration tracking",
+        ],
       },
       {
         day: 3,
         title: "Migration River Crossings",
-        description: "Full day positioned at Mara River crossing points for potential wildebeest crossings.",
+        description:
+          "Full day positioned at Mara River crossing points for potential wildebeest crossings.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Migration Camp",
-        activities: ["River crossing viewing", "Migration photography", "Predator action"],
+        activities: [
+          "River crossing viewing",
+          "Migration photography",
+          "Predator action",
+        ],
       },
       {
         day: 4,
         title: "Extended Migration Viewing",
-        description: "Extended time following herds and positioning for best migration viewing opportunities.",
+        description:
+          "Extended time following herds and positioning for best migration viewing opportunities.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Migration Camp",
-        activities: ["Herd following", "Extended game drives", "Migration dynamics"],
+        activities: [
+          "Herd following",
+          "Extended game drives",
+          "Migration dynamics",
+        ],
       },
       {
         day: 5,
         title: "Migration Patterns Study",
-        description: "Study migration patterns with expert guides and learn about this natural phenomenon.",
+        description:
+          "Study migration patterns with expert guides and learn about this natural phenomenon.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Migration Camp",
-        activities: ["Pattern study", "Educational talks", "Conservation insights"],
+        activities: [
+          "Pattern study",
+          "Educational talks",
+          "Conservation insights",
+        ],
       },
       {
         day: 6,
         title: "Balloon Safari & Migration",
-        description: "Hot air balloon over migration herds followed by champagne breakfast and game drives.",
+        description:
+          "Hot air balloon over migration herds followed by champagne breakfast and game drives.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Migration Camp",
-        activities: ["Balloon safari", "Aerial migration viewing", "Champagne breakfast"],
+        activities: [
+          "Balloon safari",
+          "Aerial migration viewing",
+          "Champagne breakfast",
+        ],
       },
       {
         day: 7,
         title: "Final Migration Viewing",
-        description: "Last full day following migration with optimal positioning for final sightings.",
+        description:
+          "Last full day following migration with optimal positioning for final sightings.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Migration Camp",
-        activities: ["Final migration viewing", "Photography sessions", "Farewell dinner"],
+        activities: [
+          "Final migration viewing",
+          "Photography sessions",
+          "Farewell dinner",
+        ],
       },
       {
         day: 8,
         title: "Departure",
-        description: "Morning flight back to Nairobi and onward connections or city tour.",
+        description:
+          "Morning flight back to Nairobi and onward connections or city tour.",
         meals: ["Breakfast"],
         accommodation: "End of safari",
-        activities: ["Flight to Nairobi", "City tour option", "Airport transfer"],
+        activities: [
+          "Flight to Nairobi",
+          "City tour option",
+          "Airport transfer",
+        ],
       },
     ],
 
@@ -522,14 +872,21 @@ export const safaris = [
       {
         name: "Sarova Stanley Hotel",
         location: "Nairobi",
-        description: "Historic hotel providing comfort before and after safari adventure.",
+        description:
+          "Historic hotel providing comfort before and after safari adventure.",
         amenities: ["Restaurant", "Bar", "Business center", "City location"],
       },
       {
         name: "Migration Camp",
         location: "Maasai Mara River Area",
-        description: "Seasonal luxury camp positioned specifically for migration viewing.",
-        amenities: ["River views", "Migration guides", "Photography services", "Premium location"],
+        description:
+          "Seasonal luxury camp positioned specifically for migration viewing.",
+        amenities: [
+          "River views",
+          "Migration guides",
+          "Photography services",
+          "Premium location",
+        ],
       },
     ],
   },
@@ -543,13 +900,14 @@ export const safaris = [
     priceDetails: "per person sharing, based on 2 people",
     groupSize: "4-10 People",
     image: SamburuWildlife,
-    overview: "Immerse yourself in local cultures while enjoying incredible wildlife encounters.",
+    overview:
+      "Immerse yourself in local cultures while enjoying incredible wildlife encounters.",
     description:
       "Immerse yourself in local cultures while enjoying incredible wildlife encounters. Experience authentic Kenya through wildlife and traditional communities.",
     highlights: [
       "Maasai Villages",
       "Cultural Immersion",
-      "Traditional Dances", 
+      "Traditional Dances",
       "Local Crafts",
     ],
     tags: ["Cultural", "Traditional", "Community"],
@@ -566,50 +924,80 @@ export const safaris = [
       {
         day: 1,
         title: "Nairobi Cultural Introduction",
-        description: "City cultural tour including markets, cultural centers, and traditional restaurant experience.",
+        description:
+          "City cultural tour including markets, cultural centers, and traditional restaurant experience.",
         meals: ["Lunch", "Dinner"],
         accommodation: "Sarova Stanley Hotel",
-        activities: ["City cultural tour", "Market visit", "Traditional cuisine"],
+        activities: [
+          "City cultural tour",
+          "Market visit",
+          "Traditional cuisine",
+        ],
       },
       {
         day: 2,
         title: "Nairobi to Maasai Mara",
-        description: "Drive to Maasai Mara with cultural stops and traditional welcome at the lodge.",
+        description:
+          "Drive to Maasai Mara with cultural stops and traditional welcome at the lodge.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
-        activities: ["Cultural stops", "Traditional welcome", "Evening game drive"],
+        activities: [
+          "Cultural stops",
+          "Traditional welcome",
+          "Evening game drive",
+        ],
       },
       {
         day: 3,
         title: "Maasai Village Immersion",
-        description: "Full day cultural immersion in authentic Maasai village with traditional activities.",
+        description:
+          "Full day cultural immersion in authentic Maasai village with traditional activities.",
         meals: ["Breakfast", "Lunch", "Dinner"],
-        accommodation: "Mara Serena Safari Lodge", 
-        activities: ["Village immersion", "Traditional activities", "Cultural performances"],
+        accommodation: "Mara Serena Safari Lodge",
+        activities: [
+          "Village immersion",
+          "Traditional activities",
+          "Cultural performances",
+        ],
       },
       {
         day: 4,
         title: "Wildlife & Culture Balance",
-        description: "Morning game drive followed by afternoon traditional crafts and storytelling sessions.",
+        description:
+          "Morning game drive followed by afternoon traditional crafts and storytelling sessions.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
-        activities: ["Game drive", "Craft sessions", "Traditional storytelling"],
+        activities: [
+          "Game drive",
+          "Craft sessions",
+          "Traditional storytelling",
+        ],
       },
       {
         day: 5,
         title: "Community Conservation",
-        description: "Visit community conservation projects and learn about traditional conservation methods.",
+        description:
+          "Visit community conservation projects and learn about traditional conservation methods.",
         meals: ["Breakfast", "Lunch", "Dinner"],
         accommodation: "Mara Serena Safari Lodge",
-        activities: ["Conservation projects", "Community initiatives", "Traditional methods"],
+        activities: [
+          "Conservation projects",
+          "Community initiatives",
+          "Traditional methods",
+        ],
       },
       {
         day: 6,
         title: "Farewell & Return",
-        description: "Final cultural ceremony and return to Nairobi with cultural shopping opportunities.",
+        description:
+          "Final cultural ceremony and return to Nairobi with cultural shopping opportunities.",
         meals: ["Breakfast", "Lunch"],
         accommodation: "End of safari",
-        activities: ["Farewell ceremony", "Cultural shopping", "Return to Nairobi"],
+        activities: [
+          "Farewell ceremony",
+          "Cultural shopping",
+          "Return to Nairobi",
+        ],
       },
     ],
 
@@ -618,7 +1006,7 @@ export const safaris = [
       "All meals including traditional cuisine",
       "Cultural village visits and activities",
       "Traditional performances",
-      "Community project visits", 
+      "Community project visits",
       "Professional cultural guide",
       "Game drives and park fees",
       "Cultural craft sessions",
@@ -638,14 +1026,26 @@ export const safaris = [
       {
         name: "Sarova Stanley Hotel",
         location: "Nairobi",
-        description: "Historic hotel with cultural significance and central location for city tours.",
-        amenities: ["Restaurant", "Cultural tours", "City center", "Historical significance"],
+        description:
+          "Historic hotel with cultural significance and central location for city tours.",
+        amenities: [
+          "Restaurant",
+          "Cultural tours",
+          "City center",
+          "Historical significance",
+        ],
       },
       {
         name: "Mara Serena Safari Lodge",
         location: "Maasai Mara",
-        description: "Lodge designed to reflect local architecture with strong cultural connections.",
-        amenities: ["Cultural center", "Traditional architecture", "Community programs", "Cultural guides"],
+        description:
+          "Lodge designed to reflect local architecture with strong cultural connections.",
+        amenities: [
+          "Cultural center",
+          "Traditional architecture",
+          "Community programs",
+          "Cultural guides",
+        ],
       },
     ],
   },
