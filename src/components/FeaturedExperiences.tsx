@@ -5,65 +5,9 @@ import SafariBuilderModal from "@/components/SafariBuilderModal";
 import MaasaiMara from "@/assets/images/maasai-mara.jpg";
 import SafariPhotography from "@/assets/images/safari-photography.jpg";
 import FamilyAdventure from "@/assets/images/family-safari.jpg";
+import { safaris } from "@/core/data/safaris";
 
 const FeaturedExperiences = () => {
-  const experiences = [
-    {
-      id: 1,
-      title: "7-Day Maasai Mara & Amboseli Luxury Safari",
-      image: MaasaiMara,
-      duration: "7 Days",
-      groupSize: "2-6 People",
-      style: "Luxury",
-      highlights: [
-        "Big Five Encounters",
-        "Hot Air Balloon",
-        "Maasai Village Visit",
-      ],
-      description:
-        "Witness the Great Migration and elephants against Kilimanjaro's backdrop in Kenya's most iconic parks.",
-      priceFrom: "KES 675,000",
-      tags: ["Migration", "Luxury", "Photography"],
-      slug: "7-day-maasai-mara-amboseli-luxury",
-    },
-    {
-      id: 2,
-      title: "5-Day Family Adventure Safari",
-      image: FamilyAdventure,
-      duration: "5 Days",
-      groupSize: "Families",
-      style: "Family",
-      highlights: [
-        "Kid-Friendly Activities",
-        "Educational Talks",
-        "Safe Game Drives",
-      ],
-      description:
-        "Perfect introduction to safari life with activities designed to inspire young adventurers.",
-      priceFrom: "KES 420,000",
-      tags: ["Family", "Adventure", "Educational"],
-      slug: "5-day-family-adventure-safari",
-    },
-    {
-      id: 3,
-      title: "10-Day Photography Master Safari",
-      image: SafariPhotography,
-      duration: "10 Days",
-      groupSize: "4-8 People",
-      style: "Photography",
-      highlights: [
-        "Golden Hour Positioning",
-        "Hide Photography",
-        "Expert Guidance",
-      ],
-      description:
-        "Designed for serious photographers with expert guides who understand light, timing, and animal behavior.",
-      priceFrom: "KES 930,000",
-      tags: ["Photography", "Expert", "Specialized"],
-      slug: "10-day-photography-master-safari",
-    },
-  ];
-
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -79,7 +23,7 @@ const FeaturedExperiences = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {experiences.map((experience, index) => (
+          {safaris.slice(0, 3).map((experience, index) => (
             <div
               key={experience.id}
               className="group safari-card overflow-hidden animate-safari-slide-up"
@@ -162,7 +106,7 @@ const FeaturedExperiences = () => {
                   <SafariBuilderModal
                     preselectedPackage={{
                       title: experience.title,
-                      duration: experience.duration,
+                      duration: `${experience.duration} Days`,
                       style: experience.style,
                     }}
                   >
