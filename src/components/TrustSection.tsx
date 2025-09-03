@@ -87,7 +87,7 @@ const TrustSection = () => {
             What Our Travelers Say
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.slice(0, 5).map((testimonial, index) => (
+            {testimonials.slice(0, 4).map((testimonial, index) => (
               <div key={index} className="safari-card text-center">
                 <div className="flex justify-center mb-4">
                   {[...Array(5)].map((_, i) => (

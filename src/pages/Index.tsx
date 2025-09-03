@@ -162,15 +162,17 @@ const Index = () => {
                       <div className="absolute inset-0 bg-black/10"></div>
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="flex flex-wrap gap-2">
-                          {destination.highlights.map((highlight) => (
-                            <Badge
-                              key={highlight}
-                              variant="secondary"
-                              className="text-xs bg-white/90 text-safari-charcoal"
-                            >
-                              {highlight}
-                            </Badge>
-                          ))}
+                          {destination.highlights
+                            .slice(0, 3)
+                            .map((highlight) => (
+                              <Badge
+                                key={highlight}
+                                variant="secondary"
+                                className="text-xs bg-white/90 text-safari-charcoal"
+                              >
+                                {highlight}
+                              </Badge>
+                            ))}
                         </div>
                       </div>
                     </div>
@@ -197,7 +199,7 @@ const Index = () => {
                     <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                       <div className="flex items-center space-x-1">
                         <Calendar className="w-4 h-4" />
-                        <span>Best: {destination.bestMonths}</span>
+                        <span>Best: {destination.bestMonth}</span>
                       </div>
                     </div>
 
@@ -282,9 +284,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" asChild>
-              <a href="/guides">
-                Browse All Guides
-              </a>
+              <a href="/guides">Browse All Guides</a>
             </Button>
           </div>
         </div>
