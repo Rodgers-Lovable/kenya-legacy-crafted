@@ -84,7 +84,7 @@ const Index = () => {
     <>
       <Helmet>
         <title>
-           {COMPANY_NAME} | Luxury Kenya Safari Tours & Wildlife Safaris
+           {COMPANY_NAME} | Luxury Kenya Safaris and Adventures
         </title>
         <meta
           name="description"
