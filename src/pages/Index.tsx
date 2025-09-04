@@ -20,7 +20,8 @@ import Sundowner from "@/assets/images/sundowner.jpg";
 import BushBreakfast from "@/assets/images/bush-breakfast.jpg";
 import BalloonFlight from "@/assets/images/balloon-flight.jpg";
 import { destinations } from "@/core/data/destinations";
-import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { COMPANY_NAME, WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   const journeyStory = [
@@ -80,324 +81,353 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Interactive Hero */}
-      <InteractiveHero />
+    <>
+      <Helmet>
+        <title>
+           {COMPANY_NAME} | Luxury Kenya Safari Tours & Wildlife Safaris
+        </title>
+        <meta
+          name="description"
+          content="Experience unforgettable Kenya safaris. Witness the Big Five, the Great Migration, and explore Maasai Mara, Amboseli & more with luxury safari tours."
+        />
+        <meta
+          name="keywords"
+          content="Kenya safari, Maasai Mara tours, Amboseli safari, luxury safaris Kenya, Big Five safari, Kenya travel"
+        />
+        <meta
+          property="og:title"
+          content="Luxury Kenya Safari Tours & Wildlife Safaris"
+        />
+        <meta
+          property="og:description"
+          content="Book luxury Kenya safaris and experience wildlife adventures in Maasai Mara, Amboseli, Tsavo & more."
+        />
+        <meta property="og:image" content="/images/seo/home-hero.jpg" />
+        <meta property="og:url" content="https://karenlegacytoursandsafaris.com/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://karenlegacytoursandsafaris.com/" />
+      </Helmet>
+      <div className="min-h-screen">
+        {/* Interactive Hero */}
+        <InteractiveHero />
 
-      {/* Journey Story Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-display mb-4">
-              A Day in Your Safari Story
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Every moment carefully orchestrated, from first light to evening's
-              embrace
-            </p>
+        {/* Journey Story Section */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="font-display text-display mb-4">
+                A Day in Your Safari Story
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Every moment carefully orchestrated, from first light to
+                evening's embrace
+              </p>
+            </div>
+
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {journeyStory.map((moment, index) => (
+                  <div key={index} className="relative group">
+                    <div
+                      className="aspect-[3/4] rounded-hero mb-6 relative overflow-hidden"
+                      style={{
+                        backgroundImage: `url(${moment.image})`,
+                        backgroundSize: "cover",
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-black/20"></div>
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-safari-charcoal">
+                        {moment.time}
+                      </div>
+                    </div>
+                    <h3 className="font-display text-xl mb-2">
+                      {moment.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {moment.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {journeyStory.map((moment, index) => (
-                <div key={index} className="relative group">
-                  <div
-                    className="aspect-[3/4] rounded-hero mb-6 relative overflow-hidden"
-                    style={{
-                      backgroundImage: `url(${moment.image})`,
-                      backgroundSize: "cover",
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-safari-charcoal">
-                      {moment.time}
+        {/* Trust & Social Proof */}
+        <TrustSection />
+
+        {/* Featured Experiences */}
+        <FeaturedExperiences />
+
+        {/* Destinations Mosaic */}
+        <section className="py-20 bg-gradient-landscape">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="font-display text-display mb-4">
+                Discover Kenya's Wild Heart
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                From the legendary Masai Mara to hidden gems, explore diverse
+                ecosystems that make Kenya the ultimate safari destination.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {destinations.slice(0, 4).map((destination, index) => (
+                <div key={index} className="group safari-card overflow-hidden">
+                  <div className="grid md:grid-cols-2 gap-6 items-center">
+                    <div
+                      className={`aspect-square rounded-card relative ${
+                        index % 2 === 1 ? "md:order-2" : ""
+                      }`}
+                    >
+                      <div
+                        className="w-full h-full rounded-card relative overflow-hidden"
+                        style={{
+                          backgroundImage: `url(${destination.image})`,
+                          backgroundSize: "contain",
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-black/10"></div>
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="flex flex-wrap gap-2">
+                            {destination.highlights
+                              .slice(0, 3)
+                              .map((highlight) => (
+                                <Badge
+                                  key={highlight}
+                                  variant="secondary"
+                                  className="text-xs bg-white/90 text-safari-charcoal"
+                                >
+                                  {highlight}
+                                </Badge>
+                              ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`space-y-4 ${
+                        index % 2 === 1 ? "md:order-1" : ""
+                      }`}
+                    >
+                      <div>
+                        <h3 className="font-display text-2xl mb-1">
+                          {destination.name}
+                        </h3>
+                        <p className="text-primary font-semibold">
+                          {destination.subtitle}
+                        </p>
+                      </div>
+
+                      <p className="text-muted-foreground leading-relaxed">
+                        {destination.description}
+                      </p>
+
+                      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                        <div className="flex items-center space-x-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>Best: {destination.bestMonth}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-4">
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={`/destinations/${destination.slug}`}>
+                            Learn More
+                          </a>
+                        </Button>
+                        <Button size="sm" asChild>
+                          <a href="/safaris">
+                            View Safaris
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </a>
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                  <h3 className="font-display text-xl mb-2">{moment.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {moment.description}
-                  </p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Trust & Social Proof */}
-      <TrustSection />
+        {/* Editorial Hub Teaser */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="font-display text-display mb-4">
+                Safari Wisdom & Insights
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Expert guides, insider tips, and everything you need to know for
+                the perfect Kenya safari
+              </p>
+            </div>
 
-      {/* Featured Experiences */}
-      <FeaturedExperiences />
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {guides.map((guide, index) => (
+                <Card
+                  key={index}
+                  className={`group hover:shadow-safari-floating transition-all duration-300 ${
+                    guide.featured ? "md:col-span-3 lg:col-span-1" : ""
+                  }`}
+                >
+                  <CardContent className="p-6">
+                    {guide.featured && (
+                      <Badge className="mb-4">Featured Guide</Badge>
+                    )}
 
-      {/* Destinations Mosaic */}
-      <section className="py-20 bg-gradient-landscape">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-display mb-4">
-              Discover Kenya's Wild Heart
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From the legendary Masai Mara to hidden gems, explore diverse
-              ecosystems that make Kenya the ultimate safari destination.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {destinations.slice(0, 4).map((destination, index) => (
-              <div key={index} className="group safari-card overflow-hidden">
-                <div className="grid md:grid-cols-2 gap-6 items-center">
-                  <div
-                    className={`aspect-square rounded-card relative ${
-                      index % 2 === 1 ? "md:order-2" : ""
-                    }`}
-                  >
-                    <div
-                      className="w-full h-full rounded-card relative overflow-hidden"
-                      style={{
-                        backgroundImage: `url(${destination.image})`,
-                        backgroundSize: "contain",
-                      }}
-                    >
-                      <div className="absolute inset-0 bg-black/10"></div>
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex flex-wrap gap-2">
-                          {destination.highlights
-                            .slice(0, 3)
-                            .map((highlight) => (
-                              <Badge
-                                key={highlight}
-                                variant="secondary"
-                                className="text-xs bg-white/90 text-safari-charcoal"
-                              >
-                                {highlight}
-                              </Badge>
-                            ))}
-                        </div>
+                    <div className="flex items-center justify-between mb-4">
+                      <Badge variant="outline">{guide.category}</Badge>
+                      <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                        <Clock className="w-3 h-3" />
+                        <span>{guide.readTime}</span>
                       </div>
                     </div>
-                  </div>
 
-                  <div
-                    className={`space-y-4 ${
-                      index % 2 === 1 ? "md:order-1" : ""
-                    }`}
-                  >
-                    <div>
-                      <h3 className="font-display text-2xl mb-1">
-                        {destination.name}
-                      </h3>
-                      <p className="text-primary font-semibold">
-                        {destination.subtitle}
-                      </p>
-                    </div>
+                    <h3 className="font-display text-lg font-semibold mb-3 group-hover:text-primary transition-safari">
+                      {guide.title}
+                    </h3>
 
-                    <p className="text-muted-foreground leading-relaxed">
-                      {destination.description}
+                    <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+                      {guide.description}
                     </p>
 
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>Best: {destination.bestMonth}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-4">
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={`/destinations/${destination.slug}`}>
-                          Learn More
-                        </a>
-                      </Button>
-                      <Button size="sm" asChild>
-                        <a href="/safaris">
-                          View Safaris
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Editorial Hub Teaser */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-display mb-4">
-              Safari Wisdom & Insights
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Expert guides, insider tips, and everything you need to know for
-              the perfect Kenya safari
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {guides.map((guide, index) => (
-              <Card
-                key={index}
-                className={`group hover:shadow-safari-floating transition-all duration-300 ${
-                  guide.featured ? "md:col-span-3 lg:col-span-1" : ""
-                }`}
-              >
-                <CardContent className="p-6">
-                  {guide.featured && (
-                    <Badge className="mb-4">Featured Guide</Badge>
-                  )}
-
-                  <div className="flex items-center justify-between mb-4">
-                    <Badge variant="outline">{guide.category}</Badge>
-                    <div className="flex items-center space-x-1 text-sm text-muted-foreground">
-                      <Clock className="w-3 h-3" />
-                      <span>{guide.readTime}</span>
-                    </div>
-                  </div>
-
-                  <h3 className="font-display text-lg font-semibold mb-3 group-hover:text-primary transition-safari">
-                    {guide.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                    {guide.description}
-                  </p>
-
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="group-hover:text-primary"
-                    asChild
-                  >
-                    <a href="/guides">
-                      Read Article
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" asChild>
-              <a href="/guides">Browse All Guides</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Lead Magnet Section */}
-      <section className="py-20 bg-gradient-sunset">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6">
-              <Download className="w-8 h-8 text-white" />
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="group-hover:text-primary"
+                      asChild
+                    >
+                      <a href="/guides">
+                        Read Article
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
-            <h2 className="font-display text-3xl text-white mb-4">
-              Get Your Free Kenya Safari Planning Guide
-            </h2>
-
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              30-page comprehensive guide with insider tips, packing lists, best
-              times to visit, and exclusive itinerary recommendations.
-            </p>
-
-            <div className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto mb-6">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-card bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
-              <Button
-                variant="secondary"
-                size="lg"
-                className="whitespace-nowrap"
-              >
-                Download Free Guide
+            <div className="text-center mt-12">
+              <Button variant="outline" size="lg" asChild>
+                <a href="/guides">Browse All Guides</a>
               </Button>
             </div>
+          </div>
+        </section>
 
-            <div className="text-sm text-white/70">
-              ✓ Instant download • ✓ No spam • ✓ Used by 10,000+ travelers
+        {/* Lead Magnet Section */}
+        <section className="py-20 bg-gradient-sunset">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6">
+                <Download className="w-8 h-8 text-white" />
+              </div>
+
+              <h2 className="font-display text-3xl text-white mb-4">
+                Get Your Free Kenya Safari Planning Guide
+              </h2>
+
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                30-page comprehensive guide with insider tips, packing lists,
+                best times to visit, and exclusive itinerary recommendations.
+              </p>
+
+              <div className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto mb-6">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="flex-1 px-4 py-3 rounded-card bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="whitespace-nowrap"
+                >
+                  Download Free Guide
+                </Button>
+              </div>
+
+              <div className="text-sm text-white/70">
+                ✓ Instant download • ✓ No spam • ✓ Used by 10,000+ travelers
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Final CTA Section */}
-      <section className="py-20 bg-safari-charcoal text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-display mb-6">
-              Ready for Your Kenya Adventure?
-            </h2>
+        {/* Final CTA Section */}
+        <section className="py-20 bg-safari-charcoal text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-display text-display mb-6">
+                Ready for Your Kenya Adventure?
+              </h2>
 
-            <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-              Let our local experts craft a personalized safari experience that
-              exceeds your wildest dreams. Every detail handled, every moment
-              unforgettable.
-            </p>
+              <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
+                Let our local experts craft a personalized safari experience
+                that exceeds your wildest dreams. Every detail handled, every
+                moment unforgettable.
+              </p>
 
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
-              <SafariBuilderModal>
+              <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-8">
+                <SafariBuilderModal>
+                  <Button
+                    size="lg"
+                    variant="default"
+                    className="text-lg px-8 py-4"
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Plan My Safari
+                  </Button>
+                </SafariBuilderModal>
+
                 <Button
                   size="lg"
-                  variant="default"
-                  className="text-lg px-8 py-4"
+                  variant="outline"
+                  className="text-lg px-8 py-4 text-white bg-white/30 border-white/30 hover:bg-white/10"
                 >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Plan My Safari
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Chat on Whatsapp
+                  </a>
                 </Button>
-              </SafariBuilderModal>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-4 text-white bg-white/30 border-white/30 hover:bg-white/10"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Chat on Whatsapp
-                </a>
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="font-semibold">Expert Local Guides</div>
-                <div className="text-sm text-white/70">
-                  Licensed & experienced
-                </div>
               </div>
-              <div>
-                <Heart className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="font-semibold">Tailored Experiences</div>
-                <div className="text-sm text-white/70">
-                  Crafted just for you
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <Users className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <div className="font-semibold">Expert Local Guides</div>
+                  <div className="text-sm text-white/70">
+                    Licensed & experienced
+                  </div>
                 </div>
-              </div>
-              <div>
-                <Camera className="w-8 h-8 text-primary mx-auto mb-3" />
-                <div className="font-semibold">Unforgettable Moments</div>
-                <div className="text-sm text-white/70">
-                  Memories to last a lifetime
+                <div>
+                  <Heart className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <div className="font-semibold">Tailored Experiences</div>
+                  <div className="text-sm text-white/70">
+                    Crafted just for you
+                  </div>
+                </div>
+                <div>
+                  <Camera className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <div className="font-semibold">Unforgettable Moments</div>
+                  <div className="text-sm text-white/70">
+                    Memories to last a lifetime
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 

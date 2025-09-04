@@ -19,7 +19,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SafariBuilderModal from "@/components/SafariBuilderModal";
-import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { COMPANY_NAME, WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { Helmet } from "react-helmet-async";
 
 const DestinationDetail = () => {
   // Mock data - in a real app, this would come from CMS/API
@@ -257,362 +258,393 @@ const DestinationDetail = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
-        <img
-          src={destination.hero.image}
-          alt={destination.name}
-          className="w-full h-full object-cover"
+    <>
+      <Helmet>
+        <title>{destination.name} | {COMPANY_NAME}</title>
+        <meta
+          name="description"
+          content="Learn about our Kenya safari company, our passion for wildlife, and commitment to delivering luxury safari experiences across Maasai Mara, Amboseli, Tsavo & more."
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        <div className="absolute bottom-8 left-8 text-white max-w-2xl">
-          <Badge className="mb-4">{destination.region}</Badge>
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            {destination.name}
-          </h1>
-          <p className="text-lg opacity-90">{destination.description}</p>
-        </div>
-      </section>
+      </Helmet>
 
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* Quick Facts */}
-            <section>
-              <div className="grid md:grid-cols-4 gap-4 text-center">
-                <div className="p-4 bg-card border border-border rounded-lg">
-                  <MapPin className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="font-medium">{destination.area}</p>
-                  <p className="text-sm text-muted-foreground">Total Area</p>
-                </div>
-                <div className="p-4 bg-card border border-border rounded-lg">
-                  <Calendar className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="font-medium">{destination.established}</p>
-                  <p className="text-sm text-muted-foreground">Established</p>
-                </div>
-                <div className="p-4 bg-card border border-border rounded-lg">
-                  <Camera className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="font-medium">{destination.elevation}</p>
-                  <p className="text-sm text-muted-foreground">Elevation</p>
-                </div>
-                <div className="p-4 bg-card border border-border rounded-lg">
-                  <Users className="w-6 h-6 text-primary mx-auto mb-2" />
-                  <p className="font-medium">{destination.safaris.length}+</p>
-                  <p className="text-sm text-muted-foreground">
-                    Safari Options
-                  </p>
-                </div>
-              </div>
-            </section>
+      <div className="min-h-screen pt-16">
+        {/* Hero Section */}
+        <section className="relative h-[70vh] overflow-hidden">
+          <img
+            src={destination.hero.image}
+            alt={destination.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div className="absolute bottom-8 left-8 text-white max-w-2xl">
+            <Badge className="mb-4">{destination.region}</Badge>
+            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+              {destination.name}
+            </h1>
+            <p className="text-lg opacity-90">{destination.description}</p>
+          </div>
+        </section>
 
-            {/* Highlights */}
-            <section>
-              <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
-                Highlights
-              </h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {destination.highlights.map((highlight, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg"
-                  >
-                    <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                    <span className="font-medium">{highlight}</span>
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Main Content */}
+            <div className="lg:col-span-2 space-y-12">
+              {/* Quick Facts */}
+              <section>
+                <div className="grid md:grid-cols-4 gap-4 text-center">
+                  <div className="p-4 bg-card border border-border rounded-lg">
+                    <MapPin className="w-6 h-6 text-primary mx-auto mb-2" />
+                    <p className="font-medium">{destination.area}</p>
+                    <p className="text-sm text-muted-foreground">Total Area</p>
                   </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Wildlife & Best Times */}
-            <section>
-              <Tabs defaultValue="wildlife" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="wildlife">Wildlife</TabsTrigger>
-                  <TabsTrigger value="when-to-visit">When to Visit</TabsTrigger>
-                  <TabsTrigger value="monthly-guide">Monthly Guide</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="wildlife" className="space-y-6 mt-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="border-border">
-                      <CardHeader>
-                        <CardTitle className="text-lg">The Big Five</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-2">
-                          {destination.wildlife.bigFive.map((animal, index) => (
-                            <li key={index} className="flex items-center gap-2">
-                              <div className="w-2 h-2 bg-primary rounded-full"></div>
-                              {animal}
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-border">
-                      <CardHeader>
-                        <CardTitle className="text-lg">
-                          Signature Species
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-2">
-                          {destination.wildlife.signature.map(
-                            (animal, index) => (
-                              <li
-                                key={index}
-                                className="flex items-center gap-2"
-                              >
-                                <div className="w-2 h-2 bg-primary rounded-full"></div>
-                                {animal}
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      </CardContent>
-                    </Card>
+                  <div className="p-4 bg-card border border-border rounded-lg">
+                    <Calendar className="w-6 h-6 text-primary mx-auto mb-2" />
+                    <p className="font-medium">{destination.established}</p>
+                    <p className="text-sm text-muted-foreground">Established</p>
                   </div>
-                </TabsContent>
+                  <div className="p-4 bg-card border border-border rounded-lg">
+                    <Camera className="w-6 h-6 text-primary mx-auto mb-2" />
+                    <p className="font-medium">{destination.elevation}</p>
+                    <p className="text-sm text-muted-foreground">Elevation</p>
+                  </div>
+                  <div className="p-4 bg-card border border-border rounded-lg">
+                    <Users className="w-6 h-6 text-primary mx-auto mb-2" />
+                    <p className="font-medium">{destination.safaris.length}+</p>
+                    <p className="text-sm text-muted-foreground">
+                      Safari Options
+                    </p>
+                  </div>
+                </div>
+              </section>
 
-                <TabsContent value="when-to-visit" className="space-y-6 mt-6">
-                  {Object.entries(destination.bestTimes).map(
-                    ([key, period]) => (
-                      <Card key={key} className="border-border">
+              {/* Highlights */}
+              <section>
+                <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
+                  Highlights
+                </h2>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {destination.highlights.map((highlight, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg"
+                    >
+                      <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                      <span className="font-medium">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Wildlife & Best Times */}
+              <section>
+                <Tabs defaultValue="wildlife" className="w-full">
+                  <TabsList className="grid w-full grid-cols-3">
+                    <TabsTrigger value="wildlife">Wildlife</TabsTrigger>
+                    <TabsTrigger value="when-to-visit">
+                      When to Visit
+                    </TabsTrigger>
+                    <TabsTrigger value="monthly-guide">
+                      Monthly Guide
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="wildlife" className="space-y-6 mt-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <Card className="border-border">
                         <CardHeader>
-                          <CardTitle className="flex items-center gap-2">
-                            <Calendar className="w-5 h-5 text-primary" />
-                            {period.period}
+                          <CardTitle className="text-lg">
+                            The Big Five
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-muted-foreground">
-                            {period.description}
-                          </p>
+                          <ul className="space-y-2">
+                            {destination.wildlife.bigFive.map(
+                              (animal, index) => (
+                                <li
+                                  key={index}
+                                  className="flex items-center gap-2"
+                                >
+                                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                                  {animal}
+                                </li>
+                              )
+                            )}
+                          </ul>
                         </CardContent>
                       </Card>
-                    )
-                  )}
-                </TabsContent>
 
-                <TabsContent value="monthly-guide" className="mt-6">
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {destination.monthlyGuide.map((month) => (
-                      <Card key={month.month} className="border-border">
-                        <CardHeader className="pb-3">
-                          <div className="flex items-center justify-between">
-                            <CardTitle className="text-lg">
-                              {month.month}
-                            </CardTitle>
-                            <div className="flex">
-                              {getRatingStars(month.rating)}
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="pt-0">
-                          <div className="space-y-2 text-sm">
-                            <div className="flex justify-between">
-                              <span className="text-muted-foreground">
-                                Wildlife:
-                              </span>
-                              <span className="font-medium">
-                                {month.wildlife}
-                              </span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span className="text-muted-foreground">
-                                Weather:
-                              </span>
-                              <span className="font-medium">
-                                {month.weather}
-                              </span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span className="text-muted-foreground">
-                                Migration:
-                              </span>
-                              <span className="font-medium">
-                                {month.migration}
-                              </span>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </section>
-
-            {/* Safari Options */}
-            <section>
-              <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
-                Featured Safaris
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {destination.safaris.map((safari, index) => (
-                  <Card
-                    key={index}
-                    className="border-border hover:shadow-lg transition-safari"
-                  >
-                    <div className="aspect-video bg-muted overflow-hidden">
-                      <img
-                        src={safari.image}
-                        alt={safari.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="outline">{safari.duration} Days</Badge>
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm">{safari.rating}</span>
-                        </div>
-                      </div>
-                      <CardTitle className="text-lg">{safari.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center justify-between">
-                        <p className="font-bold text-primary">{safari.price}</p>
-                        <Button size="sm" asChild>
-                          <a
-                            href="/safaris"
-                            className="flex items-center gap-1"
-                          >
-                            View <ArrowRight className="w-4 h-4" />
-                          </a>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
-
-            {/* Travel Guides */}
-            <section>
-              <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
-                Planning Guides
-              </h2>
-              <div className="space-y-4">
-                {destination.guides.map((guide, index) => (
-                  <Card
-                    key={index}
-                    className="border-border hover:shadow-lg transition-safari"
-                  >
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <CardTitle className="text-lg mb-1">
-                            {guide.title}
+                      <Card className="border-border">
+                        <CardHeader>
+                          <CardTitle className="text-lg">
+                            Signature Species
                           </CardTitle>
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                            <Badge variant="secondary">{guide.category}</Badge>
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
-                              {guide.readTime}
-                            </span>
+                        </CardHeader>
+                        <CardContent>
+                          <ul className="space-y-2">
+                            {destination.wildlife.signature.map(
+                              (animal, index) => (
+                                <li
+                                  key={index}
+                                  className="flex items-center gap-2"
+                                >
+                                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                                  {animal}
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="when-to-visit" className="space-y-6 mt-6">
+                    {Object.entries(destination.bestTimes).map(
+                      ([key, period]) => (
+                        <Card key={key} className="border-border">
+                          <CardHeader>
+                            <CardTitle className="flex items-center gap-2">
+                              <Calendar className="w-5 h-5 text-primary" />
+                              {period.period}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <p className="text-muted-foreground">
+                              {period.description}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      )
+                    )}
+                  </TabsContent>
+
+                  <TabsContent value="monthly-guide" className="mt-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {destination.monthlyGuide.map((month) => (
+                        <Card key={month.month} className="border-border">
+                          <CardHeader className="pb-3">
+                            <div className="flex items-center justify-between">
+                              <CardTitle className="text-lg">
+                                {month.month}
+                              </CardTitle>
+                              <div className="flex">
+                                {getRatingStars(month.rating)}
+                              </div>
+                            </div>
+                          </CardHeader>
+                          <CardContent className="pt-0">
+                            <div className="space-y-2 text-sm">
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">
+                                  Wildlife:
+                                </span>
+                                <span className="font-medium">
+                                  {month.wildlife}
+                                </span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">
+                                  Weather:
+                                </span>
+                                <span className="font-medium">
+                                  {month.weather}
+                                </span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">
+                                  Migration:
+                                </span>
+                                <span className="font-medium">
+                                  {month.migration}
+                                </span>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </section>
+
+              {/* Safari Options */}
+              <section>
+                <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
+                  Featured Safaris
+                </h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {destination.safaris.map((safari, index) => (
+                    <Card
+                      key={index}
+                      className="border-border hover:shadow-lg transition-safari"
+                    >
+                      <div className="aspect-video bg-muted overflow-hidden">
+                        <img
+                          src={safari.image}
+                          alt={safari.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <CardHeader>
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge variant="outline">
+                            {safari.duration} Days
+                          </Badge>
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            <span className="text-sm">{safari.rating}</span>
                           </div>
                         </div>
-                        <Button size="sm" variant="outline" asChild>
-                          <a href="/guides">Read</a>
-                        </Button>
-                      </div>
-                      <CardDescription>{guide.excerpt}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                ))}
-              </div>
-            </section>
-          </div>
+                        <CardTitle className="text-lg">
+                          {safari.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center justify-between">
+                          <p className="font-bold text-primary">
+                            {safari.price}
+                          </p>
+                          <Button size="sm" asChild>
+                            <a
+                              href="/safaris"
+                              className="flex items-center gap-1"
+                            >
+                              View <ArrowRight className="w-4 h-4" />
+                            </a>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </section>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* CTA Card */}
-            <Card className="border-border sticky top-24">
-              <CardHeader>
-                <CardTitle className="text-center">Plan Your Visit</CardTitle>
-                <CardDescription className="text-center">
-                  Ready to explore {destination.name}?
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <SafariBuilderModal>
-                  <Button size="lg" className="w-full">
-                    Plan My Safari
+              {/* Travel Guides */}
+              <section>
+                <h2 className="font-display text-3xl font-bold mb-6 text-foreground">
+                  Planning Guides
+                </h2>
+                <div className="space-y-4">
+                  {destination.guides.map((guide, index) => (
+                    <Card
+                      key={index}
+                      className="border-border hover:shadow-lg transition-safari"
+                    >
+                      <CardHeader>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <CardTitle className="text-lg mb-1">
+                              {guide.title}
+                            </CardTitle>
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                              <Badge variant="secondary">
+                                {guide.category}
+                              </Badge>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                {guide.readTime}
+                              </span>
+                            </div>
+                          </div>
+                          <Button size="sm" variant="outline" asChild>
+                            <a href="/guides">Read</a>
+                          </Button>
+                        </div>
+                        <CardDescription>{guide.excerpt}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  ))}
+                </div>
+              </section>
+            </div>
+
+            {/* Sidebar */}
+            <div className="space-y-6">
+              {/* CTA Card */}
+              <Card className="border-border sticky top-24">
+                <CardHeader>
+                  <CardTitle className="text-center">Plan Your Visit</CardTitle>
+                  <CardDescription className="text-center">
+                    Ready to explore {destination.name}?
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <SafariBuilderModal>
+                    <Button size="lg" className="w-full">
+                      Plan My Safari
+                    </Button>
+                  </SafariBuilderModal>
+
+                  <Button variant="outline" className="w-full" asChild>
+                    <a href="/safaris">Browse Safaris</a>
                   </Button>
-                </SafariBuilderModal>
 
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="/safaris">Browse Safaris</a>
-                </Button>
+                  <Button variant="ghost" className="w-full" asChild>
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'd like information about Masai Mara safaris`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Chat on WhatsApp
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
 
-                <Button variant="ghost" className="w-full" asChild>
-                  <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'd like information about Masai Mara safaris`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Chat on WhatsApp
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
+              {/* Practical Information */}
+              <Card className="border-border">
+                <CardHeader>
+                  <CardTitle>Practical Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 text-sm">
+                  <div>
+                    <h4 className="font-medium mb-2">Getting There:</h4>
+                    <ul className="space-y-1 text-muted-foreground">
+                      {destination.practicalInfo.gettingThere.map(
+                        (item, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                            {item}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
 
-            {/* Practical Information */}
-            <Card className="border-border">
-              <CardHeader>
-                <CardTitle>Practical Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm">
-                <div>
-                  <h4 className="font-medium mb-2">Getting There:</h4>
-                  <ul className="space-y-1 text-muted-foreground">
-                    {destination.practicalInfo.gettingThere.map(
-                      (item, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          {item}
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
+                  <div>
+                    <h4 className="font-medium mb-2">Accommodation:</h4>
+                    <ul className="space-y-1 text-muted-foreground">
+                      {destination.practicalInfo.accommodation.map(
+                        (item, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                            {item}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
 
-                <div>
-                  <h4 className="font-medium mb-2">Accommodation:</h4>
-                  <ul className="space-y-1 text-muted-foreground">
-                    {destination.practicalInfo.accommodation.map(
-                      (item, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          {item}
-                        </li>
-                      )
-                    )}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-medium mb-2">Activities:</h4>
-                  <ul className="space-y-1 text-muted-foreground">
-                    {destination.practicalInfo.activities.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
+                  <div>
+                    <h4 className="font-medium mb-2">Activities:</h4>
+                    <ul className="space-y-1 text-muted-foreground">
+                      {destination.practicalInfo.activities.map(
+                        (item, index) => (
+                          <li key={index} className="flex items-start gap-2">
+                            <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                            {item}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
