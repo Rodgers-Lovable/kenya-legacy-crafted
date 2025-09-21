@@ -64,7 +64,10 @@ const Safaris = () => {
           content="Kenya Safari Packages | Tailor-Made Tours & Luxury Adventures"
         />
         <meta property="og:image" content="/images/seo/safari-packages.jpg" />
-        <link rel="canonical" href="https://karenlegacytoursandsafaris.com/safaris" />
+        <link
+          rel="canonical"
+          href="https://karenlegacytoursandsafaris.com/safaris"
+        />
       </Helmet>
 
       <div className="min-h-screen pt-16">
@@ -203,15 +206,7 @@ const Safaris = () => {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4">
-                      <div>
-                        <p className="font-display text-2xl font-bold text-primary">
-                          {safari.price}{" "}
-                          <span className="text-sm text-muted-foreground font-body">
-                            /per person
-                          </span>
-                        </p>
-                      </div>
+                    <div className="flex items-center justify-end pt-4">
                       <div className="flex gap-2">
                         <Button
                           variant="outline"

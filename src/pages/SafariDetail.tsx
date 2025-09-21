@@ -50,7 +50,7 @@ const SafariDetail = () => {
           {safari.title} | {COMPANY_NAME}
         </title>
       </Helmet>
-      
+
       <div className="min-h-screen pt-16">
         {/* Hero Section */}
         <section className="relative h-[60vh] overflow-hidden">
@@ -332,16 +332,7 @@ const SafariDetail = () => {
             <div className="space-y-6">
               {/* Booking Card */}
               <Card className="border-border sticky top-24">
-                <CardHeader>
-                  <div className="text-center">
-                    <p className="font-display text-3xl font-bold text-primary">
-                      {safari.price}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {safari.priceDetails || "per person sharing"}
-                    </p>
-                  </div>
-                </CardHeader>
+                <CardHeader></CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-center gap-1 text-sm">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />

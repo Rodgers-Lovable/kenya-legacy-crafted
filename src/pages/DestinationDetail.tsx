@@ -25,9 +25,9 @@ import { Helmet } from "react-helmet-async";
 const DestinationDetail = () => {
   // Mock data - in a real app, this would come from CMS/API
   const destination = {
-    name: "Masai Mara National Reserve",
+    name: "Maasai Mara National Reserve",
     description:
-      "Kenya's most famous safari destination, the Masai Mara is renowned for its exceptional wildlife and the annual Great Migration. This vast savannah ecosystem offers unparalleled game viewing opportunities and authentic cultural experiences with the Maasai people.",
+      "Kenya's most famous safari destination, the Maasai Mara is renowned for its exceptional wildlife and the annual Great Migration. This vast savannah ecosystem offers unparalleled game viewing opportunities and authentic cultural experiences with the Maasai people.",
     region: "Rift Valley Province",
     area: "1,510 km²",
     established: "1961",
@@ -179,7 +179,7 @@ const DestinationDetail = () => {
 
     safaris: [
       {
-        title: "7-Day Masai Mara Luxury Safari",
+        title: "7-Day Maasai Mara Luxury Safari",
         duration: 7,
         price: "From $3,500",
         rating: 4.9,
@@ -203,7 +203,7 @@ const DestinationDetail = () => {
 
     guides: [
       {
-        title: "Best Time to Visit Masai Mara",
+        title: "Best Time to Visit Maasai Mara",
         category: "Planning",
         readTime: "8 min read",
         excerpt:
@@ -217,7 +217,7 @@ const DestinationDetail = () => {
           "Everything you need to know about witnessing the world's greatest wildlife spectacle.",
       },
       {
-        title: "Masai Mara Photography Tips",
+        title: "Maasai Mara Photography Tips",
         category: "Photography",
         readTime: "10 min read",
         excerpt:
@@ -500,10 +500,7 @@ const DestinationDetail = () => {
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="flex items-center justify-between">
-                          <p className="font-bold text-primary">
-                            {safari.price}
-                          </p>
+                        <div className="flex items-center justify-end">
                           <Button size="sm" asChild>
                             <a
                               href="/safaris"
@@ -581,7 +578,7 @@ const DestinationDetail = () => {
 
                   <Button variant="ghost" className="w-full" asChild>
                     <a
-                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'd like information about Masai Mara safaris`}
+                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'd like information about Maasai Mara safaris`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
