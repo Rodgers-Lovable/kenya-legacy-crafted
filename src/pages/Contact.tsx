@@ -21,6 +21,7 @@ import {
   WHATSAPP_NUMBER,
 } from "@/core/constants/appConstants";
 import { Helmet } from "react-helmet-async";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -39,13 +40,18 @@ const Contact = () => {
 
     try {
       // EmailJS Integration - Add your service configuration
-      const serviceId = process.env.EMAILJS_SERVICE_ID || "your_service_id";
+      console.log(formData);
+
+      const serviceId =
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || "your_service_id";
       const templateId =
-        process.env.EMAILJS_CONTACT_TEMPLATE_ID || "your_contact_template_id";
-      const publicKey = process.env.EMAILJS_PUBLIC_KEY || "your_public_key";
+        import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID ||
+        "your_contact_template_id";
+      const publicKey =
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key";
 
       const emailData = {
-        to_email: "info@yoursafaricompany.com",
+        to_email: COMPANY_PRIMARY_EMAIL,
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
@@ -59,13 +65,10 @@ const Contact = () => {
       };
 
       // Uncomment below when EmailJS is configured
-      // await emailjs.send(serviceId, templateId, emailData, publicKey);
-
-      console.log("Form submitted:", formData);
-      console.log("EmailJS Data:", emailData);
+      await emailjs.send(serviceId, templateId, emailData, publicKey);
 
       // Show success message
-      alert(
+      toast.success(
         "Thank you for your inquiry! We will get back to you within 24 hours."
       );
 
@@ -82,7 +85,8 @@ const Contact = () => {
       });
     } catch (error) {
       console.error("EmailJS Error:", error);
-      alert(
+
+      toast.error(
         "There was an error sending your message. Please try again or contact us directly."
       );
     }
