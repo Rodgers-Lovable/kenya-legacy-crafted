@@ -19,9 +19,11 @@ import {
   DEVELOPER_NAME,
   COMPANY_NAME,
 } from "@/core/constants/appConstants";
+import { useUmami } from "@/hooks/use-umami";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { trackWhatsAppClick, trackNewsletterSignup, trackSocialLinkClick, SOURCES } = useUmami();
 
   return (
     <footer className="bg-safari-charcoal text-safari-ivory">
@@ -42,7 +44,11 @@ const Footer = () => {
                 placeholder="Enter your email address"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
               />
-              <Button variant="default" className="whitespace-nowrap">
+              <Button
+                variant="default"
+                className="whitespace-nowrap"
+                onClick={() => trackNewsletterSignup()}
+              >
                 Get Free Guide
               </Button>
             </div>
@@ -100,6 +106,7 @@ const Footer = () => {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick(SOURCES.FOOTER)}
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp Us
@@ -193,10 +200,10 @@ const Footer = () => {
               </span>
               <div className="flex space-x-4">
                 {[
-                  { icon: Facebook, href: "#" },
-                  { icon: Instagram, href: "#" },
-                  { icon: Twitter, href: "#" },
-                  { icon: Youtube, href: "#" },
+                  { icon: Facebook, href: "#", name: "facebook" },
+                  { icon: Instagram, href: "#", name: "instagram" },
+                  { icon: Twitter, href: "#", name: "twitter" },
+                  { icon: Youtube, href: "#", name: "youtube" },
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -204,6 +211,7 @@ const Footer = () => {
                     className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary/20 transition-safari"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackSocialLinkClick(social.name)}
                   >
                     <social.icon className="w-4 h-4" />
                   </a>

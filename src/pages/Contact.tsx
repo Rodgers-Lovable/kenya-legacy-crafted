@@ -22,8 +22,10 @@ import {
 } from "@/core/constants/appConstants";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
+import { useUmami } from "@/hooks/use-umami";
 
 const Contact = () => {
+  const { trackContactFormSubmit, trackWhatsAppClick, SOURCES } = useUmami();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -66,6 +68,13 @@ const Contact = () => {
 
       // Uncomment below when EmailJS is configured
       await emailjs.send(serviceId, templateId, emailData, publicKey);
+
+      // Track successful form submission
+      trackContactFormSubmit({
+        safari_style: formData.interests,
+        group_size: formData.groupSize,
+        budget: formData.budget,
+      });
 
       // Show success message
       toast.success(
@@ -366,6 +375,7 @@ const Contact = () => {
                       href={`https://wa.me/${WHATSAPP_NUMBER}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackWhatsAppClick(SOURCES.CONTACT_PAGE)}
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
                       Chat on WhatsApp

@@ -33,7 +33,8 @@ import {
   X,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { COMPANY_PRIMARY_EMAIL } from "@/core/constants/appConstants";
+import { COMPANY_PRIMARY_EMAIL, WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { useUmami } from "@/hooks/use-umami";
 
 interface SafariPreferences {
   duration: string;
@@ -86,6 +87,7 @@ const SafariBuilderModal = ({
   });
   const [isComplete, setIsComplete] = useState(false);
   const { toast } = useToast();
+  const { trackSafariBuilderComplete, trackWhatsAppClick, SOURCES } = useUmami();
 
   const totalSteps = 5;
 
@@ -140,6 +142,14 @@ const SafariBuilderModal = ({
 
       // Uncomment below when EmailJS is configured
       await emailjs.send(serviceId, templateId, emailData, publicKey);
+
+      // Track successful safari builder completion
+      trackSafariBuilderComplete({
+        duration: preferences.duration,
+        style: preferences.style,
+        budget: preferences.budget,
+        travelers: preferences.travelers,
+      });
 
       setIsComplete(true);
       toast({
@@ -216,9 +226,10 @@ const SafariBuilderModal = ({
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button size="lg" asChild>
           <a
-            href="https://wa.me/254700000000"
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick(SOURCES.SAFARI_BUILDER)}
           >
             <MessageCircle className="w-5 h-5 mr-2" />
             Chat on WhatsApp

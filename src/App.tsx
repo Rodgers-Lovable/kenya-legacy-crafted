@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import MobileCTABar from "@/components/MobileCTABar";
 import Footer from "@/components/Footer";
+import AnalyticsProvider from "@/components/AnalyticsProvider";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Safaris from "./pages/Safaris";
@@ -24,23 +25,21 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BookingTerms from "./pages/BookingTerms";
 import NotFound from "./pages/NotFound";
-import { usePlausible } from "./hooks/use-plausible";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  usePlausible("karenlegacytoursandsafaris.com");
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1">
-              <Routes>
+          <AnalyticsProvider>
+            <div className="min-h-screen flex flex-col">
+              <Navbar />
+              <main className="flex-1">
+                <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/safaris" element={<Safaris />} />
@@ -65,12 +64,14 @@ const App = () => {
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/booking-terms" element={<BookingTerms />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />
             <MobileCTABar />
           </div>
+        </AnalyticsProvider>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
