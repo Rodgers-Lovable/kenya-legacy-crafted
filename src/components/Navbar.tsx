@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import Logo from "@/assets/logo.png";
 import { WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 import { useLocation } from "react-router-dom";
+import { useUmami } from "@/hooks/use-umami";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { trackWhatsAppClick, trackPlanSafariClick, SOURCES } = useUmami();
 
   const navigation = [
     { name: "Safaris", href: "/safaris" },
@@ -57,12 +59,15 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-safari-green hover:text-primary transition-safari"
+              onClick={() => trackWhatsAppClick(SOURCES.NAVBAR)}
             >
               <MessageCircle className="w-4 h-4" />
               <span className="font-medium">WhatsApp</span>
             </a>
             <Button variant="default" size="sm" asChild>
-              <a href="/contact">Plan My Safari</a>
+              <a href="/contact" onClick={() => trackPlanSafariClick(SOURCES.NAVBAR)}>
+                Plan My Safari
+              </a>
             </Button>
           </div>
 
@@ -106,7 +111,10 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 px-3 py-2 text-safari-green hover:text-primary hover:bg-muted transition-safari rounded-md"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    trackWhatsAppClick(SOURCES.NAVBAR_MOBILE);
+                  }}
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span className="font-medium">WhatsApp</span>
@@ -117,7 +125,12 @@ const Navbar = () => {
                   className="mx-3 mt-2 w-full"
                   asChild
                 >
-                  <a href="/contact">Plan My Safari</a>
+                  <a
+                    href="/contact"
+                    onClick={() => trackPlanSafariClick(SOURCES.NAVBAR_MOBILE)}
+                  >
+                    Plan My Safari
+                  </a>
                 </Button>
               </div>
             </div>

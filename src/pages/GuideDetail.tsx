@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Clock, Calendar, User, Share2, ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,13 +7,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet-async";
 import { COMPANY_NAME } from "@/core/constants/appConstants";
 import { getGuideBySlug, getRelatedGuides, getGuideImage } from "@/core/data/guides";
+import { useUmami } from "@/hooks/use-umami";
 
 const GuideDetail = () => {
   const { slug } = useParams();
+  const { trackGuideRead } = useUmami();
   
   const guide = slug ? getGuideBySlug(slug) : undefined;
   const relatedGuides = guide ? getRelatedGuides(guide.slug, guide.relatedGuides) : [];
   const guideImage = guide ? getGuideImage(guide.id) : "";
+
+  // Track guide read on mount
+  useEffect(() => {
+    if (guide) {
+      trackGuideRead(guide.title, guide.category);
+    }
+  }, [guide, trackGuideRead]);
 
   if (!guide) {
     return (

@@ -1,5 +1,5 @@
 import { useParams, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Calendar,
   Clock,
@@ -29,14 +29,23 @@ import {
 } from "@/components/ui/accordion";
 import { safaris } from "@/core/data/safaris";
 import { Helmet } from "react-helmet-async";
-import { COMPANY_NAME } from "@/core/constants/appConstants";
+import { COMPANY_NAME, WHATSAPP_NUMBER } from "@/core/constants/appConstants";
+import { useUmami } from "@/hooks/use-umami";
 
 const SafariDetail = () => {
   const { slug } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
+  const { trackSafariView, trackBookNowClick, trackWhatsAppClick, SOURCES } = useUmami();
 
   // Find safari based on slug
   const safari = safaris.find((s) => s.slug === slug);
+
+  // Track safari view on mount
+  useEffect(() => {
+    if (safari) {
+      trackSafariView(safari.title, safari.slug);
+    }
+  }, [safari, trackSafariView]);
 
   // Redirect to 404 if safari not found
   if (!safari) {
@@ -342,15 +351,21 @@ const SafariDetail = () => {
                     </span>
                   </div>
 
-                  <Button className="w-full" size="lg" asChild>
+                  <Button
+                    className="w-full"
+                    size="lg"
+                    asChild
+                    onClick={() => trackBookNowClick(safari.title)}
+                  >
                     <a href="/contact">Book This Safari</a>
                   </Button>
 
                   <Button variant="outline" className="w-full" asChild>
                     <a
-                      href={`https://wa.me/254700000000?text=Hi! I'm interested in the ${safari.title}`}
+                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'm interested in the ${safari.title}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackWhatsAppClick(SOURCES.SAFARI_DETAIL)}
                     >
                       Chat on WhatsApp
                     </a>
