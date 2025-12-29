@@ -10,6 +10,9 @@ import MigrationCrossing from "@/assets/images/migration-crossing.jpg";
 import Elephants from "@/assets/images/elephants.jpg";
 import Lions from "@/assets/images/lions.jpg";
 import Migration from "@/assets/images/migration.jpg";
+import GameDrive from "@/assets/images/game-drive.jpg";
+import Hippos from "@/assets/images/hippos.avif";
+import NairobiCulture from "@/assets/images/masai-market.jpg";
 import Rhinos from "@/assets/images/rhinos.jpg";
 
 interface Itinerary {
@@ -66,7 +69,7 @@ export const safaris: Safari[] = [
     groupSize: "2–12",
     price: "KES 420,000",
     priceDetails: "Per person sharing, excluding international flights",
-    image: "/images/safaris/maasai-mara-luxury/main.jpg",
+    image: Rhinos,
     description:
       "Experience the ultimate African adventure on this 7-day luxury safari through the iconic Maasai Mara. Enjoy game drives across the vast savannah, witness the Big Five up close, and unwind in world-class lodges that blend comfort, culture, and nature.",
     overview:
@@ -94,12 +97,7 @@ export const safaris: Safari[] = [
     bestMonths: ["July", "August", "September", "October", "December"],
     minAge: 8,
     maxGroupSize: 12,
-    images: [
-      "/images/safaris/maasai-mara-luxury/jeep-drive.jpg",
-      "/images/safaris/maasai-mara-luxury/lions.jpg",
-      "/images/safaris/maasai-mara-luxury/sundowner.jpg",
-      "/images/safaris/maasai-mara-luxury/camp.jpg",
-    ],
+    images: [Lions, NairobiCulture, GameDrive, Hippos],
     itinerary: [
       {
         day: 1,
@@ -237,7 +235,6 @@ export const safaris: Safari[] = [
       },
     ],
   },
-
   {
     id: "amboseli-family",
     title: "5-Day Family Safari Adventure",
@@ -276,7 +273,6 @@ export const safaris: Safari[] = [
     rating: 4.8,
     reviews: 89,
     images: [FamilyAdventure, AmboseliiElephants, Elephants, Lions, MountKenya],
-
     itinerary: [
       {
         day: 1,
@@ -919,7 +915,6 @@ export const safaris: Safari[] = [
     rating: 4.7,
     reviews: 98,
     images: [SamburuWildlife, FamilyAdventure, MaasaiMara, Lions, Elephants],
-
     itinerary: [
       {
         day: 1,
