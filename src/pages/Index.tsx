@@ -22,6 +22,8 @@ import BalloonFlight from "@/assets/images/balloon-flight.jpg";
 import { destinations } from "@/core/data/destinations";
 import { COMPANY_NAME, WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 import { Helmet } from "react-helmet-async";
+import { guidesContent } from "@/core/data/guides";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const journeyStory = [
@@ -55,30 +57,8 @@ const Index = () => {
     },
   ];
 
-  const guides = [
-    {
-      title: "Ultimate Kenya Safari Planning Guide",
-      category: "Planning",
-      readTime: "15 min read",
-      description:
-        "Everything you need to know for your first Kenya safari, from best times to visit to what to pack.",
-      featured: true,
-    },
-    {
-      title: "Great Migration Calendar: When & Where",
-      category: "Wildlife",
-      readTime: "8 min read",
-      description:
-        "Month-by-month guide to following the wildebeest migration across East Africa.",
-    },
-    {
-      title: "Safari Photography: Pro Tips from Kenya",
-      category: "Photography",
-      readTime: "12 min read",
-      description:
-        "Master the art of wildlife photography with insider tips from professional safari guides.",
-    },
-  ];
+  // Get first 3 guides for homepage display
+  const homeGuides = guidesContent.slice(0, 3);
 
   return (
     <>
@@ -267,9 +247,9 @@ const Index = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {guides.map((guide, index) => (
+              {homeGuides.map((guide) => (
                 <Card
-                  key={index}
+                  key={guide.id}
                   className={`group hover:shadow-safari-floating transition-all duration-300 ${
                     guide.featured ? "md:col-span-3 lg:col-span-1" : ""
                   }`}
@@ -292,7 +272,7 @@ const Index = () => {
                     </h3>
 
                     <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                      {guide.description}
+                      {guide.excerpt}
                     </p>
 
                     <Button
@@ -301,10 +281,10 @@ const Index = () => {
                       className="group-hover:text-primary"
                       asChild
                     >
-                      <a href="/guides">
+                      <Link to={`/guides/${guide.slug}`}>
                         Read Article
                         <ArrowRight className="w-4 h-4 ml-2" />
-                      </a>
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>

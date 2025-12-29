@@ -1,4 +1,9 @@
 // Guide content data for detailed guide pages
+import safariImg from "@/assets/images/kenya_safari.jpg";
+import maraMigrationImg from "@/assets/images/mara-migration.jpg";
+import packingImg from "@/assets/images/packing-for-safari.jpg";
+import maasaiCultureImg from "@/assets/images/maasai.jpg";
+import wildlifeImg from "@/assets/images/african_wildlife.jpg";
 
 export interface GuideContent {
   id: string;
@@ -652,4 +657,34 @@ export const getRelatedGuides = (currentSlug: string, relatedSlugs: string[]): G
   return guidesContent.filter(guide => 
     relatedSlugs.includes(guide.slug) && guide.slug !== currentSlug
   ).slice(0, 3);
+};
+
+// Helper function to get featured guides
+export const getFeaturedGuides = (limit?: number): GuideContent[] => {
+  const featured = guidesContent.filter(guide => guide.featured);
+  return limit ? featured.slice(0, limit) : featured;
+};
+
+// Helper function to get guides by category
+export const getGuidesByCategory = (category: string): GuideContent[] => {
+  return guidesContent.filter(guide => guide.category === category);
+};
+
+// Helper function to get all unique categories
+export const getGuideCategories = (): string[] => {
+  return [...new Set(guidesContent.map(guide => guide.category))];
+};
+
+// Image mapping for guides (maps guide id to actual images)
+export const guideImages: Record<string, string> = {
+  "top-10-safari-tips": safariImg,
+  "safari-packing-checklist": packingImg,
+  "best-time-visit-kenya": maraMigrationImg,
+  "maasai-samburu-culture": maasaiCultureImg,
+  "sustainable-safari-travel": wildlifeImg,
+};
+
+// Helper to get guide image with fallback
+export const getGuideImage = (guideId: string): string => {
+  return guideImages[guideId] || safariImg;
 };

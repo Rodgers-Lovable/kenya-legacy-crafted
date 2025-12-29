@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Search, Clock, Calendar, User, Tag, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Search, Clock, Calendar, User, ArrowRight } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -18,128 +19,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Helmet } from "react-helmet-async";
-import wildlifeImg from "@/assets/images/african_wildlife.jpg";
-import safariImg from "@/assets/images/kenya_safari.jpg";
-import safariImg1 from "@/assets/images/kenya_safari_1.jpg";
-import maraMigrationImg from "@/assets/images/mara-migration.jpg";
-import maasaiCultureImg from "@/assets/images/maasai.jpg";
-import packingImg from "@/assets/images/packing-for-safari.jpg";
+import { guidesContent, getGuideCategories, getGuideImage } from "@/core/data/guides";
 
 const Guides = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const guides = [
-    {
-      id: "best-time-visit-kenya",
-      title: "Best Time to Visit Kenya for Safari",
-      slug: "best-time-visit-kenya-safari",
-      category: "Safari Planning",
-      author: "David Kimani",
-      publishDate: "2024-01-15",
-      readTime: "12 min read",
-      excerpt:
-        "Discover the optimal months for your Kenya safari based on wildlife migrations, weather patterns, and your specific interests. Complete month-by-month breakdown included.",
-      image: safariImg,
-      tags: ["Planning", "Weather", "Migration", "Best Time"],
-      featured: true,
-    },
-    {
-      id: "great-migration-guide",
-      title: "Complete Guide to Kenya's Great Migration",
-      slug: "kenya-great-migration-guide",
-      category: "Wildlife & Migration",
-      author: "James Mwangi",
-      publishDate: "2024-01-10",
-      readTime: "15 min read",
-      excerpt:
-        "Everything you need to know about witnessing the world's greatest wildlife spectacle in Kenya's Masai Mara. Timing, locations, and insider tips.",
-      image: maraMigrationImg,
-      tags: ["Migration", "Masai Mara", "Wildlife", "Photography"],
-      featured: true,
-    },
-    {
-      id: "safari-packing-list",
-      title: "Ultimate Kenya Safari Packing Checklist",
-      slug: "kenya-safari-packing-checklist",
-      category: "Travel Tips",
-      author: "Sarah Mitchell",
-      publishDate: "2024-01-08",
-      readTime: "8 min read",
-      excerpt:
-        "Complete packing guide for your Kenya safari with essential items, clothing recommendations, and photography gear suggestions for every season.",
-      image: packingImg,
-      tags: ["Packing", "Gear", "Clothing", "Photography"],
-      featured: true,
-    },
-    {
-      id: "masai-culture-guide",
-      title: "Understanding Maasai Culture and Traditions",
-      slug: "maasai-culture-traditions-guide",
-      category: "Culture & People",
-      author: "David Kimani",
-      publishDate: "2024-01-05",
-      readTime: "10 min read",
-      excerpt:
-        "Respectful introduction to Maasai culture, traditions, and how to engage meaningfully during cultural village visits on your safari.",
-      image: maasaiCultureImg,
-      tags: ["Culture", "Maasai", "Traditions", "Respect"],
-      featured: false,
-    },
-    {
-      id: "safari-photography-tips",
-      title: "Wildlife Photography Tips for Kenya Safaris",
-      slug: "wildlife-photography-tips-kenya",
-      category: "Photography",
-      author: "James Mwangi",
-      publishDate: "2024-01-03",
-      readTime: "14 min read",
-      excerpt:
-        "Professional photography tips for capturing stunning wildlife images during your Kenya safari. Equipment, settings, and composition techniques.",
-      image: wildlifeImg,
-      tags: ["Photography", "Wildlife", "Tips", "Equipment"],
-      featured: false,
-    },
-    {
-      id: "budget-safari-tips",
-      title: "How to Plan an Affordable Kenya Safari",
-      slug: "budget-kenya-safari-planning",
-      category: "Safari Planning",
-      author: "David Kimani",
-      publishDate: "2023-12-28",
-      readTime: "11 min read",
-      excerpt:
-        "Expert tips for experiencing Kenya's incredible wildlife without breaking the bank. Budget accommodation, timing, and money-saving strategies.",
-      image: safariImg1,
-      tags: ["Budget", "Planning", "Money-Saving", "Tips"],
-      featured: false,
-    },
-    {
-      id: "wildlife-behavior-guide",
-      title: "Understanding African Wildlife Behavior",
-      slug: "african-wildlife-behavior-guide",
-      category: "Wildlife & Migration",
-      author: "James Mwangi",
-      publishDate: "2023-12-25",
-      readTime: "13 min read",
-      excerpt:
-        "Learn to interpret animal behavior on safari for better wildlife viewing and photography opportunities. Big Five behavior patterns explained.",
-      image: wildlifeImg,
-      tags: ["Wildlife", "Behavior", "Big Five", "Education"],
-      featured: false,
-    },
-  ];
+  const categories = ["all", ...getGuideCategories()];
 
-  const categories = [
-    "all",
-    "Safari Planning",
-    "Wildlife & Migration",
-    "Travel Tips",
-    "Photography",
-    "Culture & People",
-  ];
-
-  const filteredGuides = guides.filter((guide) => {
+  const filteredGuides = guidesContent.filter((guide) => {
     const matchesSearch =
       guide.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       guide.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -152,7 +40,7 @@ const Guides = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const featuredGuides = guides.filter((guide) => guide.featured);
+  const featuredGuides = guidesContent.filter((guide) => guide.featured);
 
   return (
     <>
@@ -246,7 +134,7 @@ const Guides = () => {
                   >
                     <div className="aspect-video bg-muted overflow-hidden relative">
                       <img
-                        src={guide.image}
+                        src={getGuideImage(guide.id)}
                         alt={guide.title}
                         className="w-full h-full object-cover hover:scale-105 transition-safari"
                       />
@@ -290,12 +178,12 @@ const Guides = () => {
                         </div>
 
                         <Button className="w-full" asChild>
-                          <a
-                            href={`/guides/${guide.slug}`}
+                          <Link
+                            to={`/guides/${guide.slug}`}
                             className="flex items-center justify-center gap-2"
                           >
                             Read Guide <ArrowRight className="w-4 h-4" />
-                          </a>
+                          </Link>
                         </Button>
                       </div>
                     </CardContent>
@@ -323,7 +211,7 @@ const Guides = () => {
                     <div className="md:flex">
                       <div className="md:w-1/3 aspect-video md:aspect-square bg-muted overflow-hidden">
                         <img
-                          src={guide.image}
+                          src={getGuideImage(guide.id)}
                           alt={guide.title}
                           className="w-full h-full object-cover hover:scale-105 transition-safari"
                         />
@@ -376,12 +264,12 @@ const Guides = () => {
 
                           <div className="flex gap-2 pt-4">
                             <Button size="sm" className="flex-1" asChild>
-                              <a
-                                href={`/guides/${guide.slug}`}
+                              <Link
+                                to={`/guides/${guide.slug}`}
                                 className="flex items-center justify-center gap-1"
                               >
                                 Read <ArrowRight className="w-4 h-4" />
-                              </a>
+                              </Link>
                             </Button>
                           </div>
                         </CardContent>
