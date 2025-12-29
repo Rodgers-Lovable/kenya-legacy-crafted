@@ -9,26 +9,28 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { COMPANY_NAME, WHATSAPP_NUMBER } from "@/core/constants/appConstants";
 import { Helmet } from "react-helmet-async";
+import ceoImage from "@/assets/images/ceo.jpeg";
+import placeholderImg from "@/assets/images/placeholder_acc.avif";
 
 const About = () => {
   const team = [
     {
-      name: "David Kimani",
-      role: "Founder & Lead Guide",
-      image: "/api/placeholder/400/400",
+      name: "Mathias Mutuma",
+      role: "Chief Executive Officer (C.E.0)",
+      image: ceoImage,
       bio: "Born and raised in Kenya, David has over 15 years of experience guiding safari adventures across East Africa.",
     },
     {
-      name: "Sarah Mitchell",
-      role: "Operations Director",
-      image: "/api/placeholder/400/400",
-      bio: "Former hospitality executive from London, Sarah ensures every safari exceeds expectations with meticulous planning.",
+      name: "Edwin Gitonga",
+      role: "Managing Director (MD)",
+      image: placeholderImg,
+      bio: "Conservation biologist and expert tracker, James brings deep wildlife knowledge to every safari experience.",
     },
     {
-      name: "James Mwangi",
-      role: "Wildlife Expert Guide",
-      image: "/api/placeholder/400/400",
-      bio: "Conservation biologist and expert tracker, James brings deep wildlife knowledge to every safari experience.",
+      name: "Humprey Mugambi",
+      role: "Operations Director",
+      image: placeholderImg,
+      bio: "Former hospitality executive from London, Sarah ensures every safari exceeds expectations with meticulous planning.",
     },
   ];
 
@@ -60,9 +62,15 @@ const About = () => {
           content="We are dedicated to creating unforgettable safari experiences in Kenya. Discover our story, mission, and why travelers trust us for wildlife adventures."
         />
         <meta property="og:image" content="/images/seo/about.jpg" />
-        <meta property="og:url" content="https://karenlegacytoursandsafaris.com/about" />
+        <meta
+          property="og:url"
+          content="https://karenlegacytoursandsafaris.com/about"
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://karenlegacytoursandsafaris.com/about" />
+        <link
+          rel="canonical"
+          href="https://karenlegacytoursandsafaris.com/about"
+        />
       </Helmet>
       <div className="min-h-screen pt-16">
         {/* Hero Section */}
@@ -168,7 +176,7 @@ const About = () => {
               {team.map((member, index) => (
                 <Card key={index} className="border-border bg-card text-center">
                   <CardHeader>
-                    <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 overflow-hidden">
+                    <div className="w-60 h-60 bg-muted rounded-full mx-auto mb-4 overflow-hidden">
                       <img
                         src={member.image}
                         alt={member.name}
@@ -182,9 +190,9 @@ const About = () => {
                       {member.role}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  {/* <CardContent>
                     <p className="text-muted-foreground">{member.bio}</p>
-                  </CardContent>
+                  </CardContent> */}
                 </Card>
               ))}
             </div>
