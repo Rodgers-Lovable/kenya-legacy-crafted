@@ -348,7 +348,6 @@ export const safaris: Safari[] = [
       "Tips and gratuities",
       "Optional activities",
     ],
-
     accommodations: [
       {
         name: "Amboseli Serena Safari Lodge",
