@@ -18,6 +18,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Helmet } from "react-helmet-async";
+import wildlifeImg from "@/assets/images/african_wildlife.jpg";
+import safariImg from "@/assets/images/kenya_safari.jpg";
+import safariImg1 from "@/assets/images/kenya_safari_1.jpg";
+import maraMigrationImg from "@/assets/images/mara-migration.jpg";
+import maasaiCultureImg from "@/assets/images/maasai.jpg";
+import packingImg from "@/assets/images/packing-for-safari.jpg";
 
 const Guides = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,7 +40,7 @@ const Guides = () => {
       readTime: "12 min read",
       excerpt:
         "Discover the optimal months for your Kenya safari based on wildlife migrations, weather patterns, and your specific interests. Complete month-by-month breakdown included.",
-      image: "/api/placeholder/600/400",
+      image: safariImg,
       tags: ["Planning", "Weather", "Migration", "Best Time"],
       featured: true,
     },
@@ -48,7 +54,7 @@ const Guides = () => {
       readTime: "15 min read",
       excerpt:
         "Everything you need to know about witnessing the world's greatest wildlife spectacle in Kenya's Masai Mara. Timing, locations, and insider tips.",
-      image: "/api/placeholder/600/400",
+      image: maraMigrationImg,
       tags: ["Migration", "Masai Mara", "Wildlife", "Photography"],
       featured: true,
     },
@@ -62,7 +68,7 @@ const Guides = () => {
       readTime: "8 min read",
       excerpt:
         "Complete packing guide for your Kenya safari with essential items, clothing recommendations, and photography gear suggestions for every season.",
-      image: "/api/placeholder/600/400",
+      image: packingImg,
       tags: ["Packing", "Gear", "Clothing", "Photography"],
       featured: true,
     },
@@ -76,7 +82,7 @@ const Guides = () => {
       readTime: "10 min read",
       excerpt:
         "Respectful introduction to Maasai culture, traditions, and how to engage meaningfully during cultural village visits on your safari.",
-      image: "/api/placeholder/600/400",
+      image: maasaiCultureImg,
       tags: ["Culture", "Maasai", "Traditions", "Respect"],
       featured: false,
     },
@@ -90,22 +96,8 @@ const Guides = () => {
       readTime: "14 min read",
       excerpt:
         "Professional photography tips for capturing stunning wildlife images during your Kenya safari. Equipment, settings, and composition techniques.",
-      image: "/api/placeholder/600/400",
+      image: wildlifeImg,
       tags: ["Photography", "Wildlife", "Tips", "Equipment"],
-      featured: false,
-    },
-    {
-      id: "kenya-visa-requirements",
-      title: "Kenya Visa Requirements and Entry Guide",
-      slug: "kenya-visa-requirements-guide",
-      category: "Travel Tips",
-      author: "Sarah Mitchell",
-      publishDate: "2024-01-01",
-      readTime: "6 min read",
-      excerpt:
-        "Up-to-date information on Kenya visa requirements, application process, and entry procedures for international visitors.",
-      image: "/api/placeholder/600/400",
-      tags: ["Visa", "Travel", "Requirements", "Entry"],
       featured: false,
     },
     {
@@ -118,7 +110,7 @@ const Guides = () => {
       readTime: "11 min read",
       excerpt:
         "Expert tips for experiencing Kenya's incredible wildlife without breaking the bank. Budget accommodation, timing, and money-saving strategies.",
-      image: "/api/placeholder/600/400",
+      image: safariImg1,
       tags: ["Budget", "Planning", "Money-Saving", "Tips"],
       featured: false,
     },
@@ -132,7 +124,7 @@ const Guides = () => {
       readTime: "13 min read",
       excerpt:
         "Learn to interpret animal behavior on safari for better wildlife viewing and photography opportunities. Big Five behavior patterns explained.",
-      image: "/api/placeholder/600/400",
+      image: wildlifeImg,
       tags: ["Wildlife", "Behavior", "Big Five", "Education"],
       featured: false,
     },
@@ -181,7 +173,10 @@ const Guides = () => {
           content="Karen Legacy Travel Guides | Tips, Packing & Best Time to Visit"
         />
         <meta property="og:image" content="/images/seo/guides.jpg" />
-        <link rel="canonical" href="https://karenlegacytoursandsafaris.com/guides" />
+        <link
+          rel="canonical"
+          href="https://karenlegacytoursandsafaris.com/guides"
+        />
       </Helmet>
 
       <div className="min-h-screen pt-16">
