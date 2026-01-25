@@ -15,4 +15,4 @@ export const COMPANY_ADDRESS = "COMING SOON";
 export const DEVELOPER_NAME = "Mawira";
 export const DEVELOPER_WEBSITE = "https://mawirab.com";
 export const DEVELOPER_EMAIL = "dev@mawirab.com";
-export const DEVELOPER_PHONE = "254712413243";
+export const DEVELOPER_PHONE = "+254712413243";

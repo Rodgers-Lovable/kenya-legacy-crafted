@@ -18,12 +18,18 @@ import {
   DEVELOPER_WEBSITE,
   DEVELOPER_NAME,
   COMPANY_NAME,
+  DEVELOPER_PHONE,
 } from "@/core/constants/appConstants";
 import { useUmami } from "@/hooks/use-umami";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { trackWhatsAppClick, trackNewsletterSignup, trackSocialLinkClick, SOURCES } = useUmami();
+  const {
+    trackWhatsAppClick,
+    trackNewsletterSignup,
+    trackSocialLinkClick,
+    SOURCES,
+  } = useUmami();
 
   return (
     <footer className="bg-safari-charcoal text-safari-ivory">
@@ -175,6 +181,9 @@ const Footer = () => {
                 { name: "Safari Planning Guide", href: "/guides" },
                 { name: "Packing Checklist", href: "/packing-list" },
                 { name: "Health & Safety", href: "/safari-preparation" },
+                { name: "Privacy Policy", href: "/privacy" },
+                { name: "Terms & Conditions", href: "/terms" },
+                { name: "Booking Terms", href: "/booking-terms" },
                 { name: "FAQ", href: "/faq" },
               ].map((item) => (
                 <li key={item.name}>
@@ -238,9 +247,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-8 pt-8">
+        <div className="border-t border-white/10 mt-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-white/60">
-            <div className="mb-4 md:mb-0">
+            <div className="mb-4 md:mb-0 text-xs">
               © {currentYear} {COMPANY_NAME}. All rights reserved.
             </div>
 
@@ -249,33 +258,12 @@ const Footer = () => {
                 Developed & maintained by{" "}
                 <a
                   target="_blank"
-                  href={DEVELOPER_WEBSITE}
-                  className="text-primary"
+                  href={`https://wa.me/${DEVELOPER_PHONE}`}
+                  className="text-primary underline"
                 >
                   {DEVELOPER_NAME}
                 </a>
               </p>
-            </div>
-
-            <div className="flex items-center space-x-6">
-              <a href="/privacy" className="hover:text-white transition-safari">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="hover:text-white transition-safari">
-                Terms of Service
-              </a>
-              <a
-                href="/booking-terms"
-                className="hover:text-white transition-safari"
-              >
-                Booking Terms
-              </a>
-              <a
-                href="/sitemap.xml"
-                className="hover:text-white transition-safari"
-              >
-                Sitemap
-              </a>
             </div>
           </div>
         </div>
