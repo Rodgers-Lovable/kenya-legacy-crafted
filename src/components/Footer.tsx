@@ -2,7 +2,6 @@ import {
   MessageCircle,
   Mail,
   Phone,
-  MapPin,
   Facebook,
   Instagram,
   Twitter,
@@ -14,8 +13,6 @@ import Logo from "@/assets/logo.png";
 import {
   WHATSAPP_NUMBER,
   COMPANY_PRIMARY_EMAIL,
-  COMPANY_LOCATION,
-  DEVELOPER_WEBSITE,
   DEVELOPER_NAME,
   COMPANY_NAME,
   DEVELOPER_PHONE,
@@ -94,10 +91,6 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
                 <span className="text-sm">{COMPANY_PRIMARY_EMAIL}</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-sm">{COMPANY_LOCATION}</span>
               </div>
             </div>
 
